@@ -17,7 +17,7 @@ public class MainView extends HorizontalLayout {
 
     public MainView() {
         name = new TextField("Your name");
-        sayHello = new Button("Flo darf nicht commiten");
+        sayHello = new Button("Flo darf commiten");
         sayHello.addClickListener(e -> {
             Notification.show("Hello " + name.getValue());
         });

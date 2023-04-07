@@ -1,0 +1,33 @@
+.image-prodTile {
+    max-width: 395px;
+    max-height: 395px;
+    width: 100%;
+    height: auto;
+}
+
+vaadin-vertical-layout.test {
+    max-width: 395px;
+    border-style: solid;
+    border-width: thin;
+    border-color: lightgray;
+    margin: 0;
+}
+
+.label-prodTile {
+    font-weight: bold;
+}
+
+vaadin-button.cart {
+    color: black;
+    font-weight: bold;
+    width:190px;
+    height:44px;
+    background:orange;
+    border-radius:50px;
+    border:2px;
+
+}
+
+vaadin-button.cart:hover {
+    cursor: pointer;
+}

@@ -38,6 +38,10 @@ public class ProductView extends HorizontalLayout implements HasUrlParameter<Int
         Label productName = new Label(product.getName());
         productName.addClassName("nameLabel-prodPage");
 
+        // ID label
+        Label productId = new Label("Artikelnummer: " + String.valueOf(product.getId()));
+        productId.addClassName("idLabel-prodPage");
+
         // Product price label
         Label productPrice = new Label(String.valueOf(product.getPrice()) + " €");
         productPrice.addClassName("priceLabel-prodPage");
@@ -68,10 +72,10 @@ public class ProductView extends HorizontalLayout implements HasUrlParameter<Int
 
         // Reviews  label
         Label review = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
-        reviewsTitle.addClassName("reviews-prodPage");
+        review.addClassName("reviews-prodPage");
 
-        add(productImage, productName, productPrice, shoppingCart, divider1, descriptionTitle,
-                productDescription, divider2, reviewsTitle);
+        add(productImage, productName, productId, productPrice, shoppingCart, divider1, descriptionTitle,
+                productDescription, divider2, reviewsTitle, review);
 
         this.setClassName("grid-product");
         this.setSizeFull();

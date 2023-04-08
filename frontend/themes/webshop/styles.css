@@ -17,11 +17,6 @@ vaadin-vertical-layout.test {
     font-weight: bold;
 }
 
-.label-prodPage {
-    font-weight: bold;
-    font-size: 24px;
-}
-
 vaadin-button.cart {
     color: black;
     font-weight: bold;
@@ -69,6 +64,7 @@ area of product page CSS styling
         grid-template-areas:
         "productImage"
         "productName"
+        "productId"
         "productPrice"
         "productCart"
         "divider1"
@@ -85,11 +81,13 @@ area of product page CSS styling
         grid-template-columns: 60% auto;
         grid-template-areas:
         "productImage       productName"
+        "productImage       productId"
         "productImage       productPrice"
         "productImage       productCart"
+        "productImage       spacer1"
         "divider1           divider1"
         "productDescTitle   productDescTitle"
-        "productDescription blank"
+        "productDescription spacer2"
         "divider2           divider2"
         "reviewsTitle       reviewsTitle"
         "reviews            reviews";
@@ -105,12 +103,19 @@ area of product page CSS styling
 .nameLabel-prodPage {
     font-weight: bolder;
     font-size: 44px;
+    max-height: 44px;
     grid-area: productName;
+}
+
+.idLabel-prodPage {
+    color: darkgrey;
+    grid-area: productId;
 }
 
 .priceLabel-prodPage {
     font-weight: bold;
     font-size: 24px;
+    max-height: 24px;
     grid-area: productPrice;
 }
 

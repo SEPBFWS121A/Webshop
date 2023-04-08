@@ -10,8 +10,6 @@ import java.util.List;
 
 public class Catalog extends FormLayout {
 
-
-
     public Catalog (List<Product> products) {
 
         for (Product product : products) {

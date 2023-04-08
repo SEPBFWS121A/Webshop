@@ -1,17 +1,26 @@
 package com.bfws121a.webshop.object;
 
+import com.vaadin.flow.component.Html;
+import com.vaadin.flow.component.html.Span;
+
 public class Product {
 
+    int id;
     String image;
     String name;
     String description;
     double price;
 
-    public Product(String image, String name, String description, double price) {
+    public Product(int id, String image, String name, String description, double price) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getImage() {

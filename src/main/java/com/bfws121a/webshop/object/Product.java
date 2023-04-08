@@ -1,5 +1,8 @@
 package com.bfws121a.webshop.object;
 
+import com.vaadin.flow.component.Html;
+import com.vaadin.flow.component.html.Span;
+
 public class Product {
 
     int id;

@@ -1,16 +1,16 @@
 .image-prodTile {
-    max-width: 395px;
-    max-height: 395px;
     width: 100%;
-    height: auto;
+    height: 395px;
+    object-fit: contain;
 }
 
 vaadin-vertical-layout.test {
-    max-width: 395px;
+    max-width: 420px;
     border-style: solid;
     border-width: thin;
     border-color: lightgray;
-    margin: 0;
+    border-radius: 20px;
+    margin: 10px !important;
 }
 
 .label-prodTile {
@@ -30,4 +30,18 @@ vaadin-button.cart {
 
 vaadin-button.cart:hover {
     cursor: pointer;
+}
+
+vaadin-vertical-layout.filter {
+    max-width: 222px;
+}
+
+[id^=label-vaadin-checkbox-group] {
+    font-weight: bold;
+    color: black;
+}
+
+vaadin-checkbox-group.filter {
+    border-top: 1px solid lightgray;
+    width: 190px;
 }

@@ -24,8 +24,7 @@ public class ProductTile extends VerticalLayout {
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
         add(productImage, productName, productPrice, shoppingCart);
-        this.setSizeFull();
-
+        this.getStyle().set("margin-right", "10px");
     }
 
 }

@@ -1,14 +1,12 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
-import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
@@ -19,7 +17,7 @@ import java.awt.*;
 public class ProductView extends HorizontalLayout implements HasUrlParameter<Integer> {
 
     Product product;
-    Catalog catalog = new Catalog();
+    WholeCatalog catalog = new WholeCatalog();
 
     final private Button shoppingCart = new Button("In den Warenkorb", new Icon(VaadinIcon.CART));
 
@@ -65,8 +63,12 @@ public class ProductView extends HorizontalLayout implements HasUrlParameter<Int
         divider2.addClassName("divider2-prodPage");
 
         // Reviews title label
-        Label reviewsTitle = new Label("Beschreibung");
+        Label reviewsTitle = new Label("Bewertungen");
         reviewsTitle.addClassName("reviewsTitle-prodPage");
+
+        // Reviews  label
+        Label review = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
+        reviewsTitle.addClassName("reviews-prodPage");
 
         add(productImage, productName, productPrice, shoppingCart, divider1, descriptionTitle,
                 productDescription, divider2, reviewsTitle);

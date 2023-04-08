@@ -4,13 +4,6 @@
     object-fit: contain;
 }
 
-.image-prodPage {
-    max-width: 395px;
-    max-height: 395px;
-    width: 100%;
-    height: auto;
-}
-
 vaadin-vertical-layout.test {
     max-width: 420px;
     border-style: solid;
@@ -144,6 +137,16 @@ vaadin-button.cart-productPage {
     font-weight: bolder;
     font-size: 44px;
     grid-area: productDescTitle;
+}
+
+.reviewsTitle-prodPage {
+    font-weight: bolder;
+    font-size: 44px;
+    grid-area: reviewsTitle;
+}
+
+.reviews-prodPage {
+    grid-area: reviews;
 }
 
 .description-prodPage {

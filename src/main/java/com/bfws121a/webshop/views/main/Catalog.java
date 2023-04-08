@@ -24,4 +24,8 @@ public class Catalog extends HorizontalLayout {
             this.setAlignItems(Alignment.END);
         }
     }
+
+    public List<Product> getCatalog() {
+        return prodList;
+    }
 }

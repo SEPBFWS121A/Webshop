@@ -5,6 +5,13 @@
     height: auto;
 }
 
+.image-prodPage {
+    max-width: 395px;
+    max-height: 395px;
+    width: 100%;
+    height: auto;
+}
+
 vaadin-vertical-layout.test {
     max-width: 395px;
     border-style: solid;
@@ -15,6 +22,11 @@ vaadin-vertical-layout.test {
 
 .label-prodTile {
     font-weight: bold;
+}
+
+.label-prodPage {
+    font-weight: bold;
+    font-size: 24px;
 }
 
 vaadin-button.cart {

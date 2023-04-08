@@ -13,9 +13,9 @@ public class Catalog extends HorizontalLayout {
     List<Product> prodList = new ArrayList<>();
 
     public Catalog () {
-        prodList.add(new Product("icons/Ritterburg.png", "Ritterburg", "Egal", 229.99));
-        prodList.add(new Product("icons/Hogwards.png", "Hogwards", "Egal", 499.99));
-        prodList.add(new Product("icons/Bruchtal.png", "Bruchtal", "Egal", 499.99));
+        prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "Egal", 229.99));
+        prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal", 499.99));
+        prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal", 499.99));
 
         for (Product product : prodList) {
             ProductTile prodTile = new ProductTile(product);

@@ -21,4 +21,8 @@ public class Catalog extends FormLayout {
         }
 
     }
+
+    public List<Product> getCatalog() {
+        return prodList;
+    }
 }

@@ -26,6 +26,10 @@ public class ProductTile extends VerticalLayout {
         shoppingCart.addClassName("cart");
         add(productImage, productName, productPrice, shoppingCart);
         this.getStyle().set("margin-right", "10px");
+
+        // navigate to selected product
+        this.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
+
     }
 
 }

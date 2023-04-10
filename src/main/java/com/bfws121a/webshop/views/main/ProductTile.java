@@ -29,9 +29,6 @@ public class ProductTile extends VerticalLayout {
         // navigate to selected product
         this.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
 
-        // navigate to selected product
-        this.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
-
     }
 
 }

@@ -95,8 +95,9 @@ area of product page CSS styling
 }
 
 .image-prodPage {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
+    max-width: 70%;
     grid-area: productImage;
 }
 
@@ -131,10 +132,18 @@ vaadin-button.cart-productPage {
 }
 
 .divider1-prodPage {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    color: lightgrey;
     grid-area: divider1;
 }
 
 .divider2-prodPage {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    color: lightgrey;
     grid-area: divider2;
 }
 
@@ -156,4 +165,35 @@ vaadin-button.cart-productPage {
 
 .description-prodPage {
     grid-area: productDescription;
+}
+
+/*--------------------------------------
+area of product page reviews CSS styling
+--------------------------------------*/
+
+vaadin-vertical-layout.reviewTile-prodPage {
+    border-style: solid;
+    border-width: thin;
+    border-color: lightgrey;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.publisher-reviewTile {
+    font-weight: bold;
+}
+
+.date-reviewTile {
+    color: darkgrey;
+}
+
+.title-reviewTile {
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.divider-reviewTile {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

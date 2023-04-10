@@ -7,7 +7,7 @@ import com.vaadin.flow.router.Route;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route(value = "Katalog")
+@Route(value = "Katalog", layout = Layout.class)
 public class WholeCatalog extends HorizontalLayout {
 
     List<Product> prodList = new ArrayList<>();

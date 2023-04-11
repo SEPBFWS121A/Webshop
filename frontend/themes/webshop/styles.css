@@ -1,3 +1,7 @@
+vaadin-horizontal-layout.header {
+    box-shadow: 0px 1px 10px 5px lightgrey;
+}
+
 .image-prodTile {
     width: 100%;
     height: 395px;
@@ -29,7 +33,6 @@ vaadin-button.cart {
     background:orange;
     border-radius:50px;
     border:2px;
-
 }
 
 vaadin-button.cart:hover {
@@ -99,9 +102,19 @@ area of product page CSS styling
 }
 
 .image-prodPage {
-    width: 100%;
-    height: auto;
+    height: 70%;
+    width: auto;
+    max-width: 70%;
     grid-area: productImage;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px lightgrey;
+}
+
+@media only screen and (max-width: 831px) {
+    .image-prodPage {
+        max-width: 100% !important;
+        height: auto;
+    }
 }
 
 .nameLabel-prodPage {
@@ -126,19 +139,28 @@ area of product page CSS styling
 vaadin-button.cart-productPage {
     color: black;
     font-weight: bold;
-    width:190px;
+    max-width:190px !important;
     height:44px;
     background:orange;
     border-radius:50px;
     border:2px;
+    margin-top: 20px;
     grid-area: productCart;
 }
 
 .divider1-prodPage {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    color: lightgrey;
     grid-area: divider1;
 }
 
 .divider2-prodPage {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    color: lightgrey;
     grid-area: divider2;
 }
 
@@ -160,4 +182,35 @@ vaadin-button.cart-productPage {
 
 .description-prodPage {
     grid-area: productDescription;
+}
+
+/*--------------------------------------
+area of product page reviews CSS styling
+--------------------------------------*/
+
+vaadin-vertical-layout.reviewTile-prodPage {
+    border-style: solid;
+    border-width: thin;
+    border-color: lightgrey;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.publisher-reviewTile {
+    font-weight: bold;
+}
+
+.date-reviewTile {
+    color: darkgrey;
+}
+
+.title-reviewTile {
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.divider-reviewTile {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

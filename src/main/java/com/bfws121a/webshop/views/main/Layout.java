@@ -3,13 +3,16 @@ package com.bfws121a.webshop.views.main;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.RouterLink;
 
 import java.util.Optional;
@@ -31,13 +34,19 @@ public class Layout extends AppLayout {
     private Component createHeaderContent() {
         HorizontalLayout layout = new HorizontalLayout();
 
+        H2 slogan = new H2("Thomas Lego Shop");
+        slogan.getStyle().set("margin", "10px");
+
         // Configure styling for the header
-        layout.setId("header");
+        layout.addClassName("header");
         //layout.getThemeList().set("dark", true);
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
+        layout.getStyle().set("background-color", "deepskyblue");
 
+        //layout.add(new DrawerToggle());
+        layout.add(slogan);
         layout.add(createMenu());
 
         return layout;
@@ -52,6 +61,7 @@ public class Layout extends AppLayout {
         layout.setSpacing(false);
         layout.getThemeList().set("spacing-s", true);
         layout.setAlignItems(FlexComponent.Alignment.STRETCH);
+        layout.getStyle().set("color", "green");
 
         // Have a drawer header with an application logo
         HorizontalLayout logoLayout = new HorizontalLayout();
@@ -69,7 +79,7 @@ public class Layout extends AppLayout {
         final Tabs tabs = new Tabs();
 
         tabs.setOrientation(Tabs.Orientation.HORIZONTAL);
-        //tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
+        tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
         tabs.setId("tabs");
         tabs.add(createMenuItems());
 

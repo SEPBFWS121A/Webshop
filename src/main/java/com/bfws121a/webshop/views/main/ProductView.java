@@ -4,12 +4,12 @@ import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Hr;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
@@ -18,8 +18,8 @@ import com.vaadin.flow.router.Route;
 @Route(value = "product", layout = Layout.class)
 public class ProductView extends VerticalLayout implements HasUrlParameter<Integer> {
 
-    VerticalLayout productInfo = new VerticalLayout();
-    HorizontalLayout productOverview = new HorizontalLayout();
+    FormLayout productInfo = new FormLayout();
+    FormLayout productOverview = new FormLayout();
     Product product;
     WholeCatalog catalog = new WholeCatalog();
     WholeReview reviews = new WholeReview();
@@ -28,6 +28,18 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
 
     @Override
     public void setParameter(BeforeEvent beforeEvent, Integer id) {
+
+        // FormLayout responsiveness
+        productInfo.setResponsiveSteps(
+                // always use one column
+                new FormLayout.ResponsiveStep("0", 1)
+        );
+        productOverview.setResponsiveSteps(
+                // Mobile first: use one column
+                new FormLayout.ResponsiveStep("0", 1),
+                // Desktop view: use two columns
+                new FormLayout.ResponsiveStep("800px", 2)
+        );
 
         for (Product product : catalog.getCatalog()) {
             if (id == product.getId()) {
@@ -50,6 +62,8 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
         // Product price label
         Label productPrice = new Label(String.valueOf(product.getPrice()) + " €");
         productPrice.addClassName("priceLabel-prodPage");
+
+        // Shoppint cart button
         shoppingCart.addClassName("cart-productPage");
 
         // Divider
@@ -85,7 +99,7 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
         productOverview.add(productImage, productInfo);
 
         // Add hLayout and rest to main layout
-        add(productOverview, divider1, descriptionTitle, productDescription, divider2, reviewsTitle);
+        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle);
 
         // Reviews
         for (Review review : reviews.getReviews(product.getId())) {

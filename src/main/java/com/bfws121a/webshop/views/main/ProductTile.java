@@ -27,7 +27,8 @@ public class ProductTile extends VerticalLayout {
         this.getStyle().set("margin-right", "10px");
 
         // navigate to selected product
-        this.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
+        productImage.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
+        productImage.getStyle().set("cursor", "pointer");
 
     }
 

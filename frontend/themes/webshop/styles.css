@@ -4,6 +4,10 @@
     object-fit: contain;
 }
 
+.image-prodTile:hover {
+    cursor: pointer;
+}
+
 vaadin-vertical-layout.test {
     max-width: 420px;
     border-style: solid;

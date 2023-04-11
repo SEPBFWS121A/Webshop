@@ -16,7 +16,7 @@ import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "product", layout = Layout.class)
-public class ProductView extends VerticalLayout implements HasUrlParameter<Integer> {
+public class ProductView extends FormLayout implements HasUrlParameter<Integer> {
 
     FormLayout productInfo = new FormLayout();
     FormLayout productOverview = new FormLayout();
@@ -30,15 +30,18 @@ public class ProductView extends VerticalLayout implements HasUrlParameter<Integ
     public void setParameter(BeforeEvent beforeEvent, Integer id) {
 
         // FormLayout responsiveness
+        this.setResponsiveSteps(
+                new ResponsiveStep("0", 1)
+        );
         productInfo.setResponsiveSteps(
                 // always use one column
-                new FormLayout.ResponsiveStep("0", 1)
+                new ResponsiveStep("0", 1)
         );
         productOverview.setResponsiveSteps(
                 // Mobile first: use one column
-                new FormLayout.ResponsiveStep("0", 1),
+                new ResponsiveStep("0", 1),
                 // Desktop view: use two columns
-                new FormLayout.ResponsiveStep("800px", 2)
+                new ResponsiveStep("800px", 2)
         );
 
         for (Product product : catalog.getCatalog()) {

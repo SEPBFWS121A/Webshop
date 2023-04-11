@@ -106,6 +106,13 @@ area of product page CSS styling
     box-shadow: 0px 0px 10px 5px lightgrey;
 }
 
+@media only screen and (max-width: 831px) {
+    .image-prodPage {
+        max-width: 100% !important;
+        height: auto;
+    }
+}
+
 .nameLabel-prodPage {
     font-weight: bolder;
     font-size: 44px;
@@ -128,7 +135,7 @@ area of product page CSS styling
 vaadin-button.cart-productPage {
     color: black;
     font-weight: bold;
-    width:190px !important;
+    max-width:190px !important;
     height:44px;
     background:orange;
     border-radius:50px;

@@ -32,6 +32,9 @@ public class WholeCatalog extends HorizontalLayout {
         prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal", 499.99));
 
         Filter filter = new Filter();
+
+        filter.setVisible(true);
+
         Catalog catalog = new Catalog(prodList);
         add(filter, catalog);
         this.setJustifyContentMode(JustifyContentMode.CENTER);

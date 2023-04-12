@@ -1,16 +1,24 @@
+vaadin-horizontal-layout.header {
+    box-shadow: 0px 1px 10px 5px lightgrey;
+}
+
 .image-prodTile {
-    max-width: 395px;
-    max-height: 395px;
     width: 100%;
-    height: auto;
+    height: 395px;
+    object-fit: contain;
+}
+
+.image-prodTile:hover {
+    cursor: pointer;
 }
 
 vaadin-vertical-layout.test {
-    max-width: 395px;
+    max-width: 420px;
     border-style: solid;
     border-width: thin;
     border-color: lightgray;
-    margin: 0;
+    border-radius: 20px;
+    margin: 10px !important;
 }
 
 .label-prodTile {
@@ -49,9 +57,184 @@ vaadin-button.cart {
     background:orange;
     border-radius:50px;
     border:2px;
-
 }
 
 vaadin-button.cart:hover {
     cursor: pointer;
+}
+
+vaadin-vertical-layout.filter {
+    max-width: 222px;
+}
+
+[id^=label-vaadin-checkbox-group] {
+    font-weight: bold;
+    color: black;
+}
+
+vaadin-checkbox-group.filter {
+    border-top: 1px solid lightgray;
+    width: 190px;
+}
+
+/*------------------------------
+area of product page CSS styling
+------------------------------*/
+
+.grid-product {
+    display: grid;
+    object-fit: contain;
+    grid-auto-rows: max-content;
+    padding: 10px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-product {
+        grid-template-columns: 100%;
+        grid-template-areas:
+        "productImage"
+        "productName"
+        "productId"
+        "productPrice"
+        "productCart"
+        "divider1"
+        "productDescTitle"
+        "productDescription"
+        "divider2"
+        "reviewsTitle"
+        "reviews";
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .grid-product {
+        grid-template-columns: 60% auto;
+        grid-template-areas:
+        "productImage       productName"
+        "productImage       productId"
+        "productImage       productPrice"
+        "productImage       productCart"
+        "productImage       spacer1"
+        "divider1           divider1"
+        "productDescTitle   productDescTitle"
+        "productDescription spacer2"
+        "divider2           divider2"
+        "reviewsTitle       reviewsTitle"
+        "reviews            reviews";
+    }
+}
+
+.image-prodPage {
+    height: 70%;
+    width: auto;
+    max-width: 70%;
+    grid-area: productImage;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px lightgrey;
+}
+
+@media only screen and (max-width: 831px) {
+    .image-prodPage {
+        max-width: 100% !important;
+        height: auto;
+    }
+}
+
+.nameLabel-prodPage {
+    font-weight: bolder;
+    font-size: 44px;
+    max-height: 44px;
+    grid-area: productName;
+}
+
+.idLabel-prodPage {
+    color: darkgrey;
+    grid-area: productId;
+}
+
+.priceLabel-prodPage {
+    font-weight: bold;
+    font-size: 24px;
+    max-height: 24px;
+    grid-area: productPrice;
+}
+
+vaadin-button.cart-productPage {
+    color: black;
+    font-weight: bold;
+    max-width:190px !important;
+    height:44px;
+    background:orange;
+    border-radius:50px;
+    border:2px;
+    margin-top: 20px;
+    grid-area: productCart;
+}
+
+.divider1-prodPage {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    color: lightgrey;
+    grid-area: divider1;
+}
+
+.divider2-prodPage {
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: thin;
+    color: lightgrey;
+    grid-area: divider2;
+}
+
+.descriptionTitle-prodPage {
+    font-weight: bolder;
+    font-size: 44px;
+    grid-area: productDescTitle;
+}
+
+.reviewsTitle-prodPage {
+    font-weight: bolder;
+    font-size: 44px;
+    grid-area: reviewsTitle;
+}
+
+.reviews-prodPage {
+    grid-area: reviews;
+}
+
+.description-prodPage {
+    grid-area: productDescription;
+}
+
+/*--------------------------------------
+area of product page reviews CSS styling
+--------------------------------------*/
+
+vaadin-vertical-layout.reviewTile-prodPage {
+    border-style: solid;
+    border-width: thin;
+    border-color: lightgrey;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.publisher-reviewTile {
+    font-weight: bold;
+}
+
+.date-reviewTile {
+    color: darkgrey;
+}
+
+.title-reviewTile {
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.divider-reviewTile {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

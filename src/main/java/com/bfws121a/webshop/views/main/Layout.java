@@ -43,35 +43,11 @@ public class Layout extends AppLayout {
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
-        layout.getStyle().set("background-color", "deepskyblue");
 
         //layout.add(new DrawerToggle());
         layout.add(slogan);
         layout.add(createMenu());
 
-        return layout;
-    }
-
-    private Component createDrawerContent(Tabs menu) {
-        VerticalLayout layout = new VerticalLayout();
-
-        // Configure styling for the drawer
-        layout.setSizeFull();
-        layout.setPadding(false);
-        layout.setSpacing(false);
-        layout.getThemeList().set("spacing-s", true);
-        layout.setAlignItems(FlexComponent.Alignment.STRETCH);
-        layout.getStyle().set("color", "green");
-
-        // Have a drawer header with an application logo
-        HorizontalLayout logoLayout = new HorizontalLayout();
-        logoLayout.setId("logo");
-        logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        logoLayout.add(new Image("images/logo.png", "Thomas Legoshop Logo"));
-        logoLayout.add(new H1("Thomas Legoshop"));
-
-        // Display the logo and the menu in the drawer
-        layout.add(logoLayout, menu);
         return layout;
     }
 
@@ -82,13 +58,15 @@ public class Layout extends AppLayout {
         tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
         tabs.setId("tabs");
         tabs.add(createMenuItems());
+        tabs.getStyle().set("border-bottom", "0");
 
         return tabs;
     }
 
     private Component[] createMenuItems() {
         return new Tab[] { createTab("Startseite", MainView.class),
-                createTab("Produkte", WholeCatalog.class)};
+                createTab("Produkte", WholeCatalog.class),
+                createTab("Kontakt", Contact.class)};
     }
 
     private static Tab createTab(String text,

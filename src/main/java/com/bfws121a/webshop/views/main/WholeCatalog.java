@@ -6,11 +6,14 @@ import com.vaadin.flow.router.Route;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Route(value = "Katalog", layout = Layout.class)
 public class WholeCatalog extends HorizontalLayout {
 
-    List<Product> prodList = new ArrayList<>();
+    final List<Product> prodList = new ArrayList<>();
+    Filter filter;
+    Catalog catalog;
 
     public WholeCatalog () {
         prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "<p>Es war einmal ein Kind, das gerne mit LEGO® Steinen baute. Heute ist dieses Kind längst erwachsen – und beim Bauen steht der Genuss im Vordergrund. Die Burg der Löwenritter (10305) zur Feier des 90-jährigen LEGO Jubiläums ist eine Neuinterpretation des ursprünglichen LEGO Burgensystems. Dieses Bauset stand schon seit vielen Jahren auf dem Wunschzettel unzähliger LEGO Fans.</p>\n" +
@@ -31,14 +34,30 @@ public class WholeCatalog extends HorizontalLayout {
         prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal", 499.99));
         prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal", 499.99));
 
-        Filter filter = new Filter();
+        filter = new Filter();
 
         filter.setVisible(true);
 
-        Catalog catalog = new Catalog(prodList);
-        add(filter, catalog);
-        this.setJustifyContentMode(JustifyContentMode.CENTER);
+        catalog = new Catalog(prodList);
 
+        this.setJustifyContentMode(JustifyContentMode.CENTER);
+        add(filter, catalog);
+
+        filter.addFilterTypListener(this::testEvent);
+
+    }
+
+    private void testEvent(Filter.FilterTypEvent event) {
+        List<Product> listOutput = prodList.stream()
+                .filter(e -> event.getSelected().contains(e.getName()))
+                .collect(Collectors.toList());
+        remove(catalog);
+        if(listOutput.size() != 0) {
+            catalog = new Catalog(listOutput);
+        }else {
+            catalog = new Catalog(prodList);
+        }
+        addComponentAtIndex(1,catalog);
     }
 
     public List<Product> getCatalog() {

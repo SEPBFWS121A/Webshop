@@ -6,11 +6,17 @@ import com.vaadin.flow.router.Route;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Route(value = "Katalog", layout = Layout.class)
 public class WholeCatalog extends HorizontalLayout {
 
-    List<Product> prodList = new ArrayList<>();
+    final List<Product> prodList = new ArrayList<>();
+    Filter filter;
+    Catalog catalog;
+    List<String> typeFilter = new ArrayList<>();
+    List<String> priceFilter = new ArrayList<>();
+    List<String> themeFilter = new ArrayList<>();
 
     public WholeCatalog () {
         prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "<p>Es war einmal ein Kind, das gerne mit LEGO® Steinen baute. Heute ist dieses Kind längst erwachsen – und beim Bauen steht der Genuss im Vordergrund. Die Burg der Löwenritter (10305) zur Feier des 90-jährigen LEGO Jubiläums ist eine Neuinterpretation des ursprünglichen LEGO Burgensystems. Dieses Bauset stand schon seit vielen Jahren auf dem Wunschzettel unzähliger LEGO Fans.</p>\n" +
@@ -27,18 +33,64 @@ public class WholeCatalog extends HorizontalLayout {
                 "</li><li> Abmessungen: Ungeöffnet ist die Burg 38&nbsp;cm hoch, 44&nbsp;cm breit und 33&nbsp;cm tief\n" +
                 "</li><li> Für Erwachsene, deren Fantasie niemals erlischt: Dieses LEGO® Set gehört zu einer ganzen Reihe von Bausets für erwachsene LEGO Fans, die sich für atemberaubendes Design, aufwendige Details und elegante Architektur begeistern\n" +
                 "</li><li> Hochwertige Materialien: LEGO® Bausteine werden aus hochwertigen Materialien gefertigt. Sie sind einheitlich und kompatibel und lassen sich jedes Mal fest zusammenstecken und mühelos wieder trennen – und das schon seit 1958\n" +
-                "</li><li> Garantiert sicher: Bei LEGO® Teilen stehen Sicherheit und Qualität an erster Stelle. Deshalb werden sie streng getestet, damit sie sich zu einem robusten Modell zusammenstecken lassen</li></ul>", 229.99));
-        prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal", 499.99));
-        prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal", 499.99));
+                "</li><li> Garantiert sicher: Bei LEGO® Teilen stehen Sicherheit und Qualität an erster Stelle. Deshalb werden sie streng getestet, damit sie sich zu einem robusten Modell zusammenstecken lassen</li></ul>", "Set", "Mittelalter", 229.99));
+        prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal", "Set", "Harry Potter",499.99));
+        prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal", "Set", "Herr der Ringe", 499.99));
+        prodList.add(new Product(12348, "icons/icon.png", "Test", "Egal", "Steine", "Klötze", 5.99));
 
-        Filter filter = new Filter();
+        filter = new Filter(prodList);
 
         filter.setVisible(true);
 
-        Catalog catalog = new Catalog(prodList);
-        add(filter, catalog);
-        this.setJustifyContentMode(JustifyContentMode.CENTER);
+        catalog = new Catalog(prodList);
 
+        this.setJustifyContentMode(JustifyContentMode.CENTER);
+        add(filter, catalog);
+        getStyle().set("max-width", "1600px");
+
+        filter.addFilterTypListener(this::getTypeFilter);
+        filter.addFilterPriceListener(this::getPriceFilter);
+        filter.addFilterThemeListener(this::getThemeFilter);
+
+    }
+
+    private void getTypeFilter(Filter.FilterTypEvent event) {
+        typeFilter = event.getSelected();
+        filterProd();
+    }
+
+    private void getPriceFilter(Filter.FilterPriceEvent event) {
+        priceFilter = event.getSelected();
+        System.out.println(priceFilter);
+        filterProd();
+    }
+
+    private void getThemeFilter(Filter.FilterThemeEvent event) {
+        themeFilter = event.getSelected();
+        System.out.println(themeFilter);
+        filterProd();
+    }
+
+    private void filterProd () {
+        List<Product> listOutput = new ArrayList<>(prodList);
+        if(typeFilter.size() != 0) {
+            listOutput = listOutput.stream()
+                    .filter(e -> typeFilter.contains(e.getType()))
+                    .collect(Collectors.toList());
+        }
+        if(priceFilter.size() != 0) {
+            listOutput = listOutput.stream()
+                    .filter(e -> priceFilter.contains(e.getPriceCate()))
+                    .collect(Collectors.toList());
+        }
+        if(themeFilter.size() != 0) {
+            listOutput = listOutput.stream()
+                    .filter(e -> themeFilter.contains(e.getTheme()))
+                    .collect(Collectors.toList());
+        }
+        remove(catalog);
+        catalog = new Catalog(listOutput);
+        addComponentAtIndex(1,catalog);
     }
 
     public List<Product> getCatalog() {

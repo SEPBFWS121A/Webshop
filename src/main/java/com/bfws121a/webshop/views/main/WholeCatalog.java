@@ -15,6 +15,7 @@ public class WholeCatalog extends HorizontalLayout {
     Filter filter;
     Catalog catalog;
     List<String> typeFilter = new ArrayList<>();
+    List<String> priceFilter = new ArrayList<>();
     List<String> themeFilter = new ArrayList<>();
 
     public WholeCatalog () {
@@ -48,12 +49,19 @@ public class WholeCatalog extends HorizontalLayout {
         getStyle().set("max-width", "1600px");
 
         filter.addFilterTypListener(this::getTypeFilter);
+        filter.addFilterPriceListener(this::getPriceFilter);
         filter.addFilterThemeListener(this::getThemeFilter);
 
     }
 
     private void getTypeFilter(Filter.FilterTypEvent event) {
         typeFilter = event.getSelected();
+        filterProd();
+    }
+
+    private void getPriceFilter(Filter.FilterPriceEvent event) {
+        priceFilter = event.getSelected();
+        System.out.println(priceFilter);
         filterProd();
     }
 
@@ -69,20 +77,21 @@ public class WholeCatalog extends HorizontalLayout {
             listOutput = listOutput.stream()
                     .filter(e -> typeFilter.contains(e.getType()))
                     .collect(Collectors.toList());
-            listOutput.forEach(e -> System.out.println("FILTER: " + e.getType()));
+        }
+        if(priceFilter.size() != 0) {
+            listOutput = listOutput.stream()
+                    .filter(e -> priceFilter.contains(e.getPriceCate()))
+                    .collect(Collectors.toList());
         }
         if(themeFilter.size() != 0) {
             listOutput = listOutput.stream()
                     .filter(e -> themeFilter.contains(e.getTheme()))
                     .collect(Collectors.toList());
-            listOutput.forEach(e -> System.out.println("THEME: " + e.getTheme()));
         }
         remove(catalog);
         catalog = new Catalog(listOutput);
         addComponentAtIndex(1,catalog);
-
     }
-
 
     public List<Product> getCatalog() {
         return prodList;

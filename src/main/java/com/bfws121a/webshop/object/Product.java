@@ -11,7 +11,9 @@ public class Product {
     String description;
     String type;
     String theme;
+    String priceCate;
     double price;
+
 
     public Product(int id, String image, String name, String description, String type, String theme, double price) {
         this.id = id;
@@ -21,6 +23,21 @@ public class Product {
         this.type = type;
         this.theme = theme;
         this.price = price;
+        setPriceCate(price);
+    }
+
+    private void setPriceCate (double price){
+        if(price <= 20) {
+            priceCate = "0€ - 20€";
+        } else if (price > 20 && price <= 50) {
+            priceCate = "20€ - 50€";
+        } else if (price > 50 && price <= 100) {
+            priceCate = "50€ - 100€";
+        } else if (price > 100 && price <= 200) {
+            priceCate = "100€ - 200€";
+        } else {
+            priceCate = "200€+";
+        }
     }
 
     public int getId() {
@@ -45,6 +62,10 @@ public class Product {
 
     public String getTheme() {
         return theme;
+    }
+
+    public String getPriceCate () {
+        return priceCate;
     }
 
     public double getPrice() {

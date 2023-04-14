@@ -9,7 +9,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import com.vaadin.flow.router.Route;
 
-@Route(value = "Kontakt")
+@Route(value = "Kontakt", layout = Layout.class)
 
 
 

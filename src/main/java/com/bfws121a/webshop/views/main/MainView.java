@@ -5,13 +5,14 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @PageTitle("Main")
 @Route(value = "", layout = Layout.class)
-public class MainView extends HorizontalLayout {
+public class MainView extends VerticalLayout {
 
     private Button navigate;
 
@@ -23,9 +24,8 @@ public class MainView extends HorizontalLayout {
         navigate.addClickShortcut(Key.ENTER);
 
         setMargin(true);
-        setVerticalComponentAlignment(Alignment.END, navigate);
 
-        add(navigate);
+        add(navigate, new Footer());
     }
 
 }

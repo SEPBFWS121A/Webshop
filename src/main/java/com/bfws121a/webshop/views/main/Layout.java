@@ -29,6 +29,8 @@ public class Layout extends AppLayout {
         menu = createMenu();
         //addToDrawer(createDrawerContent(menu));
 
+
+
     }
 
     private Component createHeaderContent() {

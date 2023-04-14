@@ -120,6 +120,9 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
             }
         }
 
+        // add footer
+        add(new Footer());
+
         //this.verticalLayout.setClassName("grid-product");
         productInfo.setSizeFull();
         productOverview.setSizeFull();

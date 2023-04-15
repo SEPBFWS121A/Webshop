@@ -36,7 +36,7 @@ public class WholeCatalog extends HorizontalLayout {
                 "</li><li> Garantiert sicher: Bei LEGO® Teilen stehen Sicherheit und Qualität an erster Stelle. Deshalb werden sie streng getestet, damit sie sich zu einem robusten Modell zusammenstecken lassen</li></ul>", "Set", "Mittelalter", 229.99));
         prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal", "Set", "Harry Potter",499.99));
         prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal", "Set", "Herr der Ringe", 499.99));
-        prodList.add(new Product(12348, "icons/icon.png", "Test", "Egal", "Steine", "Klötze", 5.99));
+        prodList.add(new Product(12348, "icons/Blaue Steine.jpg", "Blaue Steine", "Egal", "Steine", "Klötze", 10.99));
 
         filter = new Filter(prodList);
 

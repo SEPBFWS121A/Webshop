@@ -85,6 +85,8 @@ vaadin-dialog-overlay::part(overlay) {
 
 vaadin-vertical-layout.filter {
     max-width: 222px;
+    resize: horizontal;
+    overflow: auto;
 }
 
 [id^=label-vaadin-checkbox-group] {

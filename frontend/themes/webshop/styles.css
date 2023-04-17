@@ -1,5 +1,6 @@
 vaadin-horizontal-layout.header {
     box-shadow: 0px 1px 10px 5px lightgrey;
+    background-color: orange;
 }
 
 .image-prodTile {
@@ -37,7 +38,7 @@ vaadin-vertical-layout.test {
 .contact {
     width: 80%;
     height: auto;
-    background: color;
+    /*background: color;*/
 }
 
 .contactField {
@@ -63,8 +64,29 @@ vaadin-button.cart:hover {
     cursor: pointer;
 }
 
+vaadin-button.dialog {
+    color: black;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    background: orange;
+    border-radius: 5px;
+}
+
+
+vaadin-dialog-overlay::part(overlay) {
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    width: 600px;
+
+}
+
+
 vaadin-vertical-layout.filter {
     max-width: 222px;
+    resize: horizontal;
+    overflow: auto;
 }
 
 [id^=label-vaadin-checkbox-group] {

@@ -46,6 +46,16 @@ vaadin-vertical-layout.test {
     width: auto;
 }
 
+.motto {
+    font-size: xxx-large;
+}
+
+div.mottoDiv {
+    width: 100%;
+    left: 50%;
+    text-align: center;
+}
+
 .image-contactField {
     width: 10%;
 }

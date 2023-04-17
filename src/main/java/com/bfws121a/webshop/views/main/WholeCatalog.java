@@ -44,9 +44,9 @@ public class WholeCatalog extends HorizontalLayout {
 
         catalog = new Catalog(prodList);
 
-        this.setJustifyContentMode(JustifyContentMode.CENTER);
+        //this.setJustifyContentMode(JustifyContentMode.CENTER);
         add(filter, catalog);
-        getStyle().set("max-width", "1600px");
+        //getStyle().set("max-width", "1600px");
 
         filter.addFilterTypListener(this::getTypeFilter);
         filter.addFilterPriceListener(this::getPriceFilter);

@@ -2,7 +2,6 @@ package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -11,7 +10,6 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
@@ -110,22 +108,23 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle);
 
         // Reviews
-        for (Review review : reviews.getReviews(product.getId())) {
-            if (reviews.getReviews(product.getId()).size() > 0) {
+        if (reviews.getReviews(product.getId()).size() > 0) {
+            for (Review review : reviews.getReviews(product.getId())) {
                 ReviewTile reviewTile = new ReviewTile(review);
                 reviewTile.addClassName("reviews-prodPage");
                 reviewTile.addClassName("reviewTile-prodPage");
                 reviewTile.setWidth(70, Unit.PERCENTAGE);
                 add(reviewTile);
-            } else {
-                Label reviewText = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
-                reviewText.addClassName("reviews-prodPage");
-                reviewText.setWidth(70, Unit.PERCENTAGE);
-                add(reviewText);
             }
+        } else {
+            Label reviewText = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
+            reviewText.addClassName("reviews-prodPage");
+            reviewText.setWidth(70, Unit.PERCENTAGE);
+            add(reviewText);
         }
 
-        //this.verticalLayout.setClassName("grid-product");
+        // add footer
+        //add(new Footer());
         productInfo.setSizeFull();
         productOverview.setSizeFull();
 

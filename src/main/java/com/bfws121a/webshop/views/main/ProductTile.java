@@ -20,7 +20,7 @@ public class ProductTile extends VerticalLayout {
         productImage.addClassName("image-prodTile");
         productName = new Label(pro.getName());
         productName.addClassName("label-prodTile");
-        productPrice = new Label(String.valueOf(pro.getPrice()));
+        productPrice = new Label(pro.getPrice()+ " €");
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
         shoppingCart.addClickListener(e -> {

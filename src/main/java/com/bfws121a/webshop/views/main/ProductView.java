@@ -128,6 +128,8 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         //this.verticalLayout.setClassName("grid-product");
         productInfo.setSizeFull();
         productOverview.setSizeFull();
-        this.setSizeFull();
+
+        this.getStyle().set("margin", "20px");
+
     }
 }

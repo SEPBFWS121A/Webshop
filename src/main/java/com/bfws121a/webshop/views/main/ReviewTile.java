@@ -42,5 +42,7 @@ public class ReviewTile extends VerticalLayout {
         rating.addClassName("rating-reviewTile");
 
         add(publisher, date, title, description, divider, rating);
+
+        this.getStyle().set("margin-top", "20px");
     }
 }

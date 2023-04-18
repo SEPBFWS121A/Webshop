@@ -11,8 +11,6 @@ import com.vaadin.flow.router.Route;
 
 @Route(value = "Kontakt", layout = Layout.class)
 
-
-
 public class Contact extends Div {
 
         public Contact() {

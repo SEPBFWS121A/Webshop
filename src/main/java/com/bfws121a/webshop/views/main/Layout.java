@@ -36,7 +36,12 @@ public class Layout extends AppLayout {
     private Component createHeaderContent() {
         HorizontalLayout layout = new HorizontalLayout();
 
-        H2 slogan = new H2("Thomas Lego Shop");
+        Image img = new Image("icons/Logo.png", "Logo");
+        img.getStyle().set("padding-left", "10px");
+        img.getStyle().set("height", "35px");
+        img.getStyle().set("width", "35px");
+
+        H2 slogan = new H2("Klemmbaustein-Palast");
         slogan.getStyle().set("margin", "10px");
 
         // Configure styling for the header
@@ -47,6 +52,7 @@ public class Layout extends AppLayout {
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
         //layout.add(new DrawerToggle());
+        layout.add(img);
         layout.add(slogan);
         layout.add(createMenu());
 

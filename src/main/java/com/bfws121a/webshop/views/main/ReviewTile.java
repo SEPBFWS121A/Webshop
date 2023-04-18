@@ -33,12 +33,16 @@ public class ReviewTile extends VerticalLayout {
         if (review.getRating()) {
             rating = new Label("Würden Sie das Produkt weiterempfehlen? Ja");
             rating.getStyle().set("color", "green");
-        } else {
+        } else if(!review.isShop()) {
             rating = new Label("Würden Sie das Produkt weiterempfehlen? Nein");
             rating.getStyle().set("color", "red");
+        } else {
+            rating = new Label();
         }
         rating.addClassName("rating-reviewTile");
 
         add(publisher, date, title, description, divider, rating);
+
+        this.getStyle().set("margin-top", "20px");
     }
 }

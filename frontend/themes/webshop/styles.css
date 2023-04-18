@@ -56,6 +56,16 @@ vaadin-vertical-layout.test {
     width: auto;
 }
 
+.motto {
+    font-size: xxx-large;
+}
+
+div.mottoDiv {
+    width: 100%;
+    left: 50%;
+    text-align: center;
+}
+
 .image-contactField {
     width: 10%;
 }
@@ -74,8 +84,29 @@ vaadin-button.cart:hover {
     cursor: pointer;
 }
 
+vaadin-button.dialog {
+    color: black;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    background: orange;
+    border-radius: 5px;
+}
+
+
+vaadin-dialog-overlay::part(overlay) {
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    width: 600px;
+
+}
+
+
 vaadin-vertical-layout.filter {
     max-width: 222px;
+    resize: horizontal;
+    overflow: auto;
 }
 
 [id^=label-vaadin-checkbox-group] {

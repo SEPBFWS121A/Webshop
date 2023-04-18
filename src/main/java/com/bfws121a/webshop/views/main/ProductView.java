@@ -2,6 +2,7 @@ package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -24,7 +25,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
     WholeCatalog catalog = new WholeCatalog();
     WholeReview reviews = new WholeReview();
 
-    final private Button shoppingCart = new Button("In den Warenkorb", new Icon(VaadinIcon.CART));
+    final private Button shoppingCart = new Button("Kaufabwicklung", new Icon(VaadinIcon.CART));
 
     @Override
     public void setParameter(BeforeEvent beforeEvent, Integer id) {
@@ -59,7 +60,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         productName.addClassName("nameLabel-prodPage");
 
         // ID label
-        Label productId = new Label("Artikelnummer: " + String.valueOf(product.getId()));
+        Label productId = new Label("Artikelnummer: " + product.getId());
         productId.addClassName("idLabel-prodPage");
 
         // Product price label
@@ -68,6 +69,10 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
 
         // Shoppint cart button
         shoppingCart.addClassName("cart-productPage");
+        shoppingCart.addClickListener(e -> {
+            BuyDialog dialog = new BuyDialog(product);
+            dialog.open();
+        });
 
         // Divider
         Hr divider1 = new Hr();
@@ -126,6 +131,8 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         //this.verticalLayout.setClassName("grid-product");
         productInfo.setSizeFull();
         productOverview.setSizeFull();
-        this.setSizeFull();
+
+        this.getStyle().set("margin", "20px");
+
     }
 }

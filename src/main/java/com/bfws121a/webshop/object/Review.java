@@ -11,8 +11,11 @@ public class Review {
     String title;
     String description;
 
+    Boolean shopReview = false;
+
     public Review(int productId, String publisher, boolean rating, String date, String title, String description) {
         this.productId = productId;
+        if(this.productId == 0) this.shopReview = true;
         this.publisher = publisher;
         this.rating = rating;
         this.date = date;
@@ -43,4 +46,6 @@ public class Review {
     public String getDescription() {
         return description;
     }
+
+    public boolean isShop() { return shopReview;}
 }

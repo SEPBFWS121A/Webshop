@@ -13,7 +13,7 @@ public class ProductTile extends VerticalLayout {
     private Image productImage;
     private Label productName;
     private Label productPrice;
-    final private Button shoppingCart = new Button("In den Warenkorb", new Icon(VaadinIcon.CART));
+    final private Button shoppingCart = new Button("Kaufabwicklung", new Icon(VaadinIcon.CART));
 
     public ProductTile(Product pro) {
         productImage = new Image(pro.getImage(), pro.getName());
@@ -23,6 +23,11 @@ public class ProductTile extends VerticalLayout {
         productPrice = new Label(String.valueOf(pro.getPrice()));
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
+        shoppingCart.addClickListener(e -> {
+            BuyDialog dialog = new BuyDialog(pro);
+            dialog.open();
+        });
+
         add(productImage, productName, productPrice, shoppingCart);
         this.getStyle().set("margin-right", "10px");
 

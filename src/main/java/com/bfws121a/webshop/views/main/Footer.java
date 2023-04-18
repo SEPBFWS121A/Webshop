@@ -3,6 +3,8 @@ package com.bfws121a.webshop.views.main;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class Footer extends FormLayout {
@@ -12,11 +14,12 @@ public class Footer extends FormLayout {
 
     public Footer() {
 
-        H1 slogan = new H1("Thomas Lego Shop");
-        slogan.getStyle().set("color", "white");
+        Image img = new Image("icons/Logo.png", "Logo");
+        img.getStyle().set("max-height", "100px");
+        img.getStyle().set("max-width", "100px");
 
-        H3 homepage = new H3("Startseite");
-        homepage.addClassName("clickable");
+        H4 homepage = new H4("Startseite");
+        homepage.addClassName("footer-element");
         homepage.getStyle().set("color", "white");
         homepage.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
@@ -30,8 +33,8 @@ public class Footer extends FormLayout {
         this.setSizeFull();
 
         // add footer elements
-        left.add(slogan, homepage);
-        add(left);
+        left.add(img, homepage);
+        add(left, right);
     }
 
 }

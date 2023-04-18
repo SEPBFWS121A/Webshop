@@ -1,16 +1,7 @@
-vaadin-horizontal-layout.header {
-    box-shadow: 0px 1px 10px 5px lightgrey;
-    background-color: orange;
-}
-
 vaadin-form-layout.footer {
     background-color: darkblue;
     margin-top: 10px;
-    padding: 10px;
-}
-
-.clickable {
-    cursor: pointer;
+    padding: 0;
 }
 
 .image-prodTile {
@@ -99,7 +90,6 @@ vaadin-dialog-overlay::part(overlay) {
     border-width: thin;
     border-color: orange;
     width: 600px;
-
 }
 
 
@@ -119,53 +109,42 @@ vaadin-checkbox-group.filter {
     width: 190px;
 }
 
-/*------------------------------
-area of product page CSS styling
-------------------------------*/
+/*------------------------
+area of header CSS styling
+------------------------*/
 
-.grid-product {
-    display: grid;
-    object-fit: contain;
-    grid-auto-rows: max-content;
-    padding: 10px;
-    width: 100%;
+vaadin-horizontal-layout.header {
+    box-shadow: 0px 1px 10px 5px lightgrey;
+    background-color: orange;
+}
+
+.header-logo {
+    padding-left: 10px;
+    height: 35px;
+    width: 35px;
+}
+
+.header-slogan {
+    margin: 10px;
 }
 
 @media only screen and (max-width: 600px) {
-    .grid-product {
-        grid-template-columns: 100%;
-        grid-template-areas:
-        "productImage"
-        "productName"
-        "productId"
-        "productPrice"
-        "productCart"
-        "divider1"
-        "productDescTitle"
-        "productDescription"
-        "divider2"
-        "reviewsTitle"
-        "reviews";
+    .header-tab {
+        visibility: hidden;
     }
 }
 
-@media only screen and (min-width: 600px) {
-    .grid-product {
-        grid-template-columns: 60% auto;
-        grid-template-areas:
-        "productImage       productName"
-        "productImage       productId"
-        "productImage       productPrice"
-        "productImage       productCart"
-        "productImage       spacer1"
-        "divider1           divider1"
-        "productDescTitle   productDescTitle"
-        "productDescription spacer2"
-        "divider2           divider2"
-        "reviewsTitle       reviewsTitle"
-        "reviews            reviews";
-    }
+/*------------------------
+area of footer CSS styling
+------------------------*/
+
+.footer-element {
+    cursor: pointer;
 }
+
+/*------------------------------
+area of product page CSS styling
+------------------------------*/
 
 .image-prodPage {
     height: 70%;
@@ -187,19 +166,16 @@ area of product page CSS styling
     font-weight: bolder;
     font-size: 44px;
     max-height: 44px;
-    grid-area: productName;
 }
 
 .idLabel-prodPage {
     color: darkgrey;
-    grid-area: productId;
 }
 
 .priceLabel-prodPage {
     font-weight: bold;
     font-size: 24px;
     max-height: 24px;
-    grid-area: productPrice;
 }
 
 vaadin-button.cart-productPage {
@@ -211,7 +187,10 @@ vaadin-button.cart-productPage {
     border-radius:50px;
     border:2px;
     margin-top: 20px;
-    grid-area: productCart;
+}
+
+vaadin-button.cart-productPage:hover {
+    cursor: pointer;
 }
 
 .divider1-prodPage {
@@ -219,7 +198,6 @@ vaadin-button.cart-productPage {
     border-color: lightgrey;
     border-width: thin;
     color: lightgrey;
-    grid-area: divider1;
 }
 
 .divider2-prodPage {
@@ -227,27 +205,24 @@ vaadin-button.cart-productPage {
     border-color: lightgrey;
     border-width: thin;
     color: lightgrey;
-    grid-area: divider2;
 }
 
 .descriptionTitle-prodPage {
     font-weight: bolder;
     font-size: 44px;
-    grid-area: productDescTitle;
 }
 
 .reviewsTitle-prodPage {
     font-weight: bolder;
     font-size: 44px;
-    grid-area: reviewsTitle;
 }
 
 .reviews-prodPage {
-    grid-area: reviews;
+
 }
 
 .description-prodPage {
-    grid-area: productDescription;
+
 }
 
 /*--------------------------------------

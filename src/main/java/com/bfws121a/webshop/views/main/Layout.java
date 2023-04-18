@@ -37,12 +37,10 @@ public class Layout extends AppLayout {
         HorizontalLayout layout = new HorizontalLayout();
 
         Image img = new Image("icons/Logo.png", "Logo");
-        img.getStyle().set("padding-left", "10px");
-        img.getStyle().set("height", "35px");
-        img.getStyle().set("width", "35px");
+        img.addClassName("header-logo");
 
         H2 slogan = new H2("Klemmbaustein-Palast");
-        slogan.getStyle().set("margin", "10px");
+        slogan.addClassNames("header-slogan");
 
         // Configure styling for the header
         layout.addClassName("header");
@@ -82,6 +80,7 @@ public class Layout extends AppLayout {
         final Tab tab = new Tab();
         tab.add(new RouterLink(text, navigationTarget));
         ComponentUtil.setData(tab, Class.class, navigationTarget);
+        tab.addClassName("header-tab");
         return tab;
     }
 

@@ -124,7 +124,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         }
 
         // add footer
-        add(new Footer());
+        //add(new Footer());
         productInfo.setSizeFull();
         productOverview.setSizeFull();
 

@@ -1,7 +1,9 @@
 package com.bfws121a.webshop.views.main;
 
+import com.bfws121a.webshop.helper.Calculator;
 import com.bfws121a.webshop.object.Cart;
 import com.bfws121a.webshop.object.Product;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -16,16 +18,26 @@ public class ShoppingCart extends VerticalLayout {
     OrderOverview orderOverview;
 
     public ShoppingCart () {
-        H2 headline = new H2("Mein Warenkorb");
-        add(headline);
-        for (Cart product : productList) {
-            CartProdTile cartProdTile = new CartProdTile(product);
-            add(cartProdTile);
-            cartProdTile.addDeleteEventListener(this::removeProd);
-            cartProdTile.addChangeEventListener(this::updateOrderOverview);
+        H2 headline;
+        if(productList.isEmpty()) {
+            headline = new H2("Ihr Warenkorb ist leer");
+            add(headline);
+        } else {
+            Calculator.setCalcList(productList);
+            headline = new H2("Mein Warenkorb");
+            add(headline);
+            VerticalLayout prods = new VerticalLayout();
+            for (Cart product : productList) {
+                CartProdTile cartProdTile = new CartProdTile(product);
+                prods.add(cartProdTile);
+                cartProdTile.addDeleteEventListener(this::removeProd);
+                cartProdTile.addChangeEventListener(this::updateOrderOverview);
+            }
+            orderOverview = new OrderOverview(productList);
+            orderOverview.getStyle().set("align-self", "flex-start");
+            FormLayout both = new FormLayout(prods, orderOverview);
+            add(both);
         }
-        orderOverview = new OrderOverview(productList);
-        add(orderOverview);
     }
 
     public static void addToList(Product prod) {
@@ -42,11 +54,11 @@ public class ShoppingCart extends VerticalLayout {
 
     private void removeProd(CartProdTile.DeleteCartEvent event) {
         productList.remove(event.getCart());
-        orderOverview.setLabel();
+        orderOverview.setLabels();
     }
 
     private void updateOrderOverview(CartProdTile.ChangeEvent event) {
-        orderOverview.setLabel();
+        orderOverview.setLabels();
     }
 
 }

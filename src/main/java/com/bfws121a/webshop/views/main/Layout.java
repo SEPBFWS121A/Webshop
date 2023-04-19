@@ -7,6 +7,9 @@ import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -28,9 +31,6 @@ public class Layout extends AppLayout {
 
         menu = createMenu();
         //addToDrawer(createDrawerContent(menu));
-
-
-
     }
 
     private Component createHeaderContent() {
@@ -52,7 +52,12 @@ public class Layout extends AppLayout {
         //layout.add(new DrawerToggle());
         layout.add(img);
         layout.add(slogan);
-        layout.add(createMenu());
+        Tabs tabs = createMenu();
+        layout.add(tabs);
+        Tab shoppingCart = createTabWithIcon(VaadinIcon.CART, ShoppingCart.class);
+        layout.add(shoppingCart);
+        layout.expand(tabs);
+
 
         return layout;
     }
@@ -81,6 +86,23 @@ public class Layout extends AppLayout {
         tab.add(new RouterLink(text, navigationTarget));
         ComponentUtil.setData(tab, Class.class, navigationTarget);
         tab.addClassName("header-tab");
+        return tab;
+    }
+
+    private static Tab createTabWithIcon(VaadinIcon viewIcon, Class<? extends Component> navigationTarget) {
+        Icon icon = viewIcon.create();
+        icon.getStyle().set("box-sizing", "border-box")
+                .set("margin-inline-end", "var(--lumo-space-m)")
+                .set("margin-inline-start", "var(--lumo-space-xs)")
+                .set("padding", "var(--lumo-space-xs)");
+
+        final Tab tab = new Tab();
+        RouterLink link = new RouterLink(navigationTarget);
+        link.add(icon);
+        tab.add(link);
+        ComponentUtil.setData(tab, Class.class, navigationTarget);
+        tab.addClassName("header-tab");
+        tab.getStyle().set("align", "auto");
         return tab;
     }
 

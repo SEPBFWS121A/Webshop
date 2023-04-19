@@ -48,10 +48,10 @@ vaadin-vertical-layout.test {
 }
 
 .motto {
-    font-size: xxx-large;
+    font-size: xx-large;
 }
 
-div.mottoDiv {
+div.mainDiv {
     width: 100%;
     left: 50%;
     text-align: center;

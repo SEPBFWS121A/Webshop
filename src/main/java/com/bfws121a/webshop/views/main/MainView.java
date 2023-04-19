@@ -3,6 +3,7 @@ package com.bfws121a.webshop.views.main;
 import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
 import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.ShortcutRegistration;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -31,52 +32,65 @@ public class MainView extends VerticalLayout {
 
     List<Product> prodList = new ArrayList<>();
 
+    HorizontalLayout layout = new HorizontalLayout();
+    HorizontalLayout leftLayout = new HorizontalLayout();
+    Div nameLayout = new Div();
+    Div leftDiv = new Div();
+    Div rightDiv = new Div();
     public MainView() {
-        /*navigate = new Button("Katalog öffnen");
-        navigate.addClickListener(e -> {
-            UI.getCurrent().navigate("Katalog");
-        });
-        navigate.addClickShortcut(Key.ENTER);
-        add(navigate)*/
+        leftDiv.addClassName("mainDiv");
 
-        //setMargin(true);
-        //setVerticalComponentAlignment(Alignment.END, navigate);
+        Image logo = new Image("icons/Logo.png","Logo");
+        logo.getStyle().set("height","15%");
+        logo.getStyle().set("width","15%");
+
+        nameLayout.getStyle().set("text-align","center");
+        nameLayout.getStyle().set("width","100%");
         Paragraph motto = new Paragraph("Erwecke deine Lego-Träume zum Leben!");
         motto.addClassName("motto");
-        Div mottoDiv = new Div();
-        mottoDiv.addClassName("mottoDiv");
-        Image logo = new Image("icons/Logo.png","Logo");
-        logo.getStyle().set("width","25%");
+
         Paragraph name = new Paragraph("Thomas' Klemmbaustein-Palast");
         name.getStyle().set("font-size","xx-large");
         name.getStyle().set("font-weight","bold");
-        mottoDiv.add(name,logo,motto);
-        for (Review review : reviews.getReviews(0)) {
-            ReviewTile reviewTile = new ReviewTile(review);
-            reviewTile.addClassName("reviews-prodPage");
-            reviewTile.addClassName("reviewTile-prodPage");
-            reviewTile.setWidth(50, Unit.PERCENTAGE);
-            reviewTile.getStyle().set("margin","0 auto");
-            reviewTile.getStyle().set("background-color","AliceBlue");
-            reviewTile.getStyle().set("border-color","black");
-            mottoDiv.add(reviewTile);
-        }
+
+        nameLayout.add(name,motto);
+
+        leftLayout.add(logo,nameLayout);
+        leftDiv.add(leftLayout);
+
         Paragraph highlightsTitle = new Paragraph("Unsere Highlights:");
         highlightsTitle.getStyle().set("font-size","x-large");
         highlightsTitle.getStyle().set("font-weight","bold");
-        mottoDiv.add(highlightsTitle);
+        leftDiv.add(highlightsTitle);
+
         prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "Egal", "Set", "Mittelalter",229.99));
         prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal","Set", "Harry Potter", 499.99));
         prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal","Set", "Herr der Ringe", 499.99));
         SelectiveCatalog catalog = new SelectiveCatalog(prodList);
         catalog.getStyle().set("width","100%");
-        mottoDiv.add(catalog);
+        leftDiv.add(catalog);
+
         Paragraph newProdsTitle = new Paragraph("Neu bei uns:");
         newProdsTitle.getStyle().set("font-size","x-large");
         newProdsTitle.getStyle().set("font-weight","bold");
         SelectiveCatalog catalog2 = new SelectiveCatalog(prodList);
-        mottoDiv.add(newProdsTitle,catalog2);
-        add(mottoDiv);
+        leftDiv.add(newProdsTitle,catalog2);
+
+        rightDiv.addClassName("mainDiv");
+
+        for (Review review : reviews.getReviews(0)) {
+            ReviewTile reviewTile = new ReviewTile(review);
+            reviewTile.addClassName("reviews-prodPage");
+            reviewTile.addClassName("reviewTile-prodPage");
+            reviewTile.setWidth(50, Unit.PERCENTAGE);
+            reviewTile.getStyle().set("width","100%");
+            reviewTile.getStyle().set("background-color","AliceBlue");
+            reviewTile.getStyle().set("border-color","black");
+            rightDiv.add(reviewTile);
+        }
+
+        layout.add(leftDiv,rightDiv);
+        add(layout);
     }
 
 }

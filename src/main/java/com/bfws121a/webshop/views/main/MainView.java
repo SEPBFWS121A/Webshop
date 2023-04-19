@@ -42,7 +42,7 @@ public class MainView extends VerticalLayout {
 
         Image logo = new Image("icons/Logo.png","Logo");
         logo.getStyle().set("height","15%");
-        logo.getStyle().set("width","15%");
+        logo.getStyle().set("width","20%");
 
         nameLayout.getStyle().set("text-align","center");
         nameLayout.getStyle().set("width","100%");

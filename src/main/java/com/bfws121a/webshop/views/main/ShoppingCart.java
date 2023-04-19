@@ -13,6 +13,7 @@ import java.util.List;
 public class ShoppingCart extends VerticalLayout {
 
     final private static List<Cart> productList = new ArrayList<>();
+    OrderOverview orderOverview;
 
     public ShoppingCart () {
         H2 headline = new H2("Mein Warenkorb");
@@ -21,8 +22,10 @@ public class ShoppingCart extends VerticalLayout {
             CartProdTile cartProdTile = new CartProdTile(product);
             add(cartProdTile);
             cartProdTile.addDeleteEventListener(this::removeProd);
+            cartProdTile.addChangeEventListener(this::updateOrderOverview);
         }
-        add(new OrderOverview(productList));
+        orderOverview = new OrderOverview(productList);
+        add(orderOverview);
     }
 
     public static void addToList(Product prod) {
@@ -37,8 +40,13 @@ public class ShoppingCart extends VerticalLayout {
         return productList.stream().anyMatch(e -> e.getProd().getId() == id);
     }
 
-    private void removeProd(CartProdTile.DeleteEvent event) {
+    private void removeProd(CartProdTile.DeleteCartEvent event) {
         productList.remove(event.getCart());
+        orderOverview.setLabel();
+    }
+
+    private void updateOrderOverview(CartProdTile.ChangeEvent event) {
+        orderOverview.setLabel();
     }
 
 }

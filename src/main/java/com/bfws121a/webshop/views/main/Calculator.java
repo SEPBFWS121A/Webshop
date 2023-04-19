@@ -1,8 +1,6 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Cart;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {

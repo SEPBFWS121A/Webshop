@@ -1,12 +1,10 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Cart;
-import com.bfws121a.webshop.object.Product;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
@@ -15,8 +13,6 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.shared.Registration;
-
-import java.util.List;
 
 public class CartProdTile extends HorizontalLayout {
 
@@ -43,13 +39,13 @@ public class CartProdTile extends HorizontalLayout {
         prodAmount.addValueChangeListener(e -> {
             if(e.getValue() != 0) {
                 cart.setAmount(e.getValue());
+                fireEvent(new ChangeEvent(this, cart));
             }
         });
         prodAmount.getStyle().set("align-items", "center");
         delete.addClickListener(e -> {
             removeFromParent();
-            System.out.println("Test");
-            fireEvent(new DeleteEvent(this, cart));
+            fireEvent(new DeleteCartEvent(this, cart));
         });
         add(prodImg, makeVLayout(), prodAmount, delete);
         addClassName("cart-prods");
@@ -61,28 +57,39 @@ public class CartProdTile extends HorizontalLayout {
         return layout;
     }
 
-    public static abstract class Event extends ComponentEvent<CartProdTile> {
-        private Cart selected;
+    public static abstract class CartEvent extends ComponentEvent<CartProdTile> {
+        private Cart cart;
 
-        protected Event(CartProdTile source, Cart selected) {
+        protected CartEvent(CartProdTile source, Cart cart) {
             super(source, false);
-            this.selected = selected;
+            this.cart = cart;
         }
 
         public Cart getCart() {
-            return selected;
+            return cart;
         }
 
     }
 
-    public static class DeleteEvent extends Event {
-        protected DeleteEvent(CartProdTile source, Cart selected) {
-            super(source, selected);
+    public static class DeleteCartEvent extends CartEvent {
+        protected DeleteCartEvent(CartProdTile source, Cart cart) {
+            super(source, cart);
         }
     }
 
-    public Registration addDeleteEventListener(ComponentEventListener<CartProdTile.DeleteEvent> listener) {
-        return addListener(CartProdTile.DeleteEvent.class, listener);
+    public static class ChangeEvent extends CartEvent {
+
+        protected ChangeEvent(CartProdTile source, Cart cart) {
+            super(source, cart);
+        }
+    }
+
+    public Registration addDeleteEventListener(ComponentEventListener<DeleteCartEvent> listener) {
+        return addListener(DeleteCartEvent.class, listener);
+    }
+
+    public Registration addChangeEventListener(ComponentEventListener<ChangeEvent> listener) {
+        return addListener(ChangeEvent.class, listener);
     }
 
 }

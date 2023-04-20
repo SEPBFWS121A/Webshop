@@ -28,18 +28,26 @@ vaadin-vertical-layout.test {
 }
 
 .contact-heading {
-    color: lightblue;
-    margin-bottom: 0%;
+    text-align: center;
+    margin: 1% 0;
 }
 
 .bolt {
     font-weight: bold;
 }
 
-.contact {
-    width: 80%;
-    height: auto;
-    /*background: color;*/
+.contactArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: orange;
+    margin : 30px auto;
+    border-radius : 10px;
+    text-align: center;
+    width: 20%;
+    min-width: 300px;
+    padding: 1% 0;
 }
 
 .contactField {

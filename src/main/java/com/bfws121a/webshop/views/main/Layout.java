@@ -2,6 +2,7 @@ package com.bfws121a.webshop.views.main;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
@@ -19,27 +20,58 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.RouterLink;
 
 import java.util.Optional;
+import java.util.logging.XMLFormatter;
 
 public class Layout extends AppLayout {
 
-    private final Tabs menu;
+    private Image img;
+    private H2 slogan;
+    private Tabs menu;
+    HorizontalLayout layout = new HorizontalLayout();
 
     public Layout() {
 
-        setPrimarySection(Section.DRAWER);
-        addToNavbar(true, createHeaderContent());
+        //setPrimarySection(Section.DRAWER);
+        //addToNavbar(true, createHeaderContent());
+
+        UI.getCurrent().getPage().retrieveExtendedClientDetails(e -> checkBrowserWidth(e.getWindowInnerWidth()));
+        UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> checkBrowserWidth(e.getWidth()));
 
         menu = createMenu();
         //addToDrawer(createDrawerContent(menu));
+        addToDrawer(createMenuItems());
+
+
+
     }
 
-    private Component createHeaderContent() {
-        HorizontalLayout layout = new HorizontalLayout();
+    private void checkBrowserWidth(int pageWidth) {
+        if (pageWidth < 800) {
+            setMobileHeader();
+        } else {
+            setDesktopHeader();
+        }
+    }
 
-        Image img = new Image("icons/Logo.png", "Logo");
+    private void setMobileHeader() {
+        layout.removeAll();
+        setPrimarySection(Section.NAVBAR);
+        addToNavbar(true, createMobileHeaderContent());
+    }
+
+    private void setDesktopHeader() {
+        layout.removeAll();
+        setPrimarySection(Section.NAVBAR);
+        addToNavbar(true, createDesktopHeaderContent());
+    }
+
+    private Component createMobileHeaderContent() {
+
+        img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
+        img.getStyle().set("padding-left", "0");
 
-        H2 slogan = new H2("Klemmbaustein-Palast");
+        slogan = new H2("TKP");
         slogan.addClassNames("header-slogan");
 
         // Configure styling for the header
@@ -49,15 +81,27 @@ public class Layout extends AppLayout {
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-        //layout.add(new DrawerToggle());
-        layout.add(img);
-        layout.add(slogan);
-        Tabs tabs = createMenu();
-        layout.add(tabs);
-        Tab shoppingCart = createTabWithIcon(VaadinIcon.CART, ShoppingCart.class);
-        layout.add(shoppingCart);
-        layout.expand(tabs);
+        layout.add(new DrawerToggle(), img, slogan);
 
+        return layout;
+    }
+
+    private Component createDesktopHeaderContent() {
+
+        img = new Image("icons/Logo.png", "Logo");
+        img.addClassName("header-logo");
+
+        slogan = new H2("Thomas' Klemmbaustein-Palast");
+        slogan.addClassNames("header-slogan");
+
+        // Configure styling for the header
+        layout.addClassName("header");
+        //layout.getThemeList().set("dark", true);
+        layout.setWidthFull();
+        layout.setSpacing(false);
+        layout.setAlignItems(FlexComponent.Alignment.CENTER);
+
+        layout.add(img, slogan, createMenu());
 
         return layout;
     }

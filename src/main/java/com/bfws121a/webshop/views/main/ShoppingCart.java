@@ -16,9 +16,10 @@ public class ShoppingCart extends VerticalLayout {
 
     final private static List<Cart> productList = new ArrayList<>();
     OrderOverview orderOverview;
+    H2 headline;
 
     public ShoppingCart () {
-        H2 headline;
+
         if(productList.isEmpty()) {
             headline = new H2("Ihr Warenkorb ist leer");
             add(headline);
@@ -54,7 +55,10 @@ public class ShoppingCart extends VerticalLayout {
 
     private void removeProd(CartProdTile.DeleteCartEvent event) {
         productList.remove(event.getCart());
-        orderOverview.setLabels();
+        if(productList.isEmpty()) {
+            headline.setText("Ihr Warenkorb ist leer");
+        }
+            orderOverview.setLabels();
     }
 
     private void updateOrderOverview(CartProdTile.ChangeEvent event) {

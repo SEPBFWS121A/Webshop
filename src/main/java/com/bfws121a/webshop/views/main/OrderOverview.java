@@ -43,11 +43,15 @@ public class OrderOverview extends VerticalLayout {
     }
 
     public void setLabels() {
-        orderAmount.setText("Bestellwert (" + Calculator.calculateAmount() + ") Artikel ");
-        orderPrice.setText(Calculator.calculatePrice() + " €");
-        total.getStyle().set("font-weight", "bold");
-        totalPrice.setText(Calculator.calculateFullPrice() + " €");
-        totalPrice.getStyle().set("font-weight", "bold");
+        if(Calculator.calculateAmount() == 0) {
+            removeFromParent();
+        } else {
+            orderAmount.setText("Bestellwert (" + Calculator.calculateAmount() + ") Artikel ");
+            orderPrice.setText(Calculator.calculatePrice() + " €");
+            total.getStyle().set("font-weight", "bold");
+            totalPrice.setText(Calculator.calculateFullPrice() + " €");
+            totalPrice.getStyle().set("font-weight", "bold");
+        }
     }
 
 }

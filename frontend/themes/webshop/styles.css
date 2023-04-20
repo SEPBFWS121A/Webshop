@@ -1,3 +1,7 @@
+vaadin-app-layout {
+    --vaadin-app-layout-drawer-overlay: true;
+}
+
 vaadin-form-layout.footer {
     background-color: darkblue;
     margin-top: 10px;

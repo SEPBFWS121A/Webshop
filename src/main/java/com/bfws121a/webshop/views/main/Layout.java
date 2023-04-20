@@ -35,7 +35,7 @@ public class Layout extends AppLayout {
         UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> checkBrowserWidth(e.getWidth()));
 
         menu = createMenu();
-        //addToDrawer(createDrawerContent(menu));
+        addToDrawer(createMenuItems());
 
 
 
@@ -51,13 +51,13 @@ public class Layout extends AppLayout {
 
     private void setMobileHeader() {
         layout.removeAll();
-        setPrimarySection(Section.DRAWER);
+        setPrimarySection(Section.NAVBAR);
         addToNavbar(true, createMobileHeaderContent());
     }
 
     private void setDesktopHeader() {
         layout.removeAll();
-        setPrimarySection(Section.DRAWER);
+        setPrimarySection(Section.NAVBAR);
         addToNavbar(true, createDesktopHeaderContent());
     }
 

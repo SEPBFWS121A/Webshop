@@ -5,7 +5,7 @@ import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class Layout extends AppLayout {
 
     private Image img;
-    private H2 slogan;
+    private H1 slogan;
     private Tabs menu;
     HorizontalLayout layout = new HorizontalLayout();
 
@@ -56,7 +56,7 @@ public class Layout extends AppLayout {
 
     private void setDesktopHeader() {
         layout.removeAll();
-        addToNavbar(true, createDesktopHeaderContent());
+        addToNavbar(createDesktopHeaderContent());
     }
 
     private Component createMobileHeaderContent() {
@@ -65,7 +65,9 @@ public class Layout extends AppLayout {
         img.addClassName("header-logo");
         img.getStyle().set("padding-left", "0");
 
-        slogan = new H2("TKP");
+        slogan = new H1("TKP");
+        slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
+                .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
 
         // Configure styling for the header
@@ -85,7 +87,9 @@ public class Layout extends AppLayout {
         img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
 
-        slogan = new H2("Thomas' Klemmbaustein-Palast");
+        slogan = new H1("Thomas' Klemmbaustein-Palast");
+        slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
+                .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
 
         // Configure styling for the header

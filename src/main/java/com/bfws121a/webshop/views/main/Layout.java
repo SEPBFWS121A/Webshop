@@ -17,7 +17,6 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.RouterLink;
 
 import java.util.Optional;
-import java.util.logging.XMLFormatter;
 
 public class Layout extends AppLayout {
 
@@ -28,14 +27,14 @@ public class Layout extends AppLayout {
 
     public Layout() {
 
-        //setPrimarySection(Section.DRAWER);
-        //addToNavbar(true, createHeaderContent());
+        setPrimarySection(Section.NAVBAR);
 
+        // initial check to set corresponding header
         UI.getCurrent().getPage().retrieveExtendedClientDetails(e -> checkBrowserWidth(e.getWindowInnerWidth()));
+        // check browser width every time it changes and set corresponding header
         UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> checkBrowserWidth(e.getWidth()));
 
         menu = createMenu();
-        //addToDrawer(createDrawerContent(menu));
         addToDrawer(createMenuItems());
 
 
@@ -52,13 +51,11 @@ public class Layout extends AppLayout {
 
     private void setMobileHeader() {
         layout.removeAll();
-        setPrimarySection(Section.NAVBAR);
         addToNavbar(true, createMobileHeaderContent());
     }
 
     private void setDesktopHeader() {
         layout.removeAll();
-        setPrimarySection(Section.NAVBAR);
         addToNavbar(true, createDesktopHeaderContent());
     }
 

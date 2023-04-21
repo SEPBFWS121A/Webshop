@@ -14,7 +14,7 @@ public class ProductTile extends VerticalLayout {
     private Image productImage;
     private Label productName;
     private Label productPrice;
-    final private Button shoppingCart = new Button("Kaufabwicklung", new Icon(VaadinIcon.CART));
+    final private Button shoppingCart = new Button("In den Warenkorb", new Icon(VaadinIcon.CART));
 
     public ProductTile(Product pro) {
         this.pro = pro;
@@ -27,6 +27,8 @@ public class ProductTile extends VerticalLayout {
         shoppingCart.addClassName("cart");
         shoppingCart.addClickListener(e -> {
             ShoppingCart.addToList(pro);
+            AddCartDialog cartDialog = new AddCartDialog(pro);
+            cartDialog.open();
         });
 
         add(productImage, productName, productPrice, shoppingCart);

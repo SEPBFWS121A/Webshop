@@ -68,8 +68,9 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         // Shoppint cart button
         shoppingCart.addClassName("cart-productPage");
         shoppingCart.addClickListener(e -> {
-            BuyDialog dialog = new BuyDialog(product);
-            dialog.open();
+            ShoppingCart.addToList(product);
+            AddCartDialog cartDialog = new AddCartDialog(product);
+            cartDialog.open();
         });
 
         // Divider

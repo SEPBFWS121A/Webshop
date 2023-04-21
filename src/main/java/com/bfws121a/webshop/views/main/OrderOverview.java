@@ -2,6 +2,7 @@ package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.helper.Calculator;
 import com.bfws121a.webshop.object.Cart;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -25,6 +26,8 @@ public class OrderOverview extends VerticalLayout {
 
     private final Label totalPrice = new Label();
 
+    private final Button buy = new Button("Kaufabwicklung");
+
     private final List<Cart> cart;
 
     public OrderOverview (List<Cart> cart) {
@@ -39,7 +42,12 @@ public class OrderOverview extends VerticalLayout {
         HorizontalLayout third = new HorizontalLayout(total, totalPrice);
         third.setSizeFull();
         third.expand(total);
-        add(overview, first, second, third);
+        buy.addClassName("cart");
+        buy.addClickListener(e -> {
+            BuyDialog buy = new BuyDialog(cart);
+            buy.open();
+        });
+        add(overview, first, second, third, buy);
     }
 
     public void setLabels() {

@@ -2,22 +2,12 @@ package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
-import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.ShortcutRegistration;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.BrowserWindowResizeListener;
-import com.vaadin.flow.component.page.Page;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -29,20 +19,14 @@ import java.util.List;
 @Route(value = "", layout = Layout.class)
 public class MainView extends FormLayout {
 
-    private Button navigate;
-
     WholeReview reviews = new WholeReview();
-
     List<Product> prodList = new ArrayList<>();
-
-    HorizontalLayout layout = new HorizontalLayout();
-    HorizontalLayout leftLayout = new HorizontalLayout();
+    FormLayout startInfo = new FormLayout();
     Div nameLayout = new Div();
     Div leftDiv = new Div();
     Div rightDiv = new Div();
     HorizontalLayout highlightProducts = new HorizontalLayout();
     HorizontalLayout newProducts = new HorizontalLayout();
-    int pageWidth = 0;
 
     public MainView() {
 
@@ -54,6 +38,12 @@ public class MainView extends FormLayout {
                 new ResponsiveStep("0", 1),
                 // desktop
                 new ResponsiveStep("1050px", 4)
+        );
+        startInfo.setResponsiveSteps(
+                // mobile first
+                new ResponsiveStep("0", 1),
+                // desktop
+                new ResponsiveStep("550px", 4)
         );
 
         leftDiv.addClassName("mainDiv");
@@ -73,8 +63,9 @@ public class MainView extends FormLayout {
 
         nameLayout.add(name,motto);
 
-        leftLayout.add(logo,nameLayout);
-        leftDiv.add(leftLayout);
+        startInfo.add(logo,nameLayout);
+        startInfo.setColspan(nameLayout, 3);
+        leftDiv.add(startInfo);
 
         Paragraph highlightsTitle = new Paragraph("Unsere Highlights:");
         highlightsTitle.getStyle().set("font-size","x-large");

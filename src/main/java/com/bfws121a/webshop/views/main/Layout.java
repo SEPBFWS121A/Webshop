@@ -6,32 +6,32 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.RouterLink;
 
 import java.util.Optional;
-import java.util.logging.XMLFormatter;
 
 public class Layout extends AppLayout {
 
     private Image img;
-    private H2 slogan;
+    private H1 slogan;
     private Tabs menu;
     HorizontalLayout layout = new HorizontalLayout();
 
     public Layout() {
 
-        //setPrimarySection(Section.DRAWER);
-        //addToNavbar(true, createHeaderContent());
+        setPrimarySection(Section.NAVBAR);
 
+        // initial check to set corresponding header
         UI.getCurrent().getPage().retrieveExtendedClientDetails(e -> checkBrowserWidth(e.getWindowInnerWidth()));
+        // check browser width every time it changes and set corresponding header
         UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> checkBrowserWidth(e.getWidth()));
 
         menu = createMenu();
@@ -51,14 +51,12 @@ public class Layout extends AppLayout {
 
     private void setMobileHeader() {
         layout.removeAll();
-        setPrimarySection(Section.NAVBAR);
         addToNavbar(true, createMobileHeaderContent());
     }
 
     private void setDesktopHeader() {
         layout.removeAll();
-        setPrimarySection(Section.NAVBAR);
-        addToNavbar(true, createDesktopHeaderContent());
+        addToNavbar(createDesktopHeaderContent());
     }
 
     private Component createMobileHeaderContent() {
@@ -67,7 +65,9 @@ public class Layout extends AppLayout {
         img.addClassName("header-logo");
         img.getStyle().set("padding-left", "0");
 
-        slogan = new H2("TKP");
+        slogan = new H1("TKP");
+        slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
+                .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
 
         // Configure styling for the header
@@ -77,7 +77,7 @@ public class Layout extends AppLayout {
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-        layout.add(new DrawerToggle(), img, slogan);
+        layout.add(new DrawerToggle(), img, slogan, createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
 
         return layout;
     }
@@ -87,7 +87,9 @@ public class Layout extends AppLayout {
         img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
 
-        slogan = new H2("Thomas' Klemmbaustein-Palast");
+        slogan = new H1("Thomas' Klemmbaustein-Palast");
+        slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
+                .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
 
         // Configure styling for the header
@@ -97,7 +99,7 @@ public class Layout extends AppLayout {
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
-        layout.add(img, slogan, createMenu());
+        layout.add(img, slogan, createMenu(), createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
 
         return layout;
     }
@@ -126,6 +128,23 @@ public class Layout extends AppLayout {
         tab.add(new RouterLink(text, navigationTarget));
         ComponentUtil.setData(tab, Class.class, navigationTarget);
         tab.addClassName("header-tab");
+        return tab;
+    }
+
+    private static Tab createTabWithIcon(VaadinIcon viewIcon, Class<? extends Component> navigationTarget) {
+        Icon icon = viewIcon.create();
+        icon.getStyle().set("box-sizing", "border-box")
+                .set("margin-inline-end", "var(--lumo-space-m)")
+                .set("margin-inline-start", "var(--lumo-space-xs)")
+                .set("padding", "var(--lumo-space-xs)");
+
+        final Tab tab = new Tab();
+        RouterLink link = new RouterLink(navigationTarget);
+        link.add(icon);
+        tab.add(link);
+        ComponentUtil.setData(tab, Class.class, navigationTarget);
+        tab.addClassName("header-tab");
+        tab.getStyle().set("align", "auto");
         return tab;
     }
 

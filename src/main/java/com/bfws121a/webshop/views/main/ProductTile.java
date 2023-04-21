@@ -10,12 +10,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class ProductTile extends VerticalLayout {
 
+    Product pro;
     private Image productImage;
     private Label productName;
     private Label productPrice;
     final private Button shoppingCart = new Button("Kaufabwicklung", new Icon(VaadinIcon.CART));
 
     public ProductTile(Product pro) {
+        this.pro = pro;
         productImage = new Image(pro.getImage(), pro.getName());
         productImage.addClassName("image-prodTile");
         productName = new Label(pro.getName());
@@ -24,8 +26,7 @@ public class ProductTile extends VerticalLayout {
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
         shoppingCart.addClickListener(e -> {
-            BuyDialog dialog = new BuyDialog(pro);
-            dialog.open();
+            ShoppingCart.addToList(pro);
         });
 
         add(productImage, productName, productPrice, shoppingCart);
@@ -34,7 +35,11 @@ public class ProductTile extends VerticalLayout {
         // navigate to selected product
         productImage.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
         productImage.getStyle().set("cursor", "pointer");
-
     }
+
+    public Product returnProd() {
+        return pro;
+    }
+
 
 }

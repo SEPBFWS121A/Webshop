@@ -25,6 +25,7 @@ vaadin-form-layout.footer {
 }
 
 vaadin-vertical-layout.prodTile {
+    min-width: 225px;
     max-width: 420px;
     border-style: solid;
     border-width: thin;

@@ -62,6 +62,7 @@ public class MainView extends FormLayout {
         name.getStyle().set("font-weight","bold");
 
         nameLayout.add(name,motto);
+        nameLayout.getStyle().set("align-self", "flex-start");
 
         startInfo.add(logo,nameLayout);
         startInfo.setColspan(nameLayout, 3);

@@ -98,6 +98,13 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         reviewsTitle.addClassName("reviewsTitle-prodPage");
         reviewsTitle.setWidth(70, Unit.PERCENTAGE);
 
+        //Review Button
+        Button addReview = new Button("Bewertung hinzufügen");
+        addReview.addClickListener(e -> {
+            ReviewDialog reviewDialog = new ReviewDialog(this,product.getId());
+            reviewDialog.open();
+        });
+
         // Vertical layout for name, id, price and checkout button
         productInfo.add(productName, productId, productPrice, shoppingCart);
 
@@ -105,9 +112,22 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         productOverview.add(productImage, productInfo);
 
         // Add hLayout and rest to main layout
-        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle);
+        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle, addReview);
 
-        // Reviews
+        //add Reviews
+        addReviews();
+
+        // add footer
+        //add(new Footer());
+        productInfo.setSizeFull();
+        productOverview.setSizeFull();
+
+        this.getStyle().set("margin", "20px");
+
+    }
+
+    public void addReviews (){
+
         if (reviews.getReviews(product.getId()).size() > 0) {
             for (Review review : reviews.getReviews(product.getId())) {
                 ReviewTile reviewTile = new ReviewTile(review);
@@ -122,13 +142,6 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
             reviewText.setWidth(70, Unit.PERCENTAGE);
             add(reviewText);
         }
-
-        // add footer
-        //add(new Footer());
-        productInfo.setSizeFull();
-        productOverview.setSizeFull();
-
-        this.getStyle().set("margin", "20px");
-
     }
+
 }

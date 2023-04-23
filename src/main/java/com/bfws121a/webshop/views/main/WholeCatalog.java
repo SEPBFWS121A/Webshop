@@ -1,6 +1,7 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Route;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Route(value = "Katalog", layout = Layout.class)
-public class WholeCatalog extends HorizontalLayout {
+public class WholeCatalog extends FormLayout {
 
     final List<Product> prodList = new ArrayList<>();
     Filter filter;
@@ -19,6 +20,15 @@ public class WholeCatalog extends HorizontalLayout {
     List<String> themeFilter = new ArrayList<>();
 
     public WholeCatalog () {
+
+        // responsiveness
+        this.setResponsiveSteps(
+                // mobile first
+                new ResponsiveStep("0", 1),
+                // desktop
+                new ResponsiveStep("800px", 6)
+        );
+
         prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "<p>Es war einmal ein Kind, das gerne mit LEGO® Steinen baute. Heute ist dieses Kind längst erwachsen – und beim Bauen steht der Genuss im Vordergrund. Die Burg der Löwenritter (10305) zur Feier des 90-jährigen LEGO Jubiläums ist eine Neuinterpretation des ursprünglichen LEGO Burgensystems. Dieses Bauset stand schon seit vielen Jahren auf dem Wunschzettel unzähliger LEGO Fans.</p>\n" +
                 "<p>Spannende Abenteuergeschichten<br>\n" +
                 "In jedem Winkel dieses imposanten Sets erwarten dich Überraschungen. Entdecke die atemberaubenden Details auf allen Seiten des Modells. Klapp die Burg dann auf, um das Innenleben zu erkunden. In der Burg verbergen sich Geheimgänge, bewegliche Mauern, unsichtbare Verstecke, eine mittelalterliche Zugbrücke und hochziehbare Fallgitter. Auch eine Waffenkammer, eine Mühle mit drehbarem Mühlrad, Burgfriede und Ecktürme sind vorhanden. Außerdem laden 22 Minifiguren immer wieder zu spannenden Belagerungen und waghalsigen Fluchtversuchen ein.</p>\n" +
@@ -47,6 +57,9 @@ public class WholeCatalog extends HorizontalLayout {
         //this.setJustifyContentMode(JustifyContentMode.CENTER);
         add(filter, catalog);
         //getStyle().set("max-width", "1600px");
+
+        this.setColspan(filter, 1);
+        this.setColspan(catalog, 5);
 
         filter.addFilterTypListener(this::getTypeFilter);
         filter.addFilterPriceListener(this::getPriceFilter);

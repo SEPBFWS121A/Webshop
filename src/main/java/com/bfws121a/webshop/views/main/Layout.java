@@ -62,11 +62,15 @@ public class Layout extends AppLayout {
         img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
         img.getStyle().set("padding-left", "0");
+        img.getStyle().set("cursor", "pointer");
+        img.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         slogan = new H1("TKP");
         slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
                 .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
+        slogan.getStyle().set("cursor", "pointer");
+        slogan.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         // Configure styling for the header
         layout.addClassName("header");
@@ -85,11 +89,15 @@ public class Layout extends AppLayout {
 
         img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
+        img.getStyle().set("cursor", "pointer");
+        img.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         slogan = new H1("Thomas' Klemmbaustein-Palast");
         slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
                 .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
+        slogan.getStyle().set("cursor", "pointer");
+        slogan.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         // Configure styling for the header
         layout.addClassName("header");

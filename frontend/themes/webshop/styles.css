@@ -10,7 +10,8 @@ vaadin-form-layout.footer {
 
 .image-prodTile {
     width: 100%;
-    height: 395px;
+    /*height: 395px;*/
+    height: 50%;
     object-fit: contain;
 }
 
@@ -42,6 +43,12 @@ vaadin-vertical-layout.prodTile {
     border-color: lightgray;
     border-radius: 20px;
     margin: 10px !important;
+}
+
+@media only screen and (max-width: 831px) {
+    vaadin-vertical-layout.prodTile {
+        margin-left: 0 !important;
+    }
 }
 
 vaadin-horizontal-layout.hlayout {
@@ -121,13 +128,13 @@ vaadin-button.contin {
 }
 
 vaadin-button.add {
-     color: black;
-     font-weight: bold;
-     max-width:265px;
-     height:40px;
-     background:orange;
-     border-radius: 5px;
- }
+    color: black;
+    font-weight: bold;
+    max-width:265px;
+    height:40px;
+    background:orange;
+    border-radius: 5px;
+}
 
 vaadin-button.filter {
     color: black;
@@ -138,7 +145,6 @@ vaadin-button.filter {
     border-width: thin;
     border-color: orange;
     border-radius: 5px;
-    margin: 10px !important;
 }
 
 vaadin-button.dialog-email {

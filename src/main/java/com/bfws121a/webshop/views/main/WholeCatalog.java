@@ -66,7 +66,7 @@ public class WholeCatalog extends FormLayout {
         this.setColspan(catalog, 5);
 
         filterButton.addClickListener(e -> {
-            FilterDialog filterDialog = new FilterDialog(prodList);
+            FilterDialog filterDialog = new FilterDialog(filter);
             filterDialog.open();
         });
 
@@ -77,32 +77,33 @@ public class WholeCatalog extends FormLayout {
         filter.addFilterPriceListener(this::getPriceFilter);
         filter.addFilterThemeListener(this::getThemeFilter);
 
+        this.getStyle().set("margin", "20px");
+
     }
 
     private void setLayout(int pageWidth) {
+        removeAll();
         if (pageWidth < 800) {
             // mobile view
-            removeAll();
             add(filterButton, catalog);
         } else {
             // desktop view
-            removeAll();
             add(filter, catalog);
         }
     }
 
-    private void getTypeFilter(Filter.FilterTypEvent event) {
+    void getTypeFilter(Filter.FilterTypEvent event) {
         typeFilter = event.getSelected();
         filterProd();
     }
 
-    private void getPriceFilter(Filter.FilterPriceEvent event) {
+    void getPriceFilter(Filter.FilterPriceEvent event) {
         priceFilter = event.getSelected();
         System.out.println(priceFilter);
         filterProd();
     }
 
-    private void getThemeFilter(Filter.FilterThemeEvent event) {
+    void getThemeFilter(Filter.FilterThemeEvent event) {
         themeFilter = event.getSelected();
         System.out.println(themeFilter);
         filterProd();
@@ -128,6 +129,7 @@ public class WholeCatalog extends FormLayout {
         remove(catalog);
         catalog = new Catalog(listOutput);
         addComponentAtIndex(1,catalog);
+        setColspan(catalog, 5);
     }
 
     public List<Product> getCatalog() {

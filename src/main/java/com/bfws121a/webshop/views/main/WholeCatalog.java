@@ -1,10 +1,12 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Route;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +20,7 @@ public class WholeCatalog extends FormLayout {
     List<String> typeFilter = new ArrayList<>();
     List<String> priceFilter = new ArrayList<>();
     List<String> themeFilter = new ArrayList<>();
+    Button filterButton = new Button("Filter");
 
     public WholeCatalog () {
 
@@ -54,17 +57,35 @@ public class WholeCatalog extends FormLayout {
 
         catalog = new Catalog(prodList);
 
-        //this.setJustifyContentMode(JustifyContentMode.CENTER);
-        add(filter, catalog);
-        //getStyle().set("max-width", "1600px");
+        // initial check to set corresponding page layout
+        UI.getCurrent().getPage().retrieveExtendedClientDetails(e -> setLayout(e.getWindowInnerWidth()));
+        // check browser width every time it changes and set corresponding page layout
+        UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> setLayout(e.getWidth()));
 
         this.setColspan(filter, 1);
         this.setColspan(catalog, 5);
+
+        filterButton.addClickListener(e -> {
+            FilterDialog filterDialog = new FilterDialog(prodList);
+            filterDialog.open();
+        });
 
         filter.addFilterTypListener(this::getTypeFilter);
         filter.addFilterPriceListener(this::getPriceFilter);
         filter.addFilterThemeListener(this::getThemeFilter);
 
+    }
+
+    private void setLayout(int pageWidth) {
+        if (pageWidth < 800) {
+            // mobile view
+            removeAll();
+            add(filterButton, catalog);
+        } else {
+            // desktop view
+            removeAll();
+            add(filter, catalog);
+        }
     }
 
     private void getTypeFilter(Filter.FilterTypEvent event) {

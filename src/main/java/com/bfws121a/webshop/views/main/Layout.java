@@ -37,8 +37,6 @@ public class Layout extends AppLayout {
         menu = createMenu();
         addToDrawer(createMenuItems());
 
-
-
     }
 
     private void checkBrowserWidth(int pageWidth) {

@@ -74,16 +74,17 @@ public class WholeCatalog extends FormLayout {
         filter.addFilterPriceListener(this::getPriceFilter);
         filter.addFilterThemeListener(this::getThemeFilter);
 
+        this.getStyle().set("margin", "20px");
+
     }
 
     private void setLayout(int pageWidth) {
+        removeAll();
         if (pageWidth < 800) {
             // mobile view
-            removeAll();
             add(filterButton, catalog);
         } else {
             // desktop view
-            removeAll();
             add(filter, catalog);
         }
     }

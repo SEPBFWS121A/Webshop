@@ -34,6 +34,12 @@ vaadin-vertical-layout.prodTile {
     margin: 10px !important;
 }
 
+@media only screen and (max-width: 800px) {
+    vaadin-vertical-layout.prodTile {
+        margin-left: 0 !important;
+    }
+}
+
 vaadin-horizontal-layout.cart-prods {
     border-top: 1px solid lightgray;
     padding: 10px;

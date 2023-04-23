@@ -141,14 +141,35 @@ vaadin-button.filter {
     margin: 10px !important;
 }
 
+vaadin-button.dialog-email {
+    color: black;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    background:white;
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    border-radius: 5px;
+}
 
-vaadin-button.dialog {
+vaadin-button.dialog-ok {
     color: black;
     font-weight: bold;
     width: 120px;
     height: 40px;
     background: orange;
     border-radius: 5px;
+}
+
+vaadin-button.dialog-cancle {
+    color: black;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    background: red;
+    border-radius: 5px;
+    margin-right: auto;
 }
 
 vaadin-button > vaadin-icon {

@@ -24,6 +24,10 @@ public class WholeReview {
                 "Die perfekte Anlaufstelle für alle Lego-Fans", "Als begeisterter Lego-Fan bin ich immer auf der Suche nach neuen Möglichkeiten, meine Sammlung zu erweitern. Bei Thomas' Klemmbaustein Palast habe ich genau das gefunden, wonach ich gesucht habe. Die Preise sind fair und die Auswahl ist einfach fantastisch!"));
     }
 
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
+
     public List<Review> getReviews(int id) {
         List<Review> productReviews = new ArrayList<>();
         for (Review review : reviews) {

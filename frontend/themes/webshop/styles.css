@@ -18,6 +18,16 @@ vaadin-form-layout.footer {
     max-width: 135px;
     height: 100%;
     object-fit: contain;
+    padding-right: 10px; !important;
+}
+
+.image-cart {
+    height: 88px;
+    width: 100px;
+    object-fit: contain;
+    border-style: solid;
+    border-width: thin;
+    border-color: lightgray;
 }
 
 .image-prodTile:hover {
@@ -34,9 +44,19 @@ vaadin-vertical-layout.prodTile {
     margin: 10px !important;
 }
 
-vaadin-horizontal-layout.cart-prods {
+vaadin-horizontal-layout.hlayout {
+    align-self: center;
+    max-width: min-content;
+}
+
+vaadin-vertical-layout.vlayout {
+    align-self: flex-start;
+    max-width: 250px;
+}
+
+vaadin-form-layout.cart-prods {
     border-top: 1px solid lightgray;
-    padding: 10px;
+    padding-top: 10px;
 }
 
 .label-prodTile {
@@ -87,11 +107,53 @@ vaadin-button.cart {
     border:2px;
 }
 
-vaadin-button.cart:hover {
-    cursor: pointer;
+vaadin-button.contin {
+    color: black;
+    font-weight: bold;
+    max-width:265px;
+    height:40px;
+    background:white;
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    border-radius: 5px;
+    margin-right: 20px !important;
 }
 
-vaadin-button.dialog {
+vaadin-button.add {
+     color: black;
+     font-weight: bold;
+     max-width:265px;
+     height:40px;
+     background:orange;
+     border-radius: 5px;
+ }
+
+vaadin-button.filter {
+    color: black;
+    font-weight: bold;
+    height:40px;
+    background:white;
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    border-radius: 5px;
+    margin: 10px !important;
+}
+
+vaadin-button.dialog-email {
+    color: black;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    background:white;
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    border-radius: 5px;
+}
+
+vaadin-button.dialog-ok {
     color: black;
     font-weight: bold;
     width: 120px;
@@ -100,6 +162,33 @@ vaadin-button.dialog {
     border-radius: 5px;
 }
 
+vaadin-button.dialog-cancle {
+    color: black;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    background: red;
+    border-radius: 5px;
+    margin-right: auto;
+}
+
+vaadin-button > vaadin-icon {
+    color: black;
+}
+
+.delete {
+    max-width: max-content;
+    align-self: flex-start;
+    background-color: red;
+}
+
+vaadin-integer-field.amount {
+    max-width: max-content;
+}
+
+vaadin-button:hover {
+    cursor: pointer;
+}
 
 vaadin-dialog-overlay::part(overlay) {
     border-style: solid;

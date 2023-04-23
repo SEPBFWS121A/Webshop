@@ -78,6 +78,7 @@ public class Layout extends AppLayout {
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
         layout.add(new DrawerToggle(), img, slogan, createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
+        layout.expand(slogan);
 
         return layout;
     }
@@ -98,8 +99,9 @@ public class Layout extends AppLayout {
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        layout.add(img, slogan, createMenu(), createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
+        Tabs tabs = createMenu();
+        layout.add(img, slogan, tabs, createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
+        layout.expand(tabs);
 
         return layout;
     }

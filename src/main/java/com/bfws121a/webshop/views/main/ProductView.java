@@ -19,6 +19,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
 
     FormLayout productInfo = new FormLayout();
     FormLayout productOverview = new FormLayout();
+    FormLayout reviewLayout = new FormLayout();
     Product product;
     WholeCatalog catalog = new WholeCatalog();
     WholeReview reviews = new WholeReview();
@@ -126,7 +127,14 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
 
     }
 
-    public void addReviews (){
+    public void appendReviews(Review review) {
+        reviews.addReview(review);
+    }
+
+    public void addReviews() {
+
+        reviewLayout.setResponsiveSteps(new ResponsiveStep("0", 1));
+        reviewLayout.removeAll();
 
         if (reviews.getReviews(product.getId()).size() > 0) {
             for (Review review : reviews.getReviews(product.getId())) {
@@ -134,14 +142,15 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
                 reviewTile.addClassName("reviews-prodPage");
                 reviewTile.addClassName("reviewTile-prodPage");
                 reviewTile.setWidth(70, Unit.PERCENTAGE);
-                add(reviewTile);
+                reviewLayout.add(reviewTile);
             }
         } else {
             Label reviewText = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
             reviewText.addClassName("reviews-prodPage");
             reviewText.setWidth(70, Unit.PERCENTAGE);
-            add(reviewText);
+            reviewLayout.add(reviewText);
         }
+        add(reviewLayout);
     }
 
 }

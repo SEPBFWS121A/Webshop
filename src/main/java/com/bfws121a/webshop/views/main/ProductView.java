@@ -19,6 +19,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
 
     FormLayout productInfo = new FormLayout();
     FormLayout productOverview = new FormLayout();
+    FormLayout reviewLayout = new FormLayout();
     Product product;
     WholeCatalog catalog = new WholeCatalog();
     WholeReview reviews = new WholeReview();
@@ -98,6 +99,13 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         reviewsTitle.addClassName("reviewsTitle-prodPage");
         reviewsTitle.setWidth(70, Unit.PERCENTAGE);
 
+        //Review Button
+        Button addReview = new Button("Bewertung hinzufügen");
+        addReview.addClickListener(e -> {
+            ReviewDialog reviewDialog = new ReviewDialog(this,product.getId());
+            reviewDialog.open();
+        });
+
         // Vertical layout for name, id, price and checkout button
         productInfo.add(productName, productId, productPrice, shoppingCart);
 
@@ -105,23 +113,10 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         productOverview.add(productImage, productInfo);
 
         // Add hLayout and rest to main layout
-        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle);
+        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle, addReview);
 
-        // Reviews
-        if (reviews.getReviews(product.getId()).size() > 0) {
-            for (Review review : reviews.getReviews(product.getId())) {
-                ReviewTile reviewTile = new ReviewTile(review);
-                reviewTile.addClassName("reviews-prodPage");
-                reviewTile.addClassName("reviewTile-prodPage");
-                reviewTile.setWidth(70, Unit.PERCENTAGE);
-                add(reviewTile);
-            }
-        } else {
-            Label reviewText = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
-            reviewText.addClassName("reviews-prodPage");
-            reviewText.setWidth(70, Unit.PERCENTAGE);
-            add(reviewText);
-        }
+        //add Reviews
+        addReviews();
 
         // add footer
         //add(new Footer());
@@ -131,4 +126,31 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         this.getStyle().set("margin", "20px");
 
     }
+
+    public void appendReviews(Review review) {
+        reviews.addReview(review);
+    }
+
+    public void addReviews() {
+
+        reviewLayout.setResponsiveSteps(new ResponsiveStep("0", 1));
+        reviewLayout.removeAll();
+
+        if (reviews.getReviews(product.getId()).size() > 0) {
+            for (Review review : reviews.getReviews(product.getId())) {
+                ReviewTile reviewTile = new ReviewTile(review);
+                reviewTile.addClassName("reviews-prodPage");
+                reviewTile.addClassName("reviewTile-prodPage");
+                reviewTile.setWidth(70, Unit.PERCENTAGE);
+                reviewLayout.add(reviewTile);
+            }
+        } else {
+            Label reviewText = new Label("Zu diesem Produkt existieren leider noch keine Bewertungen.");
+            reviewText.addClassName("reviews-prodPage");
+            reviewText.setWidth(70, Unit.PERCENTAGE);
+            reviewLayout.add(reviewText);
+        }
+        add(reviewLayout);
+    }
+
 }

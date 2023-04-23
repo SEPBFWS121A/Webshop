@@ -70,6 +70,9 @@ public class WholeCatalog extends FormLayout {
             filterDialog.open();
         });
 
+        filterButton.addClassName("filter");
+
+
         filter.addFilterTypListener(this::getTypeFilter);
         filter.addFilterPriceListener(this::getPriceFilter);
         filter.addFilterThemeListener(this::getThemeFilter);

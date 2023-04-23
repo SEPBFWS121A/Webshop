@@ -129,6 +129,19 @@ vaadin-button.add {
      border-radius: 5px;
  }
 
+vaadin-button.filter {
+    color: black;
+    font-weight: bold;
+    height:40px;
+    background:white;
+    border-style: solid;
+    border-width: thin;
+    border-color: orange;
+    border-radius: 5px;
+    margin: 10px !important;
+}
+
+
 vaadin-button.dialog {
     color: black;
     font-weight: bold;

@@ -29,7 +29,7 @@ public class WholeCatalog extends FormLayout {
                 // mobile first
                 new ResponsiveStep("0", 1),
                 // desktop
-                new ResponsiveStep("800px", 7)
+                new ResponsiveStep("840px", 8)
         );
 
         prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "<p>Es war einmal ein Kind, das gerne mit LEGO® Steinen baute. Heute ist dieses Kind längst erwachsen – und beim Bauen steht der Genuss im Vordergrund. Die Burg der Löwenritter (10305) zur Feier des 90-jährigen LEGO Jubiläums ist eine Neuinterpretation des ursprünglichen LEGO Burgensystems. Dieses Bauset stand schon seit vielen Jahren auf dem Wunschzettel unzähliger LEGO Fans.</p>\n" +
@@ -86,7 +86,7 @@ public class WholeCatalog extends FormLayout {
         UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> setLayout(e.getWidth()));
 
         this.setColspan(filter, 2);
-        this.setColspan(catalog, 5);
+        this.setColspan(catalog, 6);
 
         filterButton.addClickListener(e -> {
             FilterDialog filterDialog = new FilterDialog(filter);
@@ -106,7 +106,7 @@ public class WholeCatalog extends FormLayout {
 
     private void setLayout(int pageWidth) {
         removeAll();
-        if (pageWidth < 800) {
+        if (pageWidth < 840) {
             // mobile view
             add(filterButton, catalog);
         } else {
@@ -150,7 +150,7 @@ public class WholeCatalog extends FormLayout {
         remove(catalog);
         catalog = new Catalog(listOutput);
         addComponentAtIndex(1,catalog);
-        setColspan(catalog, 5);
+        setColspan(catalog, 6);
     }
 
     public List<Product> getCatalog() {

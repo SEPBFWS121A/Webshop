@@ -41,7 +41,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
                 // Mobile first: use one column
                 new ResponsiveStep("0", 1),
                 // Desktop view: use two columns
-                new ResponsiveStep("800px", 2)
+                new ResponsiveStep("840px", 2)
         );
 
         for (Product product : catalog.getCatalog()) {

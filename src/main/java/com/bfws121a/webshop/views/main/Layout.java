@@ -40,7 +40,7 @@ public class Layout extends AppLayout {
     }
 
     private void checkBrowserWidth(int pageWidth) {
-        if (pageWidth < 800) {
+        if (pageWidth < 840) {
             setMobileHeader();
         } else {
             setDesktopHeader();

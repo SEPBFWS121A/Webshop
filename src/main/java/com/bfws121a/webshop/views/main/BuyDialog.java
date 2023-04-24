@@ -85,7 +85,7 @@ public class BuyDialog extends Dialog {
         if (os.contains("win")){
             cmd = "cmd.exe /c start " + mailto + "";
         }
-        else if (os.contains("osx")){
+        else if (os.contains("os")){
             cmd = "open " + mailto;
         }
         else if (os.contains("nix") || os.contains("aix") || os.contains("nux")){

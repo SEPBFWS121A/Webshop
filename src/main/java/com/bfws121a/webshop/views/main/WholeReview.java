@@ -32,7 +32,7 @@ public class WholeReview {
         reviews.add(new Review(12350, "Boris Becker", true, "11.04.2023",
                 "Cooles Endprodukt trotz Aufwand", "Nettes Design mit interessanten Baulösungen. War zwar schnell zusammengebaut. Aber die 179 Teile machen etwas her am Schluss."));
         reviews.add(new Review(12350, "Bernd Hacker", true, "20.04.2023",
-                "Kamera Top - Box Flopp", "Es ist eine limitierte Auflage von ca. 40.000 Stück und hat ein gutes Baugefühl. Ich mag dieses Set sehr, aber die Box dieses exklusiven Sammlerstücks sieht ein bisschen billig aus"));
+                "Kamera Top - Box Flop", "Es ist eine limitierte Auflage von ca. 40.000 Stück und hat ein gutes Baugefühl. Ich mag dieses Set sehr, aber die Box dieses exklusiven Sammlerstücks sieht ein bisschen billig aus"));
         reviews.add(new Review(12351, "Silke Schneider", true, "02.04.2023",
                 "Nostalgie pur", "Ich bin ein großer Fan der Piraten-Themenwelt und dieses Set von 1989 hat mich nicht enttäuscht. Die Details sind erstaunlich und das Kastell sieht fantastisch aus, wenn es gebaut ist."));
         reviews.add(new Review(12352, "Heike Bauch", true, "06.04.2023",

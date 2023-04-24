@@ -22,11 +22,15 @@ public class WholeReview {
                 "Fantastische Qualität und freundliches Personal", "Ich war wirklich beeindruckt von der Auswahl an alten Lego-Sets und Steinen bei Thomas' Klemmbaustein Palast. Die Qualität der Produkte war einfach unglaublich, und das Personal war sehr freundlich und hilfsbereit bei der Suche nach den perfekten Teilen für meine Kreationen."));
         reviews.add(new Review(0, "Oscar Martinez", false, "07.04.2023",
                 "Die perfekte Anlaufstelle für alle Lego-Fans", "Als begeisterter Lego-Fan bin ich immer auf der Suche nach neuen Möglichkeiten, meine Sammlung zu erweitern. Bei Thomas' Klemmbaustein Palast habe ich genau das gefunden, wonach ich gesucht habe. Die Preise sind fair und die Auswahl ist einfach fantastisch!"));
+        reviews.add(new Review(12347, "Kim Jong", true, "04.04.2023",
+                "Wie im Film", "Ich habe vor kurzem einen Herr der Ringe Film Marathon veranstaltet. Dort hatte mir ein Bekannter von diesem Baustein-Set erzählt. Ich bin Verblüfft wie detailgetreu dieses Kunstwerk ist. Genau wie im Film!"));
+        reviews.add(new Review(12348, "Kim Possible", true, "01.04.2023",
+                "Tolles Set", "Da die Lieblingsfarbe von meinem Sohn Blau ist, habe ich lange nach einem Baustein Set in Blau gesucht. Zum Glück bin ich hier bei Thomas Klemmbaustein Palast fündig geworden. Die Steine haben ein schönes blau und sind sehr robust!"));
         reviews.add(new Review(12349, "Tommy Hillebrandt", true, "10.04.2023",
-                "Tolles Ersatz Set", "Ich habe das Ersatzsteine gekauft und bin absolut begeistert davon. Das Set enthält eine breite Palette von Ersatzsteinen in verschiedenen Größen, Farben und Formen, so dass ich in der Lage war, fehlende oder beschädigte Teile in meinen Baustein-Sets leicht zu ersetzen.\n" +
+                "Tolles Ersatz Set", "Ich habe das Ersatzsteine Set gekauft und bin absolut begeistert davon. Das Set enthält eine breite Palette von Ersatzsteinen in verschiedenen Größen, Farben und Formen, so dass ich in der Lage war, fehlende oder beschädigte Teile in meinen Baustein-Sets leicht zu ersetzen.\n" +
                 "Die Qualität der Ersatzsteine ist hervorragend und sie passen perfekt zu meinen vorhandenen Lego-Modellen. Ich war auch beeindruckt von der Aufbewahrungsbox, die mit dem Set geliefert wurde, da sie es einfach macht, die Steine zu organisieren und aufzubewahren.\n"));
         reviews.add(new Review(12350, "Boris Becker", true, "11.04.2023",
-                "Cooles Endprodukt trotz Aufwand", "1.\tNettes Design mit interessanten Baulösungen. War zwar schnell zusammengebaut. Aber die 179 Teile machen etwas her am Schluss."));
+                "Cooles Endprodukt trotz Aufwand", "Nettes Design mit interessanten Baulösungen. War zwar schnell zusammengebaut. Aber die 179 Teile machen etwas her am Schluss."));
         reviews.add(new Review(12350, "Bernd Hacker", true, "20.04.2023",
                 "Kamera Top - Box Flopp", "Es ist eine limitierte Auflage von ca. 40.000 Stück und hat ein gutes Baugefühl. Ich mag dieses Set sehr, aber die Box dieses exklusiven Sammlerstücks sieht ein bisschen billig aus"));
         reviews.add(new Review(12351, "Silke Schneider", true, "02.04.2023",

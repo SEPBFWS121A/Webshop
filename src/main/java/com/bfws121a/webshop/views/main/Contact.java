@@ -73,9 +73,6 @@ public class Contact extends Div {
                     event -> {
                         if(event.getWidth() >= 1000) fields.add(mail,address, phone);
                         else fieldsVer.add(mail,address, phone);
-                        Notification.show("Window width="
-                                + event.getWidth()
-                                + ", height=" + event.getHeight());
                     });
 
 

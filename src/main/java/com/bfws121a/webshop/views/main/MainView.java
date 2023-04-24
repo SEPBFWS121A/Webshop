@@ -87,9 +87,9 @@ public class MainView extends FormLayout {
         Paragraph newProdsTitle = new Paragraph("Neu bei uns:");
         newProdsTitle.getStyle().set("font-size","x-large");
         newProdsTitle.getStyle().set("font-weight","bold");
-        prodList2.add(new Product(12350, "icons/Kamera.png", "Ritterburg", "Egal", "Set", "Mittelalter",229.99));
-        prodList2.add(new Product(12353, "icons/Millenium Falke.webp", "Hogwards", "Egal","Set", "Harry Potter", 499.99));
-        prodList2.add(new Product(12354, "icons/Bowser.jpg", "Bruchtal", "Egal","Set", "Herr der Ringe", 499.99));
+        prodList2.add(new Product(12350, "icons/Kamera.png", "Kamera", "Egal", "Set", "Vintage Lego Sets",99.99));
+        prodList2.add(new Product(12353, "icons/Millenium Falke.webp", "Millenium Falke", "Egal","Set", "Star Wars", 999.99));
+        prodList2.add(new Product(12354, "icons/Bowser.jpg", "Bowser", "Egal","Set", "Super Mario", 189.99));
 
         SelectiveCatalog catalog2 = new SelectiveCatalog(prodList2);
 

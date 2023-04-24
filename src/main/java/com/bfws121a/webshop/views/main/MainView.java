@@ -21,6 +21,7 @@ public class MainView extends FormLayout {
 
     WholeReview reviews = new WholeReview();
     List<Product> prodList = new ArrayList<>();
+    List<Product> prodList2 = new ArrayList<>();
     FormLayout startInfo = new FormLayout();
     Div nameLayout = new Div();
     Div leftDiv = new Div();
@@ -86,7 +87,11 @@ public class MainView extends FormLayout {
         Paragraph newProdsTitle = new Paragraph("Neu bei uns:");
         newProdsTitle.getStyle().set("font-size","x-large");
         newProdsTitle.getStyle().set("font-weight","bold");
-        SelectiveCatalog catalog2 = new SelectiveCatalog(prodList);
+        prodList2.add(new Product(12350, "icons/Kamera.png", "Ritterburg", "Egal", "Set", "Mittelalter",229.99));
+        prodList2.add(new Product(12353, "icons/Millenium Falke.webp", "Hogwards", "Egal","Set", "Harry Potter", 499.99));
+        prodList2.add(new Product(12354, "icons/Bowser.jpg", "Bruchtal", "Egal","Set", "Herr der Ringe", 499.99));
+
+        SelectiveCatalog catalog2 = new SelectiveCatalog(prodList2);
 
         newProducts.add(catalog2);
         newProducts.getStyle().set("overflow", "auto");

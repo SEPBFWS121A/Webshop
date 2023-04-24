@@ -122,13 +122,11 @@ public class WholeCatalog extends FormLayout {
 
     void getPriceFilter(Filter.FilterPriceEvent event) {
         priceFilter = event.getSelected();
-        System.out.println(priceFilter);
         filterProd();
     }
 
     void getThemeFilter(Filter.FilterThemeEvent event) {
         themeFilter = event.getSelected();
-        System.out.println(themeFilter);
         filterProd();
     }
 

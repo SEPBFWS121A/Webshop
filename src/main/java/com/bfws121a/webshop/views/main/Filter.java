@@ -60,7 +60,6 @@ public class Filter extends VerticalLayout {
         });
 
         add(prodtyp, prodprice, prodtheme);
-        this.addClassName("filter");
     }
 
     public static <T> Predicate<T> distinctByKey(

@@ -210,13 +210,6 @@ vaadin-dialog-overlay::part(overlay) {
     width: 600px;
 }
 
-
-vaadin-vertical-layout.filter {
-    max-width: 222px;
-    resize: horizontal;
-    overflow: auto;
-}
-
 [id^=label-vaadin-checkbox-group] {
     font-weight: bold;
     color: black;

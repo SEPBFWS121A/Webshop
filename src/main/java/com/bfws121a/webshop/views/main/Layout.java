@@ -37,8 +37,6 @@ public class Layout extends AppLayout {
         menu = createMenu();
         addToDrawer(createMenuItems());
 
-
-
     }
 
     private void checkBrowserWidth(int pageWidth) {
@@ -64,11 +62,15 @@ public class Layout extends AppLayout {
         img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
         img.getStyle().set("padding-left", "0");
+        img.getStyle().set("cursor", "pointer");
+        img.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         slogan = new H1("TKP");
         slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
                 .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
+        slogan.getStyle().set("cursor", "pointer");
+        slogan.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         // Configure styling for the header
         layout.addClassName("header");
@@ -78,6 +80,7 @@ public class Layout extends AppLayout {
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
 
         layout.add(new DrawerToggle(), img, slogan, createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
+        layout.expand(slogan);
 
         return layout;
     }
@@ -86,11 +89,15 @@ public class Layout extends AppLayout {
 
         img = new Image("icons/Logo.png", "Logo");
         img.addClassName("header-logo");
+        img.getStyle().set("cursor", "pointer");
+        img.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         slogan = new H1("Thomas' Klemmbaustein-Palast");
         slogan.getStyle().set("font-size", "var(--lumo-font-size-l)")
                 .set("margin", "var(--lumo-space-m) var(--lumo-space-l)");
         slogan.addClassNames("header-slogan");
+        slogan.getStyle().set("cursor", "pointer");
+        slogan.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("")));
 
         // Configure styling for the header
         layout.addClassName("header");
@@ -98,8 +105,9 @@ public class Layout extends AppLayout {
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
-
-        layout.add(img, slogan, createMenu(), createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
+        Tabs tabs = createMenu();
+        layout.add(img, slogan, tabs, createTabWithIcon(VaadinIcon.CART, ShoppingCart.class));
+        layout.expand(tabs);
 
         return layout;
     }

@@ -44,6 +44,10 @@ public class WholeReview {
 
     }
 
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
+
     public List<Review> getReviews(int id) {
         List<Review> productReviews = new ArrayList<>();
         for (Review review : reviews) {

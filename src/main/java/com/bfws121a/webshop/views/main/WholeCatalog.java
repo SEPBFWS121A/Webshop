@@ -1,15 +1,18 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.router.Route;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Route(value = "Katalog", layout = Layout.class)
-public class WholeCatalog extends HorizontalLayout {
+public class WholeCatalog extends FormLayout {
 
     final List<Product> prodList = new ArrayList<>();
     Filter filter;
@@ -17,8 +20,18 @@ public class WholeCatalog extends HorizontalLayout {
     List<String> typeFilter = new ArrayList<>();
     List<String> priceFilter = new ArrayList<>();
     List<String> themeFilter = new ArrayList<>();
+    Button filterButton = new Button("Filter");
 
     public WholeCatalog () {
+
+        // responsiveness
+        this.setResponsiveSteps(
+                // mobile first
+                new ResponsiveStep("0", 1),
+                // desktop
+                new ResponsiveStep("800px", 6)
+        );
+
         prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "<p>Es war einmal ein Kind, das gerne mit LEGO® Steinen baute. Heute ist dieses Kind längst erwachsen – und beim Bauen steht der Genuss im Vordergrund. Die Burg der Löwenritter (10305) zur Feier des 90-jährigen LEGO Jubiläums ist eine Neuinterpretation des ursprünglichen LEGO Burgensystems. Dieses Bauset stand schon seit vielen Jahren auf dem Wunschzettel unzähliger LEGO Fans.</p>\n" +
                 "<p>Spannende Abenteuergeschichten<br>\n" +
                 "In jedem Winkel dieses imposanten Sets erwarten dich Überraschungen. Entdecke die atemberaubenden Details auf allen Seiten des Modells. Klapp die Burg dann auf, um das Innenleben zu erkunden. In der Burg verbergen sich Geheimgänge, bewegliche Mauern, unsichtbare Verstecke, eine mittelalterliche Zugbrücke und hochziehbare Fallgitter. Auch eine Waffenkammer, eine Mühle mit drehbarem Mühlrad, Burgfriede und Ecktürme sind vorhanden. Außerdem laden 22 Minifiguren immer wieder zu spannenden Belagerungen und waghalsigen Fluchtversuchen ein.</p>\n" +
@@ -62,28 +75,53 @@ public class WholeCatalog extends HorizontalLayout {
 
         catalog = new Catalog(prodList);
 
-        //this.setJustifyContentMode(JustifyContentMode.CENTER);
-        add(filter, catalog);
-        //getStyle().set("max-width", "1600px");
+        // initial check to set corresponding page layout
+        UI.getCurrent().getPage().retrieveExtendedClientDetails(e -> setLayout(e.getWindowInnerWidth()));
+        // check browser width every time it changes and set corresponding page layout
+        UI.getCurrent().getPage().addBrowserWindowResizeListener(e -> setLayout(e.getWidth()));
+
+        this.setColspan(filter, 1);
+        this.setColspan(catalog, 5);
+
+        filterButton.addClickListener(e -> {
+            FilterDialog filterDialog = new FilterDialog(filter);
+            filterDialog.open();
+        });
+
+        filterButton.addClassName("filter");
+
 
         filter.addFilterTypListener(this::getTypeFilter);
         filter.addFilterPriceListener(this::getPriceFilter);
         filter.addFilterThemeListener(this::getThemeFilter);
 
+        this.getStyle().set("margin", "20px");
+
     }
 
-    private void getTypeFilter(Filter.FilterTypEvent event) {
+    private void setLayout(int pageWidth) {
+        removeAll();
+        if (pageWidth < 800) {
+            // mobile view
+            add(filterButton, catalog);
+        } else {
+            // desktop view
+            add(filter, catalog);
+        }
+    }
+
+    void getTypeFilter(Filter.FilterTypEvent event) {
         typeFilter = event.getSelected();
         filterProd();
     }
 
-    private void getPriceFilter(Filter.FilterPriceEvent event) {
+    void getPriceFilter(Filter.FilterPriceEvent event) {
         priceFilter = event.getSelected();
         System.out.println(priceFilter);
         filterProd();
     }
 
-    private void getThemeFilter(Filter.FilterThemeEvent event) {
+    void getThemeFilter(Filter.FilterThemeEvent event) {
         themeFilter = event.getSelected();
         System.out.println(themeFilter);
         filterProd();
@@ -109,6 +147,7 @@ public class WholeCatalog extends HorizontalLayout {
         remove(catalog);
         catalog = new Catalog(listOutput);
         addComponentAtIndex(1,catalog);
+        setColspan(catalog, 5);
     }
 
     public List<Product> getCatalog() {

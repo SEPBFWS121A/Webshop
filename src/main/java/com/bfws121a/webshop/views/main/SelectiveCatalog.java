@@ -12,7 +12,7 @@ public class SelectiveCatalog extends HorizontalLayout {
     public SelectiveCatalog(List<Product> products) {
 
         for (Product product : products) {
-             MainProductTile prodTile = new MainProductTile(product);
+            ProductTile prodTile = new ProductTile(product);
             prodTile.addClassName("prodTile");
             prodTile.getStyle().set("width","33.33%");
             prodTile.getStyle().set("margin","0 5px");

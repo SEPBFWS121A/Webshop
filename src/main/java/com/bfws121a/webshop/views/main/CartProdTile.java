@@ -5,6 +5,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
@@ -14,7 +15,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.shared.Registration;
 
-public class CartProdTile extends HorizontalLayout {
+public class CartProdTile extends FormLayout {
 
     private Image prodImg;
 
@@ -42,20 +43,31 @@ public class CartProdTile extends HorizontalLayout {
                 fireEvent(new ChangeEvent(this, cart));
             }
         });
-        prodAmount.getStyle().set("align-items", "center");
+        prodAmount.addClassName("amount");
+        delete.addClassName("delete");
         delete.addClickListener(e -> {
             removeFromParent();
             fireEvent(new DeleteCartEvent(this, cart));
         });
-        add(prodImg, makeVLayout(), prodAmount, delete);
+        add(prodImg, makeVLayout(), makeHLayout());
         addClassName("cart-prods");
+    }
+
+
+    private Component makeHLayout() {
+        HorizontalLayout layout = new HorizontalLayout(prodAmount, delete);
+        layout.addClassName("hlayout");
+
+        return layout;
     }
 
     private Component makeVLayout() {
         VerticalLayout layout = new VerticalLayout(prodName, prodPrice);
-        layout.setWidth("260px");
+        layout.addClassName("vlayout");
+
         return layout;
     }
+
 
     public static abstract class CartEvent extends ComponentEvent<CartProdTile> {
         private Cart cart;

@@ -2,6 +2,7 @@ package com.bfws121a.webshop.views.main;
 
 
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
@@ -20,10 +21,15 @@ public class Contact extends Div {
         public Contact() {
             H1 heading = new H1("Kontakt");
             heading.addClassName("contact-heading");
-            HorizontalLayout fields = new HorizontalLayout();
+            FormLayout fields = new FormLayout();
             VerticalLayout fieldsVer = new VerticalLayout();
             Div address = new Div();
             address.addClassName("contactArea");
+
+            fields.setResponsiveSteps(
+                    new FormLayout.ResponsiveStep("0", 1),
+                    new FormLayout.ResponsiveStep("840px", 3)
+            );
 
             Image addressIcon = new Image("icons/address.png","mail");
             addressIcon.getStyle().set("width","50px");

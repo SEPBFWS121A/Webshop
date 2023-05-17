@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 public class ProductService {
     ProductRepository repo;
     public ProductService(ProductRepository repo) {
@@ -15,5 +14,13 @@ public class ProductService {
 
     public List<Product> searchByName(String name) {
         return repo.searchByName(name);
+    }
+
+    public List<Product> findAll() {
+        return repo.findAll();
+    }
+
+    public void deleteByName(String name) {
+        repo.deleteByName(name);
     }
 }

@@ -39,4 +39,38 @@ public class H2ProductRepository implements ProductRepository{
         }
         return products;
     }
+
+    @Override
+    public List<Product> findAll() {
+        List<Product> products = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String tablesQ = "SELECT * FROM product";
+            Statement floriansMom = conn.createStatement();
+            ResultSet tablesRS = floriansMom.executeQuery(tablesQ);
+            while (tablesRS.next()) {
+                products.add(new Product(tablesRS.getInt("ID"),
+                        tablesRS.getString("Image"),
+                        tablesRS.getString("Name"),
+                        tablesRS.getString("Description"),
+                        tablesRS.getString("Type"),
+                        tablesRS.getString("Theme"),
+                        tablesRS.getInt("Price")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String tablesQ = "DELETE FROM product WHERE Name=?";
+            PreparedStatement floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom.setString(1, name);
+            floriansMom.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

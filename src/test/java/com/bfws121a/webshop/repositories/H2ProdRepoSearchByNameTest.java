@@ -2,19 +2,17 @@ package com.bfws121a.webshop.repositories;
 
 import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.services.ProductService;
-import jakarta.validation.constraints.AssertTrue;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.*;
 import java.util.List;
 
 @SpringBootTest
-public class ProductRepositoryTest {
+public class H2ProdRepoSearchByNameTest {
     private ProductRepository repository;
 
     @BeforeAll

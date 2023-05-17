@@ -8,4 +8,7 @@ import java.util.List;
 public interface ProductRepository {
     List<Product> searchByName(String name);
 
+    List<Product> findAll();
+
+    void deleteByName(String name);
 }

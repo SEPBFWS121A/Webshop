@@ -3,6 +3,7 @@ package com.bfws121a.webshop.object;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.html.Span;
 
+
 public class Product {
 
     int id;
@@ -72,5 +73,9 @@ public class Product {
         return price;
     }
 
+    @Override
+    public String toString() {
+        return id + " / " + image + " / " + name + " / " + description + " / "  + type + " / " + priceCate + " / " + getPrice();
+    }
 
 }

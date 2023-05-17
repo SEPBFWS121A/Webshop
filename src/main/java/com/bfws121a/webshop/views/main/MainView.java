@@ -105,7 +105,7 @@ public class MainView extends FormLayout {
         reviewTitle.getStyle().set("font-weight","bold");
         rightDiv.add(reviewTitle);
 
-        for (Review review : reviews.getReviews(0)) {
+        /*for (Review review : reviews.getReviews(0)) {
             ReviewTile reviewTile = new ReviewTile(review);
             reviewTile.addClassName("reviews-prodPage");
             reviewTile.addClassName("reviewTile-prodPage");
@@ -114,7 +114,7 @@ public class MainView extends FormLayout {
             reviewTile.getStyle().set("background-color","AliceBlue");
             reviewTile.getStyle().set("border-color","black");
             rightDiv.add(reviewTile);
-        }
+        }*/
 
         //layout.add(leftDiv,rightDiv);
         add(leftDiv, rightDiv);

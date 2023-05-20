@@ -32,7 +32,8 @@ public class H2ProductRepository implements ProductRepository{
                         tablesRS.getString("Description"),
                         tablesRS.getString("Type"),
                         tablesRS.getString("Theme"),
-                        tablesRS.getInt("Price")));
+                        tablesRS.getInt("Price"),
+                        tablesRS.getString("producttags")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,7 +55,8 @@ public class H2ProductRepository implements ProductRepository{
                         tablesRS.getString("Description"),
                         tablesRS.getString("Type"),
                         tablesRS.getString("Theme"),
-                        tablesRS.getInt("Price")));
+                        tablesRS.getInt("Price"),
+                        tablesRS.getString("producttags")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

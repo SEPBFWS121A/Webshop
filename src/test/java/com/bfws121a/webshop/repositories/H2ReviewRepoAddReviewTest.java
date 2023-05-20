@@ -49,7 +49,7 @@ public class H2ReviewRepoAddReviewTest {
         }
     }
 
-    /*@AfterAll
+    @AfterAll
     public static void kill() {
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./test", "sa", "")) {
             Statement floriansMom = conn.createStatement();
@@ -57,7 +57,7 @@ public class H2ReviewRepoAddReviewTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     @Test
     public void searchByProdIdTest() {

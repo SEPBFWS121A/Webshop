@@ -9,21 +9,21 @@ public class WholeReview {
 
     List<Review> reviews = new ArrayList<>();
 
-    public WholeReview() {
+    /*public WholeReview() {
         reviews.add(new Review(12345, "Max Mustermann", true, "08.04.2023",
-                "Tolles Produkt", "Tolles Produkt, gerne wieder!"));
+                "Tolles Produkt", "Tolles Produkt, gerne wieder!", 12345));
         reviews.add(new Review(12345, "Maria Musterfrau", true, "09.04.2023",
-                "Tolles Produkt", "Tolles Produkt, gerne wieder!"));
+                "Tolles Produkt", "Tolles Produkt, gerne wieder!", 12345));
         reviews.add(new Review(12346, "Max Mustermann", false, "07.04.2023",
-                "Toller Laden, schlechtes Produkt", "Toller Laden, nur das Produkt ist nicht so toll, dennoch gerne wieder!"));
+                "Toller Laden, schlechtes Produkt", "Toller Laden, nur das Produkt ist nicht so toll, dennoch gerne wieder!",12346));
         reviews.add(new Review(0, "Natasha Patel", false, "01.04.2023",
-                "Ein wahres Paradies für Lego-Sammler!", "Thomas' Klemmbaustein Palast ist einfach der beste Laden für alle Lego-Fans da draußen! Ich konnte hier eine Sammlung seltener, alter Lego-Sets und Steine finden, die ich nirgendwo anders gefunden hätte. Ein wahres Paradies für jeden Sammler!"));
+                "Ein wahres Paradies für Lego-Sammler!", "Thomas' Klemmbaustein Palast ist einfach der beste Laden für alle Lego-Fans da draußen! Ich konnte hier eine Sammlung seltener, alter Lego-Sets und Steine finden, die ich nirgendwo anders gefunden hätte. Ein wahres Paradies für jeden Sammler!", 0));
         reviews.add(new Review(0, "Julian Kim", false, "01.04.2023",
-                "Fantastische Qualität und freundliches Personal", "Ich war wirklich beeindruckt von der Auswahl an alten Lego-Sets und Steinen bei Thomas' Klemmbaustein Palast. Die Qualität der Produkte war einfach unglaublich, und das Personal war sehr freundlich und hilfsbereit bei der Suche nach den perfekten Teilen für meine Kreationen."));
+                "Fantastische Qualität und freundliches Personal", "Ich war wirklich beeindruckt von der Auswahl an alten Lego-Sets und Steinen bei Thomas' Klemmbaustein Palast. Die Qualität der Produkte war einfach unglaublich, und das Personal war sehr freundlich und hilfsbereit bei der Suche nach den perfekten Teilen für meine Kreationen.", 0));
         reviews.add(new Review(0, "Oscar Martinez", false, "07.04.2023",
-                "Die perfekte Anlaufstelle für alle Lego-Fans", "Als begeisterter Lego-Fan bin ich immer auf der Suche nach neuen Möglichkeiten, meine Sammlung zu erweitern. Bei Thomas' Klemmbaustein Palast habe ich genau das gefunden, wonach ich gesucht habe. Die Preise sind fair und die Auswahl ist einfach fantastisch!"));
+                "Die perfekte Anlaufstelle für alle Lego-Fans", "Als begeisterter Lego-Fan bin ich immer auf der Suche nach neuen Möglichkeiten, meine Sammlung zu erweitern. Bei Thomas' Klemmbaustein Palast habe ich genau das gefunden, wonach ich gesucht habe. Die Preise sind fair und die Auswahl ist einfach fantastisch!", 0));
         reviews.add(new Review(12347, "Kim Jong", true, "04.04.2023",
-                "Wie im Film", "Ich habe vor kurzem einen Herr der Ringe Film Marathon veranstaltet. Dort hatte mir ein Bekannter von diesem Baustein-Set erzählt. Ich bin Verblüfft wie detailgetreu dieses Kunstwerk ist. Genau wie im Film!"));
+                "Wie im Film", "Ich habe vor kurzem einen Herr der Ringe Film Marathon veranstaltet. Dort hatte mir ein Bekannter von diesem Baustein-Set erzählt. Ich bin Verblüfft wie detailgetreu dieses Kunstwerk ist. Genau wie im Film!", 12347));
         reviews.add(new Review(12348, "Kim Possible", true, "01.04.2023",
                 "Tolles Set", "Da die Lieblingsfarbe von meinem Sohn Blau ist, habe ich lange nach einem Baustein Set in Blau gesucht. Zum Glück bin ich hier bei Thomas Klemmbaustein Palast fündig geworden. Die Steine haben ein schönes blau und sind sehr robust!"));
         reviews.add(new Review(12349, "Tommy Hillebrandt", true, "10.04.2023",
@@ -60,6 +60,6 @@ public class WholeReview {
             }
         }
         return productReviews;
-    }
+    }*/
 
 }

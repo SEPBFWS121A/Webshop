@@ -3,6 +3,7 @@ package com.bfws121a.webshop.object;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.html.Span;
 
+
 public class Product {
 
     int id;
@@ -14,8 +15,10 @@ public class Product {
     String priceCate;
     double price;
 
+    String producttags;
 
-    public Product(int id, String image, String name, String description, String type, String theme, double price) {
+
+    public Product(int id, String image, String name, String description, String type, String theme, double price, String producttags) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -23,6 +26,7 @@ public class Product {
         this.type = type;
         this.theme = theme;
         this.price = price;
+        this.producttags = producttags;
         setPriceCate(price);
     }
 
@@ -71,6 +75,16 @@ public class Product {
     public double getPrice() {
         return price;
     }
+
+    public String getProducttags() {
+        return producttags;
+    }
+
+    @Override
+    public String toString() {
+        return id + " / " + image + " / " + name + " / " + description + " / "  + type + " / " + priceCate + " / " + getPrice();
+    }
+
 
 
 }

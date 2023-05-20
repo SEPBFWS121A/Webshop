@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReviewDialog extends Dialog {
 
-    Review review;
+    /*Review review;
     FormLayout formLayout = new FormLayout();
     public ReviewDialog(ProductView productView, int productId) {
 
@@ -56,6 +56,6 @@ public class ReviewDialog extends Dialog {
 
         add(formLayout);
 
-    }
+    }*/
 
 }

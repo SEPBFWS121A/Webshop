@@ -22,6 +22,7 @@ public class ProductTile extends VerticalLayout {
         productImage.addClassName("image-prodTile");
         productName = new Label(pro.getName());
         productName.addClassName("label-prodTile");
+        productName.setId("label-" + pro.getName());
         productPrice = new Label(pro.getPrice()+ " €");
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
@@ -37,6 +38,7 @@ public class ProductTile extends VerticalLayout {
         // navigate to selected product
         productImage.addClickListener(e -> this.getUI().ifPresent(ui -> ui.navigate("product/" + pro.getId())));
         productImage.getStyle().set("cursor", "pointer");
+        this.setId("ProductTile-" + pro.getName());
     }
 
     public Product returnProd() {

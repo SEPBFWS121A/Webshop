@@ -29,11 +29,15 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - run: mkdir staging && cp target/*.jar staging
+    - name: Take down Docker Compose
+      run: docker compose down -f /opt/webshop/docker-compose.yml
+    - name: Upload to Server  
     - uses: actions/upload-artifact@v3
       with:
         name: Package
-        path: staging
+        path: /opt/webshop/data/productive/
+    - name: Start Docker Compose
+      run: docker compose up -d -f /opt/webshop/docker-compose.yml
       
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive

@@ -32,7 +32,7 @@ jobs:
     - name: Take down Docker Compose
       run: docker compose down -f /opt/webshop/docker-compose.yml
     - name: Upload to Server  
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: Package
         path: /opt/webshop/data/productive/

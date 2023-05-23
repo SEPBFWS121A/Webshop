@@ -39,6 +39,6 @@ jobs:
         name: Package
         path: production
     - name: Copy runnable to docker folder
-      run: cp production/*.jar /opt/webshop/data/productive/
+      run: cp production/*.jar /opt/webshop/data/productive/webshop.jar
     - name: Start Docker Compose
       run: docker compose -f /opt/webshop/docker-compose.yml up -d

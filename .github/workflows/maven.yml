@@ -31,15 +31,14 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Take down Docker Compose
       run: docker compose -f /opt/webshop/docker-compose.yml down
+    - name: Create production folder
+      run: mkdir production && cp target/*.jar production
     - name: Upload to Server  
       uses: actions/upload-artifact@v3
       with:
         name: Package
-        path: /opt/webshop/data/productive/
+        path: production
+    - name: Copy runnable to docker folder
+      run: cp production/*.jar /opt/webshop/data/productive/
     - name: Start Docker Compose
       run: docker compose -f /opt/webshop/docker-compose.yml up -d
-      
-
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    #- name: Update dependency graph
-    # uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6

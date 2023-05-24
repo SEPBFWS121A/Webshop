@@ -61,8 +61,8 @@ jobs:
           name: Package
           path: test
       - name: Copy runnable to docker folder
-        run: cp production/*.war /opt/webshop/data/test/
+        run: cp test/*.war /opt/webshop/data/test/
       - name: Rename to webshop.war
-        run: mv /opt/webshop/data/productive/*.war /opt/webshop/data/test/webshop.war
+        run: mv /opt/webshop/data/test/*.war /opt/webshop/data/test/webshop.war
       - name: Start Docker Compose
         run: docker compose -f /opt/webshop/docker-compose.yml up -d

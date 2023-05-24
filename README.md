@@ -1,7 +1,10 @@
 # Webshop
 
-This project can be used as a starting point to create your own Vaadin application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
+This project represents a webshop built with Vaadin and Spring Framework.
+
+## Webshop Deployment Status
+
+[![Build and Deploy to production server](https://github.com/SEPBFWS121A/Webshop/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/SEPBFWS121A/Webshop/actions/workflows/maven.yml)
 
 ## Running the application
 

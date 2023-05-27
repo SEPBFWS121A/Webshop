@@ -34,7 +34,7 @@ public class CatalogSmokeTest {
         WebDriver driver = new ChromeDriver(options);
 
         try {
-            driver.get("http://localhost:8080/Katalog");
+            driver.navigate().to("http://localhost:8080/Katalog");
 
             new WebDriverWait(driver, ofSeconds(30), ofSeconds(1))
                     .until(titleIs("Produktkatalog"));

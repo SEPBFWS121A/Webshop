@@ -30,7 +30,7 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          version: stable
+          chrome-version: stable
       - name: Check Chrome version
         run: chrome --version
       - name: Verify with Maven

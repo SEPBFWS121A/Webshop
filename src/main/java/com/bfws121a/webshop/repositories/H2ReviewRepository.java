@@ -44,6 +44,28 @@ public class H2ReviewRepository implements ReviewRepository{
     }
 
     @Override
+    public List<Review> findAll() {
+        List <Review> reviews = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String tablesQ = "SELECT * FROM review";
+            Statement floriansMom = conn.createStatement();
+            ResultSet tablesRS = floriansMom.executeQuery(tablesQ);
+            while (tablesRS.next()) {
+                reviews.add(new Review(tablesRS.getInt("id"),
+                        tablesRS.getString("publisher"),
+                        tablesRS.getBoolean("rating"),
+                        tablesRS.getString("date"),
+                        tablesRS.getString("title"),
+                        tablesRS.getString("description"),
+                        tablesRS.getInt("productid")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reviews;
+    }
+
+    @Override
     public void saveReview(Review review) {
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String tablesQ = "INSERT INTO review(Publisher, Rating, Date, Title, Description, ProductID) VALUES (?, ?, ?, ?, ?, ?)";

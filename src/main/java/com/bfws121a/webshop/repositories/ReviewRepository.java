@@ -7,5 +7,7 @@ import java.util.List;
 public interface ReviewRepository {
     List<Review> findByProdId(int prodId);
 
+    List<Review> findAll();
+
     void saveReview(Review review);
 }

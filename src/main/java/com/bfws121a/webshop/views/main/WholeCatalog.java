@@ -28,7 +28,7 @@ public class WholeCatalog extends FormLayout {
     ProductService productService;
 
     public WholeCatalog () {
-        productService = new ProductService(new H2ProductRepository("jdbc:h2:./webshop", "sa", ""));
+        productService = new ProductService(new H2ProductRepository(System.getenv("FHDW_WEBSHOP_DB_URL"), System.getenv("FHDW_WEBSHOP_DB_USER"), System.getenv("FHDW_WEBSHOP_DB_PASSWORD")));
         prodList = productService.findAll();
 
         // responsiveness

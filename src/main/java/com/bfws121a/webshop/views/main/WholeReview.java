@@ -1,16 +1,27 @@
 package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Review;
+import com.bfws121a.webshop.repositories.H2ReviewRepository;
+import com.bfws121a.webshop.services.ReviewService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WholeReview {
 
-    List<Review> reviews = new ArrayList<>();
+    ReviewService reviewService;
+    List<Review> reviews;
 
-    /*public WholeReview() {
-        reviews.add(new Review(12345, "Max Mustermann", true, "08.04.2023",
+    public WholeReview() {
+
+        reviewService = new ReviewService(new H2ReviewRepository(System.getenv("FHDW_WEBSHOP_DB_URL"), System.getenv("FHDW_WEBSHOP_DB_USER"), System.getenv("FHDW_WEBSHOP_DB_PASSWORD")));
+        reviews = reviewService.findAll();
+
+        for (Review review : reviews) {
+            System.out.println(review.getTitle() + ", " + review.getProductId());
+        }
+
+        /*reviews.add(new Review(12345, "Max Mustermann", true, "08.04.2023",
                 "Tolles Produkt", "Tolles Produkt, gerne wieder!", 12345));
         reviews.add(new Review(12345, "Maria Musterfrau", true, "09.04.2023",
                 "Tolles Produkt", "Tolles Produkt, gerne wieder!", 12345));
@@ -45,7 +56,7 @@ public class WholeReview {
                 "Bauset für jedermann/frau", "Das Set ist ein absolutes „muss“ Schritt für Schritt merkt man bei diesem Set wie gut durchdacht das Ganze ist. Ich bin total begeistert von dem Aussehen, der Größe und den beweglichen Teilen. Ich würde dieses Set jedem empfehlen. Egal ob groß oder klein. "));
         reviews.add(new Review(12354, "Thommy Heimweh", true, "20.04.2023",
                 "Top Geschenk", "Ich bin durch Zufall auf dieses Set gestoßen, als ich auf der Suche nach einem Kommunionsgeschenk für meinen Neffen war. Als er es auspackte ist er vor Freude so hoch gesprungen, dass er Gott einen High Five geben konnte. Alles in allem ein Top Geschenk! "));
-
+        */
     }
 
     public void addReview(Review review) {
@@ -60,6 +71,6 @@ public class WholeReview {
             }
         }
         return productReviews;
-    }*/
+    }
 
 }

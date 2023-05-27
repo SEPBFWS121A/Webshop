@@ -42,6 +42,7 @@ public class CatalogSmokeTest {
             var layout = driver.findElement(By.id("ProductTile-Ritterburg"));
             assertTrue(layout.getText().contains("Ritterburg"));
 
+
             /*for (Product product: products) {
                 var layout = driver.findElement(By.id("ProductTile-" + product.getName()));
                 assertTrue(layout.getText().contains(product.getName()));

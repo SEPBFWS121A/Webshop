@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -26,7 +27,11 @@ public class CatalogSmokeTest {
         List<Product> products = productService.findAll();
 
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        WebDriver driver = new ChromeDriver(options);
 
         try {
             driver.get("http://localhost:8080/Katalog");

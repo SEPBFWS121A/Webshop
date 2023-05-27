@@ -25,12 +25,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-      - name: Check Chrome version
-        run: chrome --version
       - name: Build with Maven
         run: mvn -B package --file pom.xml
   test_1:
@@ -43,6 +37,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      - name: Check Chrome version
+        run: chrome --version
       - name: Test with Maven
         run: mvn clean test
   test_2:
@@ -55,5 +55,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      - name: Check Chrome version
+        run: chrome --version
       - name: Test with Maven
         run: mvn -B package --file pom.xml test

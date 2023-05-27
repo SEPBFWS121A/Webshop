@@ -13,7 +13,7 @@
         <java.version>17</java.version>
         <vaadin.version>24.0.3</vaadin.version>
         <selenium.version>4.8.3</selenium.version>
-        <runSuite>**/JUnitTestSuite.class</runSuite>
+        <runSuite>**/JUnitTestSuite.java</runSuite>
     </properties>
 
     <parent>

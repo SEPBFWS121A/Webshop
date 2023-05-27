@@ -29,6 +29,16 @@ public class H2ReviewRepoFindByProdIDTest {
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./test", "sa", "")) {
             Statement floriansMom = conn.createStatement();
             //floriansMom.execute("Drop TABLE  IF EXISTS review");
+            floriansMom.execute("CREATE TABLE IF NOT EXISTS product (\n" +
+                    "    ID int primary key auto_increment,\n" +
+                    "    Image varchar(256),\n" +
+                    "    Name character varying,\n" +
+                    "    Description character varying,\n" +
+                    "    Type varchar(256),\n" +
+                    "    Theme varchar(256),\n" +
+                    "    Price int,\n" +
+                    "    producttags varchar(255)\n" +
+                    ");");
             floriansMom.execute("CREATE TABLE IF NOT EXISTS review (\n" +
                     "    ID int primary key auto_increment,\n" +
                     "    Publisher varchar(256),\n" +

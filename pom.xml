@@ -13,6 +13,7 @@
         <java.version>17</java.version>
         <vaadin.version>24.0.3</vaadin.version>
         <selenium.version>4.8.3</selenium.version>
+        <runSuite>**/JUnitTestSuite.class</runSuite>
     </properties>
 
     <parent>
@@ -214,18 +215,11 @@
                     <!-- Runs the integration tests (*IT) after the server is started -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>integration-test</goal>
-                                    <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+                        <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
-                            <trimStackTrace>false</trimStackTrace>
-                            <enableAssertions>true</enableAssertions>
+                            <includes>
+                                <include>${runSuite}</include>
+                            </includes>
                         </configuration>
                     </plugin>
                 </plugins>

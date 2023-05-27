@@ -33,7 +33,7 @@ jobs:
       - name: Check Chrome version
         run: chrome --version
       - name: Build with Maven
-        run: mvn -B package --file pom.xml test
+        run: mvn -B package --file pom.xml test -e
 
 
 

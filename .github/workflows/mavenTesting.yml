@@ -29,11 +29,13 @@ jobs:
           cache: maven
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
+        with:
+          version: 'stable'
       - name: Check Chrome version
         run: chrome --version
       - name: Verify with Maven
-        #run: mvn -B package --file pom.xml test
-        run: mvn -B clean package -Pproduction -X --file pom.xml
+        run: mvn -B package --file pom.xml test
+        #run: mvn -B clean package -Pproduction -X --file pom.xml
   
   build:
   

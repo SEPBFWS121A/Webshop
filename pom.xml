@@ -151,7 +151,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <includes>
-                        <include>**/JUnitTestSuite.java</include>
+                        <include>src/test/java/com/bfws121a/webshop/JUnitTestSuite.java</include>
                     </includes>
                 </configuration>
             </plugin>

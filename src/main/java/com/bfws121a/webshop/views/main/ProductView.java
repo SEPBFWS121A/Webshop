@@ -101,11 +101,11 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         reviewsTitle.setWidth(70, Unit.PERCENTAGE);
 
         //Review Button
-       /* Button addReview = new Button("Bewertung hinzufügen");
+        Button addReview = new Button("Bewertung hinzufügen");
         addReview.addClickListener(e -> {
             ReviewDialog reviewDialog = new ReviewDialog(this,product.getId());
             reviewDialog.open();
-        });*/
+        });
 
         // Vertical layout for name, id, price and checkout button
         productInfo.add(productName, productId, productPrice, shoppingCart);
@@ -114,7 +114,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         productOverview.add(productImage, productInfo);
 
         // Add hLayout and rest to main layout
-        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle); //addReview);
+        add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle, addReview);
 
         //add Reviews
         //addReviews();
@@ -128,7 +128,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
 
     }
 
-    /*public void appendReviews(Review review) {
+    public void appendReviews(Review review) {
         reviews.addReview(review);
     }
 
@@ -152,6 +152,6 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
             reviewLayout.add(reviewText);
         }
         add(reviewLayout);
-    }*/
+    }
 
 }

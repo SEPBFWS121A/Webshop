@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReviewDialog extends Dialog {
 
-    /*Review review;
+    Review review;
     FormLayout formLayout = new FormLayout();
     public ReviewDialog(ProductView productView, int productId) {
 
@@ -38,7 +38,7 @@ public class ReviewDialog extends Dialog {
         Button cancelButton = new Button("Abbrechen", event -> this.close());
 
         Button submitButton = new Button("Absenden", event -> {
-            review = new Review(productId, publisher.getValue(), ratingCheckbox.getValue(), LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")).toString(), title.getValue(), description.getValue());
+            review = new Review(productId, publisher.getValue(), ratingCheckbox.getValue(), LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")).toString(), title.getValue(), description.getValue(), productId);
             productView.appendReviews(review);
             productView.addReviews();
             this.close();
@@ -56,6 +56,6 @@ public class ReviewDialog extends Dialog {
 
         add(formLayout);
 
-    }*/
+    }
 
 }

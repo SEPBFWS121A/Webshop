@@ -32,7 +32,8 @@ jobs:
       - name: Check Chrome version
         run: chrome --version
       - name: Verify with Maven
-        run: mvn -B package --file pom.xml test
+        #run: mvn -B package --file pom.xml test
+        run: mvn -B clean package -Pproduction --file pom.xml
   
   build:
   

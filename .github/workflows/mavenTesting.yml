@@ -15,10 +15,8 @@ on:
     branches: [ "mainTesting" ]
 
 jobs:
-  test:
-
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -33,16 +31,10 @@ jobs:
           chrome-version: stable
       - name: Check Chrome version
         run: chrome --version
-      - name: Verify with Maven
-        run: mvn -B package --file pom.xml test -X
-        # run: mvn -B package --file pom.xml test
-        #run: mvn -B clean package -Pproduction -X --file pom.xml
-
-  build:
-
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+  test_1:
     runs-on: self-hosted
-    needs: test
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -51,22 +43,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml test
-      - name: Take down Docker Compose
-        run: docker compose -f /opt/webshop/docker-compose.yml down
-      - name: Delete old war file
-        run: rm /opt/webshop/data/test/*.war
-      - name: Create test folder
-        run: mkdir test && cp target/*.war test
-      - name: Upload to Server
-        uses: actions/upload-artifact@v3
+      - name: Test with Maven
+        run: mvn clean test
+  test_2:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          name: Package
-          path: test
-      - name: Copy runnable to docker folder
-        run: cp test/*.war /opt/webshop/data/test/
-      - name: Rename to webshop.war
-        run: mv /opt/webshop/data/test/*.war /opt/webshop/data/test/webshop.war
-      - name: Start Docker Compose
-        run: docker compose -f /opt/webshop/docker-compose.yml up -d
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Test with Maven
+        run: mvn -B package --file pom.xml test

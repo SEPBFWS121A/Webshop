@@ -1,5 +1,8 @@
 package com.bfws121a.webshop.views.main;
 
+import com.bfws121a.webshop.object.Product;
+import com.bfws121a.webshop.repositories.H2ProductRepository;
+import com.bfws121a.webshop.services.ProductService;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -8,12 +11,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static java.time.Duration.ofSeconds;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
-public class CatalogSmokeTestIT {
+public class CatalogSmokeTest {
 
     @Test
     public void checkCatalog() {

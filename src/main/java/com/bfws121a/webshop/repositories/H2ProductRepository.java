@@ -74,5 +74,6 @@ public class H2ProductRepository implements ProductRepository{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 }

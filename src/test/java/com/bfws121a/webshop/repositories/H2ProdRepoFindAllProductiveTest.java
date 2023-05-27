@@ -9,20 +9,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class H2ProdRepoSearchByNameTestProductive {
+public class H2ProdRepoFindAllProductiveTest {
 
-    private ProductRepository repository;
+    private H2ProductRepository repository;
 
     @Test
-    public void searchRepoTest() {
+    public void findAllTest () {
         repository = new H2ProductRepository("jdbc:h2:./webshop", "sa", "");
 
         ProductService productService;
         productService = new ProductService(repository);
+        List<Product> productList = productService.findAll();
 
-        List<Product> productList = productService.searchByName("Millenium Falke");
-        Assertions.assertEquals(1 , productList.size());
-        Assertions.assertEquals("Millenium Falke", productList.get(0).getName());
+        System.out.println("\n");
+        for (Product product : productList) {
+            System.out.println(product.toString() + "\n");
+        }
+
+        Assertions.assertEquals(9, productList.size());
     }
 
 }

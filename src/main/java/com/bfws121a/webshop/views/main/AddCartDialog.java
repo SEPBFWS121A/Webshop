@@ -21,7 +21,7 @@ public class AddCartDialog extends Dialog {
         getHeader().add(icon ,new H4(" Zum Warenkorb hinzugefügt"));
         add(createProdLayout(prod));
         add(createButtonLayout(prod));
-
+        this.addClassName("add-dialog");
     }
 
     private Component createProdLayout (Product prod) {
@@ -53,6 +53,7 @@ public class AddCartDialog extends Dialog {
         });
         add.addClassName("add");
         layout.add(contin, add);
+        layout.addClassName("button-layout");
         return layout;
     }
 }

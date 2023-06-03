@@ -18,13 +18,15 @@ public class ShoppingCart extends VerticalLayout {
     OrderOverview orderOverview;
     H2 headline;
 
+    private Calculator calculator;
+
     public ShoppingCart () {
 
         if(productList.isEmpty()) {
             headline = new H2("Ihr Warenkorb ist leer");
             add(headline);
         } else {
-            Calculator.setCalcList(productList);
+            calculator = new Calculator(productList);
             headline = new H2("Mein Warenkorb");
             add(headline);
             VerticalLayout prods = new VerticalLayout();
@@ -34,7 +36,7 @@ public class ShoppingCart extends VerticalLayout {
                 cartProdTile.addDeleteEventListener(this::removeProd);
                 cartProdTile.addChangeEventListener(this::updateOrderOverview);
             }
-            orderOverview = new OrderOverview(productList);
+            orderOverview = new OrderOverview(productList, calculator);
             orderOverview.getStyle().set("align-self", "flex-start");
             FormLayout both = new FormLayout(prods, orderOverview);
             add(both);

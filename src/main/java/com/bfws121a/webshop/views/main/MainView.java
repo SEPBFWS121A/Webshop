@@ -74,9 +74,9 @@ public class MainView extends FormLayout {
         highlightsTitle.getStyle().set("font-weight","bold");
         leftDiv.add(highlightsTitle);
 
-        prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "Egal", "Set", "Mittelalter",229.99, "bestseller"));
-        prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal","Set", "Harry Potter", 499.99, "bestseller"));
-        prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal","Set", "Herr der Ringe", 499.99, "bestseller"));
+        prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "Egal", "Set", "Mittelalter",22999, "bestseller"));
+        prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal","Set", "Harry Potter", 49999, "bestseller"));
+        prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal","Set", "Herr der Ringe", 49999, "bestseller"));
         SelectiveCatalog catalog = new SelectiveCatalog(prodList);
         catalog.getStyle().set("width","100%");
         highlightProducts.add(catalog);
@@ -87,9 +87,9 @@ public class MainView extends FormLayout {
         Paragraph newProdsTitle = new Paragraph("Neu bei uns:");
         newProdsTitle.getStyle().set("font-size","x-large");
         newProdsTitle.getStyle().set("font-weight","bold");
-        prodList2.add(new Product(12350, "icons/Kamera.png", "Kamera", "Egal", "Set", "Vintage Lego Sets",99.99, "new"));
-        prodList2.add(new Product(12353, "icons/Millenium Falke.webp", "Millenium Falke", "Egal","Set", "Star Wars", 999.99, "new"));
-        prodList2.add(new Product(12354, "icons/Bowser.jpg", "Bowser", "Egal","Set", "Super Mario", 189.99, "new"));
+        prodList2.add(new Product(12350, "icons/Kamera.png", "Kamera", "Egal", "Set", "Vintage Lego Sets",9999, "new"));
+        prodList2.add(new Product(12353, "icons/Millenium Falke.webp", "Millenium Falke", "Egal","Set", "Star Wars", 99999, "new"));
+        prodList2.add(new Product(12354, "icons/Bowser.jpg", "Bowser", "Egal","Set", "Super Mario", 18999, "new"));
 
         SelectiveCatalog catalog2 = new SelectiveCatalog(prodList2);
 

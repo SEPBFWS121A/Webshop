@@ -13,12 +13,12 @@ public class Product {
     String type;
     String theme;
     String priceCate;
-    double price;
+    int price;
 
     String producttags;
 
 
-    public Product(int id, String image, String name, String description, String type, String theme, double price, String producttags) {
+    public Product(int id, String image, String name, String description, String type, String theme, int price, String producttags) {
         this.id = id;
         this.image = image;
         this.name = name;

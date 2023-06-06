@@ -54,7 +54,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args:
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.projectKey=SEPBFWS121A_Webshop_AYiP_qnJHqA0ASw_H32B
             -Dsonar.verbose=true
 
   deploy:

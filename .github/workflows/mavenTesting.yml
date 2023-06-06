@@ -47,6 +47,13 @@ jobs:
           export FHDW_WEBSHOP_DB_PASSWORD=${{ secrets.FHDW_WEBSHOP_DB_PASSWORD }}
       - name: Build with Maven
         run: mvn -B clean test
+
+  code_analysis:
+
+    runs-on: self-hosted
+    needs: build
+
+    steps:
       - name: Run SonarQube static code analysis
         uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
         env:

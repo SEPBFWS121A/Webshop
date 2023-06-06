@@ -46,16 +46,15 @@ jobs:
         run: mvn -B clean test
       - name: Run SonarQube static code analysis
         uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: <
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.projectName=${{ secrets.SONAR_PROJECT_NAME }}
             -Dsonar.host.url=${{ secrets.SONAR_TOKEN }}
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-
-        #env:
-        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #  SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
   deploy:
 

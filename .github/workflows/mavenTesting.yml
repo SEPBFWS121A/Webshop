@@ -42,8 +42,8 @@ jobs:
           export FHDW_WEBSHOP_DB_URL=${{ secrets.FHDW_WEBSHOP_DB_URL }}
           export FHDW_WEBSHOP_DB_USER=${{ secrets.FHDW_WEBSHOP_DB_USER }}
           export FHDW_WEBSHOP_DB_PASSWORD=${{ secrets.FHDW_WEBSHOP_DB_PASSWORD }}
-      - name: Build with Maven
-        run: mvn -B clean test
+      - name: Run tests and SonarQube static code analysis
+        run: mvn clean verify sonar:sonar -Dsonar.projectKey=SEPBFWS121A_Webshop_AYiP_qnJHqA0ASw_H32B -Dsonar.projectName='Webshop' -Dsonar.host.url=https://sonarqube.fambreit.com -Dsonar.token=sqp_a3c7558347d992492932428d8bd07201cd9f3fcb
 
   deploy:
 

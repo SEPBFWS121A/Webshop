@@ -43,7 +43,7 @@ jobs:
           export FHDW_WEBSHOP_DB_USER=${{ secrets.FHDW_WEBSHOP_DB_USER }}
           export FHDW_WEBSHOP_DB_PASSWORD=${{ secrets.FHDW_WEBSHOP_DB_PASSWORD }}
       - name: Run tests and SonarQube static code analysis
-        run: mvnw clean verify sonar:sonar \
+        run: mvn clean verify sonar:sonar \
              -Dsonar.projectKey=SEPBFWS121A_Webshop_AYiP_qnJHqA0ASw_H32B \
              -Dsonar.projectName='Webshop' \
              -Dsonar.host.url=https://sonarqube.fambreit.com \

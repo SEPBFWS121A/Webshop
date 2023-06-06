@@ -51,4 +51,10 @@ public class Review {
     }
 
     public boolean isShop() { return shopReview;}
+
+
+    @Override
+    public String toString() {
+        return reviewID + " / " + shopReview + " / " + publisher + " / " + rating + " / "  + date + " / " + title + " / " + description + " / " + productId;
+    }
 }

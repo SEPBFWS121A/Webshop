@@ -55,6 +55,7 @@ jobs:
         with:
           args:
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.verbose=true
 
   deploy:
 

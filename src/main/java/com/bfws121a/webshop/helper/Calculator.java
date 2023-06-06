@@ -11,6 +11,8 @@ public class Calculator {
         this.cart = cart;
     }
 
+
+    //fehlt noch UNIT Test
     public double calculatePrice () {
         int price = 0;
         for (Cart value : cart) {
@@ -19,6 +21,7 @@ public class Calculator {
         return price;
     }
 
+    //Fehlt noch UNIT Test
     public int calculateAmount () {
         int amount = 0;
         for (Cart value : cart) {

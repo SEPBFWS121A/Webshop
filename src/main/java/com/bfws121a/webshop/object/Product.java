@@ -31,13 +31,13 @@ public class Product {
     }
 
     private void setPriceCate (double price){
-        if(price <= 20) {
+        if(price <= 2000) {
             priceCate = "0€ - 20€";
-        } else if (price > 20 && price <= 50) {
+        } else if (price > 2000 && price <= 5000) {
             priceCate = "20€ - 50€";
-        } else if (price > 50 && price <= 100) {
+        } else if (price > 5000 && price <= 10000) {
             priceCate = "50€ - 100€";
-        } else if (price > 100 && price <= 200) {
+        } else if (price > 10000 && price <= 20000) {
             priceCate = "100€ - 200€";
         } else {
             priceCate = "200€+";
@@ -68,6 +68,7 @@ public class Product {
         return theme;
     }
 
+    //Fehlt noch UNIT Test
     public String getPriceCate () {
         return priceCate;
     }

@@ -26,4 +26,8 @@ public class ReviewService {
     public void save(Review review) {
         repository.saveReview(review);
     }
+
+    public void deleteByName(String name, int id) {
+        repository.deleteByName(name, id);
+    }
 }

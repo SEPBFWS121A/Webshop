@@ -10,12 +10,12 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.router.BeforeEvent;
-import com.vaadin.flow.router.HasUrlParameter;
-import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.*;
 
 @Route(value = "product", layout = Layout.class)
-public class ProductView extends FormLayout implements HasUrlParameter<Integer> {
+public class ProductView extends FormLayout implements HasUrlParameter<Integer>, HasDynamicTitle {
+
+
 
     FormLayout productInfo = new FormLayout();
     FormLayout productOverview = new FormLayout();
@@ -103,9 +103,10 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         //Review Button
         Button addReview = new Button("Bewertung hinzufügen");
         addReview.addClickListener(e -> {
-            ReviewDialog reviewDialog = new ReviewDialog(this,product.getId());
+            ReviewDialog reviewDialog = new ReviewDialog(this, product.getId());
             reviewDialog.open();
         });
+        addReview.addClassName("Review-Button");
 
         // Vertical layout for name, id, price and checkout button
         productInfo.add(productName, productId, productPrice, shoppingCart);
@@ -153,4 +154,8 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         add(reviewLayout);
     }
 
+    @Override
+    public String getPageTitle() {
+        return product.getName();
+    }
 }

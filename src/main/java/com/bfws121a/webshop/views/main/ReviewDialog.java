@@ -24,9 +24,11 @@ public class ReviewDialog extends Dialog {
 
         Label publisherLabel = new Label("Name");
         TextField publisher = new TextField();
+        publisher.addClassName("publisher");
 
         Label titleLabel = new Label("Titel");
         TextField title = new TextField();
+        title.addClassName("title");
 
         Label descriptionLabel = new Label("Beschreibung");
         TextArea description = new TextArea();
@@ -34,6 +36,7 @@ public class ReviewDialog extends Dialog {
 
         Label ratingLabel = new Label("Weiterempfehlung");
         Checkbox ratingCheckbox = new Checkbox();
+        ratingCheckbox.addClassName("rating");
 
         Button cancelButton = new Button("Abbrechen", event -> this.close());
 
@@ -43,7 +46,7 @@ public class ReviewDialog extends Dialog {
             productView.addReviews();
             this.close();
     });
-
+        submitButton.addClassName("Submit-Button");
 
         formLayout.add(publisherLabel, publisher, titleLabel, title, descriptionLabel, description, ratingLabel, ratingCheckbox, cancelButton, submitButton);
 
@@ -55,6 +58,7 @@ public class ReviewDialog extends Dialog {
         formLayout.setColspan(description, 2);
 
         add(formLayout);
+        this.addClassName("add-review");
 
     }
 

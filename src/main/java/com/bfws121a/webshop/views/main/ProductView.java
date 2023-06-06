@@ -63,7 +63,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         productId.addClassName("idLabel-prodPage");
 
         // Product price label
-        Label productPrice = new Label(String.valueOf(product.getPrice()) + " €");
+        Label productPrice = new Label(String.valueOf(product.getPrice() / 100) + " €");
         productPrice.addClassName("priceLabel-prodPage");
 
         // Shoppint cart button
@@ -117,7 +117,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
         add(productOverview, descriptionTitle, productDescription, divider2, reviewsTitle, addReview);
 
         //add Reviews
-        //addReviews();
+        addReviews();
 
         // add footer
         //add(new Footer());
@@ -133,10 +133,9 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer> 
     }
 
     public void addReviews() {
-
         reviewLayout.setResponsiveSteps(new ResponsiveStep("0", 1));
         reviewLayout.removeAll();
-
+        System.out.println("Test: " + product.getId());
         if (reviews.getReviews(product.getId()).size() > 0) {
             for (Review review : reviews.getReviews(product.getId())) {
                 ReviewTile reviewTile = new ReviewTile(review);

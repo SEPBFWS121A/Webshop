@@ -16,6 +16,10 @@ public class ProductService {
         return repo.searchByName(name);
     }
 
+    public List<Product> searchByProductTag(String productTag) {
+        return repo.searchByProductTag(productTag);
+    }
+
     public List<Product> findAll() {
         return repo.findAll();
     }

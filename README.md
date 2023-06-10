@@ -4,7 +4,7 @@ This project represents a webshop built with Vaadin and Spring Framework.
 
 ## Webshop Deployment Status
 
-[![Verify, Build and Deploy to test server](https://github.com/SEPBFWS121A/Webshop/actions/workflows/mavenTesting.yml/badge.svg?branch=mainTesting)](https://github.com/SEPBFWS121A/Webshop/actions/workflows/mavenTesting.yml)
+[![Build and Deploy to production server](https://github.com/SEPBFWS121A/Webshop/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/SEPBFWS121A/Webshop/actions/workflows/maven.yml)
 
 ## Running the application
 

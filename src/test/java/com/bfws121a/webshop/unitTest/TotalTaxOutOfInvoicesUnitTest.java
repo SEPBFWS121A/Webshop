@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TotalTaxOutOfInvoicesUnitTest {
 
+
         @Test
         public void testCalculateTotalTax() {
             // Prepare test data

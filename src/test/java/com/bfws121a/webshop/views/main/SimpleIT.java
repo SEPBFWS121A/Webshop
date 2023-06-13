@@ -31,7 +31,7 @@ public class SimpleIT {
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        //options.addArguments("--headless");
 
         var driver = new ChromeDriver(options);
 
@@ -41,6 +41,18 @@ public class SimpleIT {
             driver.get("http://localhost:8080");
 
 
+
+            new WebDriverWait(driver, ofSeconds(30), ofSeconds(1))
+                    .until(titleIs("Main"));
+
+            driver.findElement(By.cssSelector("div.mainDiv:nth-child(1) > vaadin-horizontal-layout:nth-child(3) > vaadin-horizontal-layout:nth-child(1) > vaadin-vertical-layout:nth-child(1) > img:nth-child(1)")).click();
+
+            new WebDriverWait(driver, ofSeconds(30), ofSeconds(1))
+                    .until(titleIs("Ritterburg"));
+
+            String label1 = driver.findElement(By.cssSelector("#ROOT-2521314 > vaadin-app-layout > vaadin-form-layout > vaadin-form-layout:nth-child(1) > vaadin-form-layout > label.idLabel-prodPage")).getText();
+
+            driver.navigate().back();
 
             new WebDriverWait(driver, ofSeconds(30), ofSeconds(1))
                     .until(titleIs("Main"));
@@ -61,9 +73,9 @@ public class SimpleIT {
 
             wait = new WebDriverWait(driver, ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#overlay > label:nth-child(2)")));
-            WebElement label = driver.findElement(By.cssSelector("#overlay > label:nth-child(2)"));
+            String label2 = driver.findElement(By.cssSelector("#overlay > label:nth-child(2)")).getText();
 
-            assertEquals(label.getText(), "Artikelnummer: 12345");
+            assertEquals(label2, label1);
 
 
         } finally {

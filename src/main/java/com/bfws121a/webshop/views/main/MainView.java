@@ -2,6 +2,8 @@ package com.bfws121a.webshop.views.main;
 
 import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
+import com.bfws121a.webshop.repositories.H2ProductRepository;
+import com.bfws121a.webshop.services.ProductService;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
@@ -28,6 +30,7 @@ public class MainView extends FormLayout {
     Div rightDiv = new Div();
     HorizontalLayout highlightProducts = new HorizontalLayout();
     HorizontalLayout newProducts = new HorizontalLayout();
+    ProductService productService;
 
     public MainView() {
 
@@ -74,9 +77,9 @@ public class MainView extends FormLayout {
         highlightsTitle.getStyle().set("font-weight","bold");
         leftDiv.add(highlightsTitle);
 
-        prodList.add(new Product(12345, "icons/Ritterburg.png", "Ritterburg", "Egal", "Set", "Mittelalter",22999, "bestseller"));
-        prodList.add(new Product(12346, "icons/Hogwards.png", "Hogwards", "Egal","Set", "Harry Potter", 49999, "bestseller"));
-        prodList.add(new Product(12347, "icons/Bruchtal.png", "Bruchtal", "Egal","Set", "Herr der Ringe", 49999, "bestseller"));
+        productService = new ProductService(new H2ProductRepository(System.getenv("FHDW_WEBSHOP_DB_URL"), System.getenv("FHDW_WEBSHOP_DB_USER"), System.getenv("FHDW_WEBSHOP_DB_PASSWORD")));
+        prodList = productService.searchByProductTag("bestseller");
+
         SelectiveCatalog catalog = new SelectiveCatalog(prodList);
         catalog.getStyle().set("width","100%");
         highlightProducts.add(catalog);
@@ -87,9 +90,8 @@ public class MainView extends FormLayout {
         Paragraph newProdsTitle = new Paragraph("Neu bei uns:");
         newProdsTitle.getStyle().set("font-size","x-large");
         newProdsTitle.getStyle().set("font-weight","bold");
-        prodList2.add(new Product(12350, "icons/Kamera.png", "Kamera", "Egal", "Set", "Vintage Lego Sets",9999, "new"));
-        prodList2.add(new Product(12353, "icons/Millenium Falke.webp", "Millenium Falke", "Egal","Set", "Star Wars", 99999, "new"));
-        prodList2.add(new Product(12354, "icons/Bowser.jpg", "Bowser", "Egal","Set", "Super Mario", 18999, "new"));
+
+        prodList2 = productService.searchByProductTag("bestseller");
 
         SelectiveCatalog catalog2 = new SelectiveCatalog(prodList2);
 

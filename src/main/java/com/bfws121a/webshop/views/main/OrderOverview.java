@@ -44,6 +44,7 @@ public class OrderOverview extends VerticalLayout {
         HorizontalLayout second = new HorizontalLayout(shipping, shippingCosts);
         second.setSizeFull();
         second.expand(shipping);
+        totalPrice.addClassName("total-price");
         HorizontalLayout third = new HorizontalLayout(total, totalPrice);
         third.setSizeFull();
         third.expand(total);

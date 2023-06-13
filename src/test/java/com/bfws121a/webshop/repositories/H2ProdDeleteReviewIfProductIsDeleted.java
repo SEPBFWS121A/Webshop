@@ -63,6 +63,7 @@ public class H2ProdDeleteReviewIfProductIsDeleted {
 
     }
 
+
     @AfterAll
     public static void kill() {
         try (Connection conn = DriverManager.getConnection("jdbc:h2:./test", "sa", "")) {

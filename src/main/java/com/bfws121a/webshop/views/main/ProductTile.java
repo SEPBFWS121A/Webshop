@@ -27,6 +27,7 @@ public class ProductTile extends VerticalLayout {
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
         shoppingCart.addClickListener(e -> {
+            System.out.println("TEST");
             ShoppingCart.addToList(pro);
             AddCartDialog cartDialog = new AddCartDialog(pro);
             cartDialog.open();

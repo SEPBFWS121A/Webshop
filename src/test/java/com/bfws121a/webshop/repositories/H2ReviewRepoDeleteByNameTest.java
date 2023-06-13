@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class H2ReviewRepoDeleteByName {
+public class H2ReviewRepoDeleteByNameTest {
 
     private ReviewRepository repository;
     private static ProductRepository productRepository;

@@ -45,6 +45,7 @@ public class ShoppingCart extends VerticalLayout {
     }
 
     public static void addToList(Product prod) {
+        System.out.println("add to list");
         if(containsID(prod.getId())) {
             productList.stream().filter(e -> e.getProd().getId() == prod.getId()).findFirst().get().increaseAmount();
         } else {

@@ -42,8 +42,7 @@ public class H2ReviewRepository implements ReviewRepository{
             e.printStackTrace();
         } finally {
             try {
-                assert floriansMom != null;
-                floriansMom.close();
+                if (floriansMom != null) floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -73,8 +72,7 @@ public class H2ReviewRepository implements ReviewRepository{
             e.printStackTrace();
         } finally {
             try {
-                assert floriansMom != null;
-                floriansMom.close();
+                if (floriansMom != null) floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -100,8 +98,7 @@ public class H2ReviewRepository implements ReviewRepository{
             e.printStackTrace();
         } finally {
             try {
-                assert floriansMom != null;
-                floriansMom.close();
+                if (floriansMom != null) floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -123,8 +120,7 @@ public class H2ReviewRepository implements ReviewRepository{
             e.printStackTrace();
         } finally {
             try {
-                assert floriansMom != null;
-                floriansMom.close();
+                if (floriansMom != null) floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

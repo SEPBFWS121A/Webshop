@@ -20,8 +20,6 @@ public class ShoppingCart extends VerticalLayout {
     OrderOverview orderOverview;
     H2 headline;
 
-    private Calculator calculator;
-
     public ShoppingCart () {
 
         if(productList.isEmpty()) {
@@ -29,7 +27,7 @@ public class ShoppingCart extends VerticalLayout {
             headline.addClassName("headline-shoppingcart");
             add(headline);
         } else {
-            calculator = new Calculator(productList);
+            Calculator calculator = new Calculator(productList);
             headline = new H2("Mein Warenkorb");
             add(headline);
             VerticalLayout prods = new VerticalLayout();

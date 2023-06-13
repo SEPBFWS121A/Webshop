@@ -19,11 +19,22 @@ public class H2ProductRepository implements ProductRepository{
 
     @Override
     public List<Product> searchByName(String name) {
+        return searchByColumn("name",name);
+    }
+
+    @Override
+    public List<Product> searchByProductTag(String productTag) {
+        return searchByColumn("producttags",productTag);
+    }
+
+    public List<Product> searchByColumn(String column,String searchString){
+        PreparedStatement floriansMom = null;
+
         List<Product> products = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
-            String tablesQ = "SELECT * FROM product WHERE Name=?";
-            PreparedStatement floriansMom = conn.prepareStatement(tablesQ);
-            floriansMom.setString(1, name);
+            String tablesQ = "SELECT * FROM product WHERE " + column + "=?";
+            floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom.setString(1, searchString);
             ResultSet tablesRS = floriansMom.executeQuery();
             while (tablesRS.next()) {
                 products.add(new Product(tablesRS.getInt("ID"),
@@ -35,18 +46,28 @@ public class H2ProductRepository implements ProductRepository{
                         tablesRS.getInt("Price"),
                         tablesRS.getString("producttags")));
             }
-        } catch (SQLException e) {
+
+        }  catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (floriansMom != null) floriansMom.close();
+                assert floriansMom != null;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return products;
     }
 
     @Override
     public List<Product> findAll() {
+        Statement floriansMom = null;
+
         List<Product> products = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String tablesQ = "SELECT * FROM product";
-            Statement floriansMom = conn.createStatement();
+            floriansMom = conn.createStatement();
             ResultSet tablesRS = floriansMom.executeQuery(tablesQ);
             while (tablesRS.next()) {
                 products.add(new Product(tablesRS.getInt("ID"),
@@ -60,19 +81,35 @@ public class H2ProductRepository implements ProductRepository{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                assert floriansMom != null;
+                floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return products;
     }
 
     @Override
     public void deleteByName(String name) {
+        PreparedStatement floriansMom = null;
+
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String tablesQ = "DELETE FROM product WHERE Name=?";
-            PreparedStatement floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom = conn.prepareStatement(tablesQ);
             floriansMom.setString(1, name);
             floriansMom.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                assert floriansMom != null;
+                floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
     }

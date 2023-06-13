@@ -52,7 +52,6 @@ public class H2ProductRepository implements ProductRepository{
         } finally {
             try {
                 if (floriansMom != null) floriansMom.close();
-                assert floriansMom != null;
             } catch (SQLException e) {
                 e.printStackTrace();
             }

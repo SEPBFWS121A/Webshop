@@ -1,6 +1,5 @@
 package com.bfws121a.webshop.repositories;
 
-import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
 
 import java.sql.*;
@@ -97,6 +96,29 @@ public class H2ReviewRepository implements ReviewRepository{
             floriansMom.setString(5, review.getDescription());
             floriansMom.setInt(6, review.getProductId());
             floriansMom.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert floriansMom != null;
+                floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void deleteByName(String name, int id) {
+        PreparedStatement floriansMom = null;
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String tablesQ = "DELETE FROM review WHERE Publisher=? AND ProductID=?";
+            floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom.setString(1, name);
+            floriansMom.setInt(2, id);
+            floriansMom.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

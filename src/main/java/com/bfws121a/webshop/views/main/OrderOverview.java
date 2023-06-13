@@ -65,6 +65,7 @@ public class OrderOverview extends VerticalLayout {
         } else {
             orderAmount.setText("Bestellwert (" + calculator.calculateAmount() + ") Artikel ");
             orderPrice.setText(calculator.calculatePrice()  / 100 + " €");
+            shippingCosts.setText(String.format("%.2f", calculator.calculateShippingCosts() / 100) + " €");
             total.getStyle().set("font-weight", "bold");
             totalPrice.setText(calculator.calculateFullPrice() / 100 + " €");
             totalPrice.getStyle().set("font-weight", "bold");

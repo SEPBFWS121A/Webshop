@@ -52,6 +52,7 @@ public class H2ProductRepository implements ProductRepository{
         } finally {
             try {
                 if (floriansMom != null) floriansMom.close();
+                assert floriansMom != null;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -82,6 +83,7 @@ public class H2ProductRepository implements ProductRepository{
             e.printStackTrace();
         } finally {
             try {
+                assert floriansMom != null;
                 floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -103,6 +105,7 @@ public class H2ProductRepository implements ProductRepository{
             e.printStackTrace();
         } finally {
             try {
+                assert floriansMom != null;
                 floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();

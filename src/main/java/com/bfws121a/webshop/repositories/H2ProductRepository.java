@@ -15,6 +15,12 @@ public class H2ProductRepository implements ProductRepository{
         this.url = url;
         this.user = user;
         this.password = password;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -26,12 +26,17 @@ public class OrderOverview extends VerticalLayout {
 
     private final Label totalPrice = new Label();
 
+    private final Label vTA = new Label();
+
     private final Button buy = new Button("Kaufabwicklung");
 
     private final List<Cart> cart;
 
-    public OrderOverview (List<Cart> cart) {
+    private Calculator calculator;
+
+    public OrderOverview (List<Cart> cart, Calculator calculator) {
         this.cart = cart;
+        this.calculator = calculator;
         setLabels();
         HorizontalLayout first = new HorizontalLayout(orderAmount, orderPrice);
         first.setSizeFull();
@@ -42,23 +47,29 @@ public class OrderOverview extends VerticalLayout {
         HorizontalLayout third = new HorizontalLayout(total, totalPrice);
         third.setSizeFull();
         third.expand(total);
+        HorizontalLayout fourth = new HorizontalLayout(vTA);
+        fourth.setSizeFull();
+        fourth.expand(vTA);
         buy.addClassName("cart");
         buy.addClickListener(e -> {
             BuyDialog buy = new BuyDialog(cart);
             buy.open();
         });
-        add(overview, first, second, third, buy);
+        add(overview, first, second, third, fourth, buy);
     }
 
     public void setLabels() {
-        if(Calculator.calculateAmount() == 0) {
+        if(calculator.calculateAmount() == 0) {
             removeFromParent();
         } else {
-            orderAmount.setText("Bestellwert (" + Calculator.calculateAmount() + ") Artikel ");
-            orderPrice.setText(Calculator.calculatePrice() + " €");
+            orderAmount.setText("Bestellwert (" + calculator.calculateAmount() + ") Artikel ");
+            orderPrice.setText(calculator.calculatePrice()  / 100 + " €");
             total.getStyle().set("font-weight", "bold");
-            totalPrice.setText(Calculator.calculateFullPrice() + " €");
+            totalPrice.setText(calculator.calculateFullPrice() / 100 + " €");
             totalPrice.getStyle().set("font-weight", "bold");
+            vTA.setText("Enthält MwSt. in Höhe von " + calculator.calculateVAT() / 100 + " €");
+            vTA.getStyle().set("text-align", "end");
+            vTA.getStyle().set("color", "#6e6e73");
         }
     }
 

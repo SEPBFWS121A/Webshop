@@ -5,17 +5,24 @@ import java.util.List;
 
 public class Calculator {
 
-    public static List<Cart> cart;
+    private List<Cart> cart;
 
-    public static double calculatePrice () {
-        double price = 0;
+    public Calculator(List<Cart> cart) {
+        this.cart = cart;
+    }
+
+
+    //fehlt noch UNIT Test
+    public double calculatePrice () {
+        int price = 0;
         for (Cart value : cart) {
             price += (value.getProd().getPrice() * value.getAmount());
         }
         return price;
     }
 
-    public static int calculateAmount () {
+    //Fehlt noch UNIT Test
+    public int calculateAmount () {
         int amount = 0;
         for (Cart value : cart) {
             amount += value.getAmount();
@@ -23,12 +30,15 @@ public class Calculator {
         return amount;
     }
 
-    public static double calculateFullPrice () {
-        return calculatePrice() + 5;
+    public double calculateVAT () {
+        double amount = calculateFullPrice() / 119;
+        amount *= 19;
+        return Math.round(amount);
     }
 
-    public static void setCalcList (List<Cart> cartList) {
-        cart = cartList;
+    public double calculateFullPrice () {
+        return calculatePrice() + 500;
     }
+
 
 }

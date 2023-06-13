@@ -6,11 +6,13 @@ import com.bfws121a.webshop.object.Product;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@PageTitle("Einkaufswagen")
 @Route(value = "Warenkorb", layout = Layout.class)
 public class ShoppingCart extends VerticalLayout {
 
@@ -22,9 +24,10 @@ public class ShoppingCart extends VerticalLayout {
 
         if(productList.isEmpty()) {
             headline = new H2("Ihr Warenkorb ist leer");
+            headline.addClassName("headline-shoppingcart");
             add(headline);
         } else {
-            Calculator.setCalcList(productList);
+            Calculator calculator = new Calculator(productList);
             headline = new H2("Mein Warenkorb");
             add(headline);
             VerticalLayout prods = new VerticalLayout();
@@ -34,7 +37,7 @@ public class ShoppingCart extends VerticalLayout {
                 cartProdTile.addDeleteEventListener(this::removeProd);
                 cartProdTile.addChangeEventListener(this::updateOrderOverview);
             }
-            orderOverview = new OrderOverview(productList);
+            orderOverview = new OrderOverview(productList, calculator);
             orderOverview.getStyle().set("align-self", "flex-start");
             FormLayout both = new FormLayout(prods, orderOverview);
             add(both);

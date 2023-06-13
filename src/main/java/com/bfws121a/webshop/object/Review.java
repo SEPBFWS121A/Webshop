@@ -4,23 +4,26 @@ import java.util.Date;
 
 public class Review {
 
-    int productId;
+
+    int reviewID;
     String publisher;
     boolean rating;
     String date;
     String title;
     String description;
+    int productId;
 
     Boolean shopReview = false;
 
-    public Review(int productId, String publisher, boolean rating, String date, String title, String description) {
-        this.productId = productId;
+    public Review(int reviewID, String publisher, boolean rating, String date, String title, String description, int productId) {
+        this.reviewID = reviewID;
         if(this.productId == 0) this.shopReview = true;
         this.publisher = publisher;
         this.rating = rating;
         this.date = date;
         this.title = title;
         this.description = description;
+        this.productId = productId;
     }
 
     public int getProductId() {
@@ -48,4 +51,10 @@ public class Review {
     }
 
     public boolean isShop() { return shopReview;}
+
+
+    @Override
+    public String toString() {
+        return reviewID + " / " + shopReview + " / " + publisher + " / " + rating + " / "  + date + " / " + title + " / " + description + " / " + productId;
+    }
 }

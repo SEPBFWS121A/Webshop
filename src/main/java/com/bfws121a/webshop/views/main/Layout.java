@@ -135,7 +135,8 @@ public class Layout extends AppLayout {
         final Tab tab = new Tab();
         tab.add(new RouterLink(text, navigationTarget));
         ComponentUtil.setData(tab, Class.class, navigationTarget);
-        tab.addClassName("header-tab");
+        tab.addClassName("header-tab-" + text);
+        tab.setId("header-tab-" + text);
         return tab;
     }
 

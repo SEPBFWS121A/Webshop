@@ -1,0 +1,113 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Verify, Build and Deploy to test server
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        type: choice
+        description: Which browser to test
+        required: true
+        options:
+          - chrome
+          - firefox
+          - edge
+  push:
+    branches: [ "mainTesting" ]
+  pull_request:
+    branches: [ "mainTesting" ]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Setup environment variables
+        run: |
+          export FHDW_WEBSHOP_DB_URL=${{ secrets.FHDW_WEBSHOP_DB_URL }}
+          export FHDW_WEBSHOP_DB_USER=${{ secrets.FHDW_WEBSHOP_DB_USER }}
+          export FHDW_WEBSHOP_DB_PASSWORD=${{ secrets.FHDW_WEBSHOP_DB_PASSWORD }}
+      - name: Build with Maven
+        run: mvn -B clean test
+
+  code_analysis:
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Run SonarQube static code analysis
+        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args:
+            -Dsonar.projectKey=SEPBFWS121A_Webshop_AYiP_qnJHqA0ASw_H32B
+            -Dsonar.verbose=true
+
+  deploy:
+
+    runs-on: self-hosted
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Setup environment variables
+        run: |
+          export FHDW_WEBSHOP_DB_URL=${{ secrets.FHDW_WEBSHOP_DB_URL }}
+          export FHDW_WEBSHOP_DB_USER=${{ secrets.FHDW_WEBSHOP_DB_USER }}
+          export FHDW_WEBSHOP_DB_PASSWORD=${{ secrets.FHDW_WEBSHOP_DB_PASSWORD }}
+      - name: Build with Maven
+        run: mvn -B clean package -Pproduction -DskipTests --file pom.xml
+      - name: Take down old container
+        run: docker compose -f /opt/webshop/docker-compose.yml down
+      - name: Delete old war file
+        run: rm /opt/webshop/data/test/*.war
+      - name: Create test folder
+        run: mkdir test && cp target/*.war test
+      - name: Upload to Server
+        uses: actions/upload-artifact@v3
+        with:
+          name: Package
+          path: test
+      - name: Copy runnable to docker folder
+        run: cp test/*.war /opt/webshop/data/test/
+      - name: Rename to webshop.war
+        run: mv /opt/webshop/data/test/*.war /opt/webshop/data/test/webshop.war
+      - name: Start Docker Compose
+        run: docker compose -f /opt/webshop/docker-compose.yml up -d
+
+
+

@@ -3,6 +3,7 @@ package com.bfws121a.webshop.object;
 import com.vaadin.flow.component.Html;
 import com.vaadin.flow.component.html.Span;
 
+
 public class Product {
 
     int id;
@@ -12,10 +13,12 @@ public class Product {
     String type;
     String theme;
     String priceCate;
-    double price;
+    int price;
+
+    String producttags;
 
 
-    public Product(int id, String image, String name, String description, String type, String theme, double price) {
+    public Product(int id, String image, String name, String description, String type, String theme, int price, String producttags) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -23,17 +26,18 @@ public class Product {
         this.type = type;
         this.theme = theme;
         this.price = price;
+        this.producttags = producttags;
         setPriceCate(price);
     }
 
     private void setPriceCate (double price){
-        if(price <= 20) {
+        if(price <= 2000) {
             priceCate = "0€ - 20€";
-        } else if (price > 20 && price <= 50) {
+        } else if (price > 2000 && price <= 5000) {
             priceCate = "20€ - 50€";
-        } else if (price > 50 && price <= 100) {
+        } else if (price > 5000 && price <= 10000) {
             priceCate = "50€ - 100€";
-        } else if (price > 100 && price <= 200) {
+        } else if (price > 10000 && price <= 20000) {
             priceCate = "100€ - 200€";
         } else {
             priceCate = "200€+";
@@ -64,6 +68,7 @@ public class Product {
         return theme;
     }
 
+    //Fehlt noch UNIT Test
     public String getPriceCate () {
         return priceCate;
     }
@@ -71,6 +76,16 @@ public class Product {
     public double getPrice() {
         return price;
     }
+
+    public String getProducttags() {
+        return producttags;
+    }
+
+    @Override
+    public String toString() {
+        return id + " / " + image + " / " + name + " / " + description + " / "  + type + " / " + priceCate + " / " + getPrice();
+    }
+
 
 
 }

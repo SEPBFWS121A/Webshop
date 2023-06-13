@@ -19,13 +19,22 @@ public class H2ProductRepository implements ProductRepository{
 
     @Override
     public List<Product> searchByName(String name) {
+        return searchByColumn("name",name);
+    }
+
+    @Override
+    public List<Product> searchByProductTag(String productTag) {
+        return searchByColumn("producttags",productTag);
+    }
+
+    public List<Product> searchByColumn(String column,String searchString){
         PreparedStatement floriansMom = null;
 
         List<Product> products = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
-            String tablesQ = "SELECT * FROM product WHERE Name=?";
+            String tablesQ = "SELECT * FROM product WHERE " + column + "=?";
             floriansMom = conn.prepareStatement(tablesQ);
-            floriansMom.setString(1, name);
+            floriansMom.setString(1, searchString);
             ResultSet tablesRS = floriansMom.executeQuery();
             while (tablesRS.next()) {
                 products.add(new Product(tablesRS.getInt("ID"),
@@ -42,9 +51,10 @@ public class H2ProductRepository implements ProductRepository{
             e.printStackTrace();
         } finally {
             try {
-                floriansMom.close();
+                if (floriansMom != null) floriansMom.close();
+                assert floriansMom != null;
             } catch (SQLException e) {
-               e.printStackTrace();
+                e.printStackTrace();
             }
         }
         return products;
@@ -73,6 +83,7 @@ public class H2ProductRepository implements ProductRepository{
             e.printStackTrace();
         } finally {
             try {
+                assert floriansMom != null;
                 floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -94,6 +105,7 @@ public class H2ProductRepository implements ProductRepository{
             e.printStackTrace();
         } finally {
             try {
+                assert floriansMom != null;
                 floriansMom.close();
             } catch (SQLException e) {
                 e.printStackTrace();

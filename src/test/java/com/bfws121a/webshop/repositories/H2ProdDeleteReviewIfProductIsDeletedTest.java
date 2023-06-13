@@ -8,12 +8,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.*;
 import java.util.List;
 
-public class H2ProdDeleteReviewIfProductIsDeleted {
+public class H2ProdDeleteReviewIfProductIsDeletedTest {
     private ReviewRepository repository;
     private H2ProductRepository repository2;
     private static ProductRepository productRepository;

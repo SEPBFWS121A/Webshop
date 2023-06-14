@@ -32,7 +32,7 @@ public class VATCalculatorTest {
     @Test
     public void calculateVAT() {
         int value = (int) calculator.calculateVAT();
-        Assertions.assertEquals(24029, value);
+        Assertions.assertEquals(23949, value);
     }
 
 

@@ -64,12 +64,12 @@ public class OrderOverview extends VerticalLayout {
             removeFromParent();
         } else {
             orderAmount.setText("Bestellwert (" + calculator.calculateAmount() + ") Artikel ");
-            orderPrice.setText(calculator.calculatePrice()  / 100 + " €");
+            orderPrice.setText(String.format("%.2f",calculator.calculatePrice()  / 100) + " €");
             shippingCosts.setText(String.format("%.2f", calculator.calculateShippingCosts() / 100) + " €");
             total.getStyle().set("font-weight", "bold");
-            totalPrice.setText(calculator.calculateFullPrice() / 100 + " €");
+            totalPrice.setText(String.format("%.2f", calculator.calculateFullPrice() / 100) + " €");
             totalPrice.getStyle().set("font-weight", "bold");
-            vTA.setText("Enthält MwSt. in Höhe von " + calculator.calculateVAT() / 100 + " €");
+            vTA.setText("Enthält MwSt. in Höhe von " + String.format("%.2f",calculator.calculateVAT() / 100) + " €");
             vTA.getStyle().set("text-align", "end");
             vTA.getStyle().set("color", "#6e6e73");
         }

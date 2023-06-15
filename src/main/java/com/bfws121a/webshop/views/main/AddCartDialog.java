@@ -37,7 +37,7 @@ public class AddCartDialog extends Dialog {
         VerticalLayout layout = new VerticalLayout();
         Label name = new Label(prod.getName());
         name.addClassName("label-prodTile");
-        Label price = new Label(prod.getPrice() / 100+ " €");
+        Label price = new Label(String.format("%.2f",prod.getPrice() / 100) + " €");
         price.addClassName("label-prodTile");
         layout.add(name, price);
         return layout;

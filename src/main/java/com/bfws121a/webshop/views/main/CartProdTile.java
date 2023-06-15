@@ -32,7 +32,7 @@ public class CartProdTile extends FormLayout {
         prodImg.addClassName("image-cartTile");
         prodName = new Label(cart.getProd().getName());
         prodName.addClassName("label-prodTile-name");
-        prodPrice = new Label(cart.getProd().getPrice() / 100 + " €");
+        prodPrice = new Label(String.format("%.2f",cart.getProd().getPrice() / 100) + " €");
         prodPrice.addClassName("label-prodTile-price");
         prodAmount.setValue(cart.getAmount());
         prodAmount.setMin(1);

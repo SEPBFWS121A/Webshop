@@ -19,6 +19,7 @@ public class Calculator {
         return price;
     }
 
+    //TEST VON ROBIN
     public int calculateAmount () {
         int amount = 0;
         for (Cart value : cart) {

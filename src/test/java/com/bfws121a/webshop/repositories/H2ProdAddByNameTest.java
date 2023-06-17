@@ -53,14 +53,25 @@ public class H2ProdAddByNameTest {
     }
 
     @Test
-    public void deleteByNameTest() {
+    @Test
+    public void addByNameTest() {
         repository = new H2ProductRepository("jdbc:h2:./test", "sa", "");
         ProductService productService;
         productService = new ProductService(repository);
-        productService.deleteByName("Hogwards");
+
+        Product product = new Product();
+        product.setName("NewProduct");
+        product.setDescription("This is a new product.");
+        product.setPrice(999);
+        // Set other properties of the product as needed
+
+        productService.addProduct(product);
+
         List<Product> productList = productService.findAll();
 
         Assertions.assertEquals(1, productList.size());
+        Assertions.assertEquals("NewProduct", productList.get(0).getName());
     }
+
 
 }

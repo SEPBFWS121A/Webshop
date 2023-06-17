@@ -1,6 +1,5 @@
 package com.bfws121a.webshop.repositories;
 
-import com.bfws121a.webshop.object.Product;
 import com.bfws121a.webshop.object.Review;
 
 import java.sql.*;
@@ -22,10 +21,12 @@ public class H2ReviewRepository implements ReviewRepository{
 
     @Override
     public List<Review> findByProdId(int prodId) {
+        PreparedStatement floriansMom = null;
+
         List<Review> products = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String tablesQ = "SELECT * FROM review WHERE ProductID=?";
-            PreparedStatement floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom = conn.prepareStatement(tablesQ);
             floriansMom.setInt(1, prodId);
             ResultSet tablesRS = floriansMom.executeQuery();
             while (tablesRS.next()) {
@@ -39,16 +40,24 @@ public class H2ReviewRepository implements ReviewRepository{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (floriansMom != null) floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return products;
     }
 
     @Override
     public List<Review> findAll() {
+        Statement floriansMom = null;
+
         List <Review> reviews = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String tablesQ = "SELECT * FROM review";
-            Statement floriansMom = conn.createStatement();
+            floriansMom = conn.createStatement();
             ResultSet tablesRS = floriansMom.executeQuery(tablesQ);
             while (tablesRS.next()) {
                 reviews.add(new Review(tablesRS.getInt("id"),
@@ -61,15 +70,23 @@ public class H2ReviewRepository implements ReviewRepository{
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (floriansMom != null) floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return reviews;
     }
 
     @Override
     public void saveReview(Review review) {
+        PreparedStatement floriansMom = null;
+
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String tablesQ = "INSERT INTO review(Publisher, Rating, Date, Title, Description, ProductID) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom = conn.prepareStatement(tablesQ);
             floriansMom.setString(1, review.getPublisher());
             floriansMom.setBoolean(2, review.getRating());
             floriansMom.setString(3, review.getDate());
@@ -79,6 +96,34 @@ public class H2ReviewRepository implements ReviewRepository{
             floriansMom.execute();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (floriansMom != null) floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void deleteByName(String name, int id) {
+        PreparedStatement floriansMom = null;
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String tablesQ = "DELETE FROM review WHERE Publisher=? AND ProductID=?";
+            floriansMom = conn.prepareStatement(tablesQ);
+            floriansMom.setString(1, name);
+            floriansMom.setInt(2, id);
+            floriansMom.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (floriansMom != null) floriansMom.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
     }

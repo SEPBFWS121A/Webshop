@@ -10,4 +10,6 @@ public interface ReviewRepository {
     List<Review> findAll();
 
     void saveReview(Review review);
+
+    void deleteByName(String name, int id);
 }

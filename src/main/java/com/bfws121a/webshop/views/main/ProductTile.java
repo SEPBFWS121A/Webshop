@@ -23,10 +23,11 @@ public class ProductTile extends VerticalLayout {
         productName = new Label(pro.getName());
         productName.addClassName("label-prodTile");
         productName.setId("label-" + pro.getName());
-        productPrice = new Label(pro.getPrice() / 100 + " €");
+        productPrice = new Label(String.format("%.2f",pro.getPrice() / 100) + " €");
         productPrice.addClassName("label-prodTile");
         shoppingCart.addClassName("cart");
         shoppingCart.addClickListener(e -> {
+            System.out.println("TEST");
             ShoppingCart.addToList(pro);
             AddCartDialog cartDialog = new AddCartDialog(pro);
             cartDialog.open();

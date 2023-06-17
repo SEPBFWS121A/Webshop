@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ProductRepository {
     List<Product> searchByName(String name);
+    List<Product> searchByProductTag(String productTag);
 
     List<Product> findAll();
 

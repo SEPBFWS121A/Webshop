@@ -63,7 +63,7 @@ public class ProductView extends FormLayout implements HasUrlParameter<Integer>,
         productId.addClassName("idLabel-prodPage");
 
         // Product price label
-        Label productPrice = new Label(String.valueOf(product.getPrice() / 100) + " €");
+        Label productPrice = new Label(String.valueOf(String.format("%.2f", product.getPrice() / 100)) + " €");
         productPrice.addClassName("priceLabel-prodPage");
 
         // Shoppint cart button

@@ -21,7 +21,7 @@ public class Calculator {
         return price;
     }
 
-    //Fehlt noch UNIT Test
+    //TEST VON ROBIN
     public int calculateAmount () {
         int amount = 0;
         for (Cart value : cart) {
@@ -36,8 +36,14 @@ public class Calculator {
         return Math.round(amount);
     }
 
+    public double calculateShippingCosts() {
+        if (calculatePrice() >= 50000) return 0;
+        if (calculatePrice() >= 25000) return 250;
+        return 500;
+    }
+
     public double calculateFullPrice () {
-        return calculatePrice() + 500;
+        return calculatePrice() + calculateShippingCosts();
     }
 
 

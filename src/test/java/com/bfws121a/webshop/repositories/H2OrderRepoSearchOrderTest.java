@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.List;
 
 @SpringBootTest
-public class H2ReviewRepoSearchOrderTest {
+public class H2OrderRepoSearchOrderTest {
 
     private OrderRepository repository;
     private static String name;

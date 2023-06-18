@@ -23,7 +23,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.w3c.dom.html.HTMLElement;
 
 
-public class SimpleIT {
+public class E2ETestBuyProdFormMainPage {
 
     @Test
     public void checkPageLoad() {

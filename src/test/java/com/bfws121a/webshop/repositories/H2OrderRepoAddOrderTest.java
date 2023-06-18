@@ -15,7 +15,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @SpringBootTest
-public class H2ReviewRepoAddOrderTest {
+public class H2OrderRepoAddOrderTest {
 
     private OrderRepository repository;
     private static String name;

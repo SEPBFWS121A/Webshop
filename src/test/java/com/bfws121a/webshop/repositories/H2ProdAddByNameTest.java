@@ -15,7 +15,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @SpringBootTest
-public class H2ProdDeleteByNameTest {
+public class H2ProdAddByNameTest {
 
     private H2ProductRepository repository;
 
